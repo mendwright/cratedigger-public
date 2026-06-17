@@ -1,0 +1,23 @@
+node_modules
+out
+dist
+release
+.DS_Store
+*.log
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.claude/
+.agents/
+service/.venv/
+service/**/__pycache__/
+service/.pytest_cache/
+
+# Gemini/antigravity agent session state
+.antigravitycli/
+
+# storybloq: commit roadmap/tickets/issues/handovers; ignore volatile session state
+.story/snapshots/
+.story/sessions/
+.story/status.json

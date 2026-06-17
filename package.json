@@ -1,0 +1,84 @@
+{
+  "name": "cratedigger",
+  "version": "1.9.0",
+  "description": "Desktop Plex music client with album-flip UX, credit browsing, and casting to headless Plexamp",
+  "main": "out/main/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "PUBLIC_BUILD=1 electron-vite dev",
+    "build": "PUBLIC_BUILD=1 electron-vite build",
+    "start": "PUBLIC_BUILD=1 electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && svelte-check --tsconfig tsconfig.web.json",
+    "test": "vitest run",
+    "dist": "PUBLIC_BUILD=1 electron-vite build && electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.jaybeaman.cratedigger",
+    "productName": "Cratedigger",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "**/*.node",
+      "node_modules/@arcanewizards/electron-media-service/**/*"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
+      "category": "public.app-category.music",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "notarize": true
+    },
+    "dmg": {
+      "writeUpdateInfo": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "jaybeaman",
+        "repo": "cratedigger-public"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.0.4",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "@tsconfig/svelte": "^5.0.4",
+    "@types/node": "^22.9.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "node-gyp": "^12.3.0",
+    "svelte": "^5.1.9",
+    "svelte-check": "^4.0.5",
+    "tslib": "^2.8.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^4.1.7"
+  },
+  "dependencies": {
+    "@arcanewizards/electron-media-service": "^0.3.2",
+    "electron-store": "^10.0.0",
+    "electron-updater": "^6.8.3"
+  }
+}
