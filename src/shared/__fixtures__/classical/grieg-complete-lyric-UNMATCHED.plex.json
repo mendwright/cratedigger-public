@@ -1,0 +1,606 @@
+{
+ "name": "grieg-complete-lyric-UNMATCHED",
+ "ratingKey": "135841",
+ "album": {
+  "title": "Grieg: Complete Lyric Pieces",
+  "parentTitle": "Chiharu Aizawa",
+  "year": 2025,
+  "guids": []
+ },
+ "tracks": [
+  {
+   "ratingKey": "135879",
+   "index": 1,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 12: No. 1, Arietta",
+   "duration": 88626,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135880",
+   "index": 2,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 12: No. 2, Waltz",
+   "duration": 99949,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135881",
+   "index": 3,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 12: No. 3, Watchman's Song",
+   "duration": 164289,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135882",
+   "index": 4,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 12: No. 4, Fairy Dance",
+   "duration": 46988,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135883",
+   "index": 5,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 12: No. 5, Popular Melody",
+   "duration": 89756,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135884",
+   "index": 6,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 12: No. 6, Norwegian Melody",
+   "duration": 54493,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135885",
+   "index": 7,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 12: No. 7, Album Leaf",
+   "duration": 85100,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135886",
+   "index": 8,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 12: No. 8, National Song",
+   "duration": 77623,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135887",
+   "index": 9,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 38: No. 1, Berceuse",
+   "duration": 151443,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135888",
+   "index": 10,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 38: No. 2, Popular Melody",
+   "duration": 102924,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135889",
+   "index": 11,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 38: No. 3, Melody",
+   "duration": 104646,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135890",
+   "index": 12,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 38: No. 4, Norwegian Dance (Halling)",
+   "duration": 49844,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135891",
+   "index": 13,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 38: No. 5, Norwgian Dance (Springdans)",
+   "duration": 90117,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135892",
+   "index": 14,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 38: No. 6, Elegie",
+   "duration": 138877,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135893",
+   "index": 15,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 38: No. 7, Waltz",
+   "duration": 77835,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135894",
+   "index": 16,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 38: No. 8, Canon",
+   "duration": 252234,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135895",
+   "index": 17,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 43: No. 1, Butterfly",
+   "duration": 118470,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135896",
+   "index": 18,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 43: No. 2, Solitary Traveller",
+   "duration": 109803,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135897",
+   "index": 19,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 43: No. 3, In My Homeland",
+   "duration": 102484,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135898",
+   "index": 20,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 43: No. 4, Little Bird",
+   "duration": 117927,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135899",
+   "index": 21,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 43: No. 5, Erotik",
+   "duration": 131872,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135900",
+   "index": 22,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 43: No. 6, To Spring",
+   "duration": 227398,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135901",
+   "index": 23,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 47: No. 1, Valse - Impronptu",
+   "duration": 252018,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135902",
+   "index": 24,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 47: No. 2, Album Leaf",
+   "duration": 294224,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135903",
+   "index": 25,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 47: No. 3, Melody",
+   "duration": 190987,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135904",
+   "index": 26,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 47: No. 4, Norwegian Dance (Halling)",
+   "duration": 85176,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135905",
+   "index": 27,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 47: No. 5, Melancholy",
+   "duration": 190286,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135906",
+   "index": 28,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 47: No. 6, Norwegian Dance (Springdans)",
+   "duration": 89738,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135907",
+   "index": 29,
+   "parentIndex": 1,
+   "title": "Lyric Pieces, Op. 47: No. 7, Elegie",
+   "duration": 197889,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135861",
+   "index": 1,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 54: No. 1, Shepherd's Boy",
+   "duration": 247050,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135862",
+   "index": 2,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 54: No. 2, Norwegian March",
+   "duration": 217629,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135863",
+   "index": 3,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 54: No. 3, March of The Dwarfs",
+   "duration": 197399,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135864",
+   "index": 4,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 54: No. 4, Nocturne",
+   "duration": 303857,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135865",
+   "index": 5,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 54: No. 5, Scherzo",
+   "duration": 225999,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135866",
+   "index": 6,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 54: No. 6, Bell Ringing",
+   "duration": 307526,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135867",
+   "index": 7,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 57: No. 1, Vanished Days",
+   "duration": 381768,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135868",
+   "index": 8,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 57: No. 2, Gade",
+   "duration": 216612,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135869",
+   "index": 9,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 57: No. 3, Illusion",
+   "duration": 215530,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135870",
+   "index": 10,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 57: No. 4, Secret",
+   "duration": 321735,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135871",
+   "index": 11,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 57: No. 5, She Dances",
+   "duration": 222488,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135872",
+   "index": 12,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 57: No. 6, Home Sickness",
+   "duration": 208579,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135873",
+   "index": 13,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 62: No. 1, Sylphide",
+   "duration": 136975,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135874",
+   "index": 14,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 62: No. 2, Gratitude",
+   "duration": 248591,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135875",
+   "index": 15,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 62: No. 3, French Serenade",
+   "duration": 130533,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135876",
+   "index": 16,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 62: No. 4, Brooklet",
+   "duration": 112703,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135877",
+   "index": 17,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 62: No. 5, Phantom",
+   "duration": 161630,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135878",
+   "index": 18,
+   "parentIndex": 2,
+   "title": "Lyric Pieces, Op. 62: No. 6, Homeward",
+   "duration": 188642,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135842",
+   "index": 1,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 65: No. 1, From Early Years",
+   "duration": 339126,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135843",
+   "index": 2,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 65: No. 2, Peasant's Song",
+   "duration": 89901,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135844",
+   "index": 3,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 65: No. 3, Melancholy",
+   "duration": 198825,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135845",
+   "index": 4,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 65: No. 4, Salon",
+   "duration": 188933,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135846",
+   "index": 5,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 65: No. 5, Ballade",
+   "duration": 168538,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135847",
+   "index": 6,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 65: No. 6, Wedding Day at Troldhaugen",
+   "duration": 413330,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135848",
+   "index": 7,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 68: No. 1, Sailor's Song",
+   "duration": 92270,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135849",
+   "index": 8,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 68: No. 2, Grandmother's Minuet",
+   "duration": 150152,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135850",
+   "index": 9,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 68: No. 3, At Your Feet",
+   "duration": 182187,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135851",
+   "index": 10,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 68: No. 4, Evening in the Mountains",
+   "duration": 204626,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135852",
+   "index": 11,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 68: No. 5, Cradle Song",
+   "duration": 173584,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135853",
+   "index": 12,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 68: No. 6, Valse mélancolique",
+   "duration": 291230,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135854",
+   "index": 13,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 71: No. 1, Once Upon a Time",
+   "duration": 299692,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135855",
+   "index": 14,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 71: No. 2, Summer's Eve",
+   "duration": 154562,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135856",
+   "index": 15,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 71: No. 3, Puck",
+   "duration": 115233,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135857",
+   "index": 16,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 71: No. 4, Peace of the Woods",
+   "duration": 304271,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135858",
+   "index": 17,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 71: No. 5, Norwegian Dance (Halling)",
+   "duration": 196497,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135859",
+   "index": 18,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 71: No. 6, Gone",
+   "duration": 188593,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135860",
+   "index": 19,
+   "parentIndex": 3,
+   "title": "Lyric Pieces, Op. 71: No. 7, Remembrances",
+   "duration": 139970,
+   "originalTitle": null,
+   "guids": []
+  }
+ ]
+}
