@@ -1,0 +1,8 @@
+{
+  "source": "https://api.openopus.org/work/dump.json",
+  "fetchedAt": "2026-07-15T04:55:50.164Z",
+  "version": "1.20.6",
+  "composers": 220,
+  "works": 24975,
+  "sha256": "10fac3e5301c9e2635cb27f21c8c57eab8c5194a9b75e2795b7acc9499abf42c"
+}
