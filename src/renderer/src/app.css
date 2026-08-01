@@ -1,0 +1,182 @@
+/*
+ * Cratedigger — liner-notes color scheme.
+ *
+ * Tokens live here as CSS custom properties on :root so every component
+ * picks them up via inheritance. Components should consume tokens, not
+ * hard-coded hex, so future scheme tweaks are one-file edits.
+ */
+:root {
+  color-scheme: light;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Track numbers, durations, years — a music app is full of columns of
+     digits; tabular figures keep them aligned everywhere at once. */
+  font-variant-numeric: tabular-nums;
+
+  /* — Typography: display face for headlines & serif accents, body for
+       everything else, mono for codes/durations. Themes swap all three. */
+  --font-display: 'Iowan Old Style', 'Iowan Old Style BT', 'Apple Garamond', 'Hoefler Text',
+    Charter, Georgia, ui-serif, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+  --font-mono: 'SF Mono', ui-monospace, Menlo, monospace;
+
+  /* — Shape: one radius scale, themed (brutalist squares it to 0, the zine
+       themes chub it up). Components never hard-code px radii. */
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-pill: 999px;
+
+  /* — Texture: full-viewport overlay (paper grain for liner-notes; themes
+       swap in vignettes / glows / none). Painted by body::before below. */
+  --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+
+  /* — Paper layers (warm cream → faintly aged → blank index card) */
+  --paper: #f3ead4;
+  --surface: #fcf6e6;
+  --surface-deep: #e9dfc1;
+  --inset: #fffbef;
+
+  /* — Ink: espresso primary, walnut secondary, fading to faded for hints */
+  --espresso: #2b1d12;
+  --walnut: #5a4736;
+  --faded: #8b765f;
+  --whisper: #b8a684;
+
+  /* — Hairlines: warm gray borders, the kind you'd see on liner-note tables */
+  --hairline: #d4c8a6;
+  --hairline-strong: #b8a87e;
+
+  /* — Brick: deep clay, the single splash of color. Vermilion was too signage; */
+  /*   brick reads kiln-fired. */
+  --brick: #8c3522;
+  --brick-deep: #6c2616;
+  --brick-wash: #ecd4cb;
+
+  /* — Ink tints (former rgba(255,255,255,X) translucent overlays, restated as */
+  /*   espresso on cream so they read the same visual weight) */
+  --ink-tint-04: rgba(43, 29, 18, 0.04);
+  --ink-tint-06: rgba(43, 29, 18, 0.06);
+  --ink-tint-08: rgba(43, 29, 18, 0.08);
+  --ink-tint-12: rgba(43, 29, 18, 0.12);
+  --ink-tint-16: rgba(43, 29, 18, 0.16);
+
+  /* — Semantic: include/exclude on FocusBar chips, error toasts */
+  --ok-fg: #3a6f3f;
+  --ok-bg: #dcebcb;
+  --ok-border: #9bbf8a;
+  --warn-fg: #7d2424;
+  --warn-bg: #f0d6d2;
+  --warn-border: #c08b88;
+  --err-fg: #7d2424;
+
+  /* — Shadows: warm-toned drop shadows for raised cards */
+  --shadow-sm: 0 4px 12px rgba(43, 29, 18, 0.12);
+  --shadow-md: 0 12px 28px rgba(43, 29, 18, 0.18);
+  --shadow-lg: 0 24px 48px rgba(43, 29, 18, 0.24);
+
+  /* — Motion grammar: three durations × three easings.
+   *   Everything in the app should consume these instead of ad-hoc ms/curves
+   *   so the whole surface moves with one shared sensibility.
+   *
+   *   Durations:
+   *     instant — color/hover state changes, feels reactive not animated.
+   *     base    — most transitions: panels appearing, cards growing, etc.
+   *     slow    — large-scale screen morphs, cover-art crossfades.
+   *
+   *   Easings:
+   *     out     — UI entrance (decelerate into rest). Default for "appearing".
+   *     in-out  — reversible state changes (open/close, expand/collapse).
+   *     spring  — physical, used sparingly for the crate-flip / sleeve-peek
+   *               motions where the surface should feel like it has mass.
+   */
+  --dur-instant: 120ms;
+  --dur-base: 220ms;
+  --dur-slow: 380ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  color: var(--espresso);
+  background: var(--paper);
+}
+
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Theme texture overlay — grain, vignette, or neon glow, depending on the
+   active theme. Sits above everything (film grain reads as part of the
+   medium, not the content) but never intercepts input. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--texture);
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+/* Honor the OS-level motion preference: collapse the motion grammar to
+   near-zero so transitions still fire their events but don't animate. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 1ms;
+    --dur-base: 1ms;
+    --dur-slow: 1ms;
+  }
+}
+
+/* Scrollbars in the theme's ink, not the OS default chrome. */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--ink-tint-12);
+  border-radius: var(--radius-pill);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ink-tint-16);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Keyboard-focus default for anything a component doesn't style itself. */
+:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: 2px;
+}
+
+body.has-now-playing #app {
+  padding-bottom: 78px;
+  box-sizing: border-box;
+}
+
+/* View Transitions API — drive every named pair off the shared motion
+   grammar. Browsers without the API ignore these rules silently. The
+   default crossfade for unnamed elements stays out of the way. */
+::view-transition-old(album-cover-active),
+::view-transition-new(album-cover-active) {
+  animation-duration: var(--dur-base);
+  animation-timing-function: var(--ease-out);
+}
+
+/* Native form controls come from the OS — keep them in tone */
+::selection {
+  background: var(--brick-wash);
+  color: var(--espresso);
+}

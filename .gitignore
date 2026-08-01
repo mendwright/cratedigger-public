@@ -1,0 +1,31 @@
+node_modules
+out
+dist
+release
+.DS_Store
+*.log
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.claude/
+.agents/
+service/.venv/
+service/**/__pycache__/
+service/.pytest_cache/
+
+# Local symlink → CLAUDE.md so non-Claude agent tools read the same guidance.
+# Stays untracked: CLAUDE.md is the tracked copy and is excluded from the
+# public mirror, so a committed AGENTS.md would smuggle it back in.
+/AGENTS.md
+
+# Gemini/antigravity agent session state
+.antigravitycli/
+
+# storybloq: commit roadmap/tickets/issues/handovers; ignore volatile session state
+.story/snapshots/
+.story/sessions/
+.story/status.json
+
+# Syncthing in-flight transfer markers (mesh sync of ~/dev)
+.syncthing.*.tmp
