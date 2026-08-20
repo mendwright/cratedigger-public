@@ -41,6 +41,9 @@ npm run build      # production bundle
 npm run dist       # signed macOS DMG (needs your own Apple Developer signing setup)
 ```
 
+Native modules are built for Electron's ABI on install, so run tests with
+`npm test` (vitest under Electron's Node) rather than a bare `npx vitest`.
+
 This repo always builds the public configuration (no library-write / download tooling).
 
 ## License

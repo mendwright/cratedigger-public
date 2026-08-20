@@ -5,11 +5,12 @@
   "main": "out/main/index.js",
   "type": "module",
   "scripts": {
+    "postinstall": "install-electron && electron-rebuild",
     "dev": "PUBLIC_BUILD=1 electron-vite dev",
     "build": "PUBLIC_BUILD=1 electron-vite build",
     "start": "PUBLIC_BUILD=1 electron-vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.node.json && svelte-check --tsconfig tsconfig.web.json",
-    "test": "vitest run",
+    "test": "ELECTRON_RUN_AS_NODE=1 electron ./node_modules/vitest/vitest.mjs run",
     "dist": "PUBLIC_BUILD=1 electron-vite build && electron-builder --mac",
     "classical:seed": "node scripts/fetch-openopus-seed.mjs"
   },
