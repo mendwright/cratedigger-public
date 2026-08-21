@@ -15,8 +15,8 @@ import { getValue } from '../store.js'
 import { resolveServerContext } from '../plex/connection.js'
 import { getAlbumDetail } from '../plex/library.js'
 import { getAlbumCreditsCached } from '../musicbrainz.js'
+import { ALBUM_CREDITS_BUCKET, bucketDir } from '../mb-cache.js'
 
-const CREDITS_BUCKET = 'album-credits-v5'
 const OPEN_OPUS_DUMP_URL = 'https://api.openopus.org/work/dump.json'
 const OPEN_OPUS_REFRESH_MS = 30 * 24 * 60 * 60 * 1000
 let database: ClassicalDatabase | null = null
@@ -67,7 +67,7 @@ function seedCandidates(): string[] {
 }
 
 async function readCachedCredits(): Promise<CachedClassicalRelease[]> {
-  const dir = join(app.getPath('userData'), 'mb-cache', CREDITS_BUCKET)
+  const dir = bucketDir(ALBUM_CREDITS_BUCKET)
   let files: string[] = []
   try { files = await readdir(dir) } catch { return [] }
   const releases: CachedClassicalRelease[] = []

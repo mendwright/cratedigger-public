@@ -3,12 +3,12 @@ import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import type { AlbumCredits } from '../shared/plex.js'
 import { buildClassicalCatalog, type ClassicalCatalogSnapshot } from '../shared/classical-catalog.js'
+import { ALBUM_CREDITS_BUCKET } from './mb-cache.js'
 
 const CACHE_ENVELOPE_VERSION = 1
-const CLASSICAL_CREDITS_BUCKET = 'album-credits-v5'
 
 export async function readClassicalCatalogCache(mbCacheRoot: string): Promise<ClassicalCatalogSnapshot> {
-  const dir = join(mbCacheRoot, CLASSICAL_CREDITS_BUCKET)
+  const dir = join(mbCacheRoot, ALBUM_CREDITS_BUCKET)
   const albums: Array<{ ratingKey: string; credits: AlbumCredits }> = []
   let files: string[] = []
   try { files = await readdir(dir) } catch { return buildClassicalCatalog([]) }

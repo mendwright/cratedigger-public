@@ -15,6 +15,22 @@ import { createHash, randomBytes } from 'node:crypto'
 const CACHE_VERSION = 1
 const SAFE_KEY_RE = /^[A-Za-z0-9._-]{1,200}$/
 
+// The album-credits bucket is written by musicbrainz.ts but enumerated
+// directly by several readers (credit-index.ts, classical-catalog.ts,
+// classical/service.ts). A version bump that misses one of them silently
+// empties that reader's feature, so the name lives here — the one module
+// they all already depend on — rather than in musicbrainz.ts, which
+// credit-index.ts can't import without a cycle.
+export const ALBUM_CREDITS_BUCKET = 'album-credits-v5'
+
+// On-disk directory for a bucket. Exported for readers that enumerate a
+// bucket's files themselves (JsonCache has no listing API), so their paths
+// come from the same code that writes them. app.getPath('userData') requires
+// app.whenReady() — call lazily, not at module load.
+export function bucketDir(name: string): string {
+  return join(app.getPath('userData'), 'mb-cache', name)
+}
+
 interface Envelope<T> {
   v: number
   t: string
@@ -34,10 +50,10 @@ export class JsonCache<T> {
     this.name = name
   }
 
-  // app.getPath('userData') requires app.whenReady(); these caches are created
-  // at module-load time so we resolve the dir lazily on first access.
+  // Caches are created at module-load time, so the dir resolves lazily on
+  // first access (see bucketDir).
   private dir(): string {
-    return join(app.getPath('userData'), 'mb-cache', this.name)
+    return bucketDir(this.name)
   }
 
   private file(key: string): string {

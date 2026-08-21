@@ -1,14 +1,14 @@
-import { app } from 'electron'
 import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import type { AlbumCredits } from '../shared/plex.js'
+import { ALBUM_CREDITS_BUCKET, bucketDir } from './mb-cache.js'
 
 // Inverted view over the on-disk album-credits cache:
 //   `personMbid → appearances` across every album the library-warmer has
-//   already credited-walked. The build walks `userData/mb-cache/album-credits`
-//   directly (bypassing JsonCache so we can enumerate keys), holds the result
-//   in process memory, and rebuilds from scratch on invalidation. Full build
-//   is well under 100ms for thousands of albums.
+//   already credited-walked. The build walks the ALBUM_CREDITS_BUCKET
+//   directory directly (bypassing JsonCache so we can enumerate keys), holds
+//   the result in process memory, and rebuilds from scratch on invalidation.
+//   Full build is well under 100ms for thousands of albums.
 //
 // Used by the Entity page to populate "your library credits" instantly,
 // without the 10–30s MusicBrainz walk that getArtistCreditedWorks needs.
@@ -28,7 +28,7 @@ let cache: Map<string, PersonAppearance[]> | null = null
 let building: Promise<Map<string, PersonAppearance[]>> | null = null
 
 async function build(): Promise<Map<string, PersonAppearance[]>> {
-  const dir = join(app.getPath('userData'), 'mb-cache', 'album-credits')
+  const dir = bucketDir(ALBUM_CREDITS_BUCKET)
   const index = new Map<string, PersonAppearance[]>()
   let files: string[] = []
   try {

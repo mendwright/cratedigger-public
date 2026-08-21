@@ -10,6 +10,7 @@ vi.mock('./store.js', () => ({
   getAlbumMatch: vi.fn(() => null)
 }))
 vi.mock('./mb-cache.js', () => ({
+  ALBUM_CREDITS_BUCKET: 'album-credits-v5',
   JsonCache: class {
     async get(): Promise<undefined> {
       return undefined

@@ -17,7 +17,7 @@ import type {
 } from '../shared/classical-model.js'
 import { getAlbumMatch } from './store.js'
 import { normalizeTitle, stripEditionSuffix } from '../shared/title-match.js'
-import { JsonCache } from './mb-cache.js'
+import { ALBUM_CREDITS_BUCKET, JsonCache } from './mb-cache.js'
 import { invalidateCreditIndex } from './credit-index.js'
 import { originalYears } from './original-years.js'
 import { createPaced } from './paced.js'
@@ -785,7 +785,7 @@ function isEmptyCredits(c: AlbumCredits): boolean {
 // v5 requests the recording→work edge (`work-rels`) as well as nested work
 // relations. v4 requested only `work-level-rels`, which MusicBrainz documents
 // as a switch and therefore cached recordings without works or composers.
-const albumCreditsCache = new JsonCache<AlbumCredits>('album-credits-v5')
+const albumCreditsCache = new JsonCache<AlbumCredits>(ALBUM_CREDITS_BUCKET)
 const MAX_RELEASE_ATTEMPTS = 5
 
 export async function getAlbumCreditsCached(
