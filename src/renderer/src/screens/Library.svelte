@@ -336,14 +336,16 @@
     {/snippet}
     {#snippet actions()}
       {#if sections.length > 1}
-        <select
-          value={activeSection ?? ''}
-          onchange={(e) => plexState.selectSection((e.currentTarget as HTMLSelectElement).value)}
-        >
-          {#each sections as s (s.key)}
-            <option value={s.key}>{s.title}</option>
-          {/each}
-        </select>
+        <span class="select-shell">
+          <select
+            value={activeSection ?? ''}
+            onchange={(e) => plexState.selectSection((e.currentTarget as HTMLSelectElement).value)}
+          >
+            {#each sections as s (s.key)}
+              <option value={s.key}>{s.title}</option>
+            {/each}
+          </select>
+        </span>
       {/if}
       <label class="sort">
         <span class="sort-label">sort</span>
@@ -732,11 +734,18 @@
     padding: 0.05rem 0.3rem;
   }
   select {
+    /* appearance: none because the native arrow hugs the right border —
+       ~4px inset against the text's 10px inset, which reads lopsided. The
+       replacement chevron is the wrapper's ::after (a select can't host
+       pseudo-elements), drawn with borders so it matches the 1.4-stroke
+       SVG chevrons used elsewhere and takes its color from a theme token. */
+    -webkit-appearance: none;
+    appearance: none;
     background: var(--inset);
     color: var(--espresso);
     border: 1px solid var(--hairline);
     border-radius: var(--radius-lg);
-    padding: 0.4rem 0.65rem;
+    padding: 0.4rem 1.8rem 0.4rem 0.65rem;
     font-size: 0.83rem;
     cursor: pointer;
     transition: border-color 120ms ease, background 120ms ease;
@@ -746,6 +755,26 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
+  }
+  .select-shell { display: inline-flex; }
+  /* Both select wrappers draw the same chevron over their select's right
+     padding. pointer-events: none so it never eats the click. */
+  .sort,
+  .select-shell {
+    position: relative;
+  }
+  .sort::after,
+  .select-shell::after {
+    content: '';
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-right: 1.4px solid var(--walnut);
+    border-bottom: 1.4px solid var(--walnut);
+    transform: translateY(-70%) rotate(45deg);
+    pointer-events: none;
   }
   .sort-label {
     font-size: 0.68rem;
