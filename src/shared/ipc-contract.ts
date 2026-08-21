@@ -303,6 +303,15 @@ export interface IpcInvokeContract {
     args: [args: { serverId: string; sectionKey: string }]
     result: PlexAlbum[]
   }
+  // The previous run's persisted plex:list-all-albums result for this exact
+  // server+section, or null when the stored snapshot is for another key (or
+  // there is none). Read-only stale-while-revalidate seed: the renderer
+  // paints from it, then the real fetch above replaces it — and re-persists
+  // it, main-side — in the background.
+  'plex:get-library-snapshot': {
+    args: [args: { serverId: string; sectionKey: string }]
+    result: PlexAlbum[] | null
+  }
   'plex:list-library-artists-with-guids': {
     args: [args: { serverId: string }]
     result: { ratingKey: string; name: string; mbid: string | null }[]

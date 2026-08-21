@@ -51,6 +51,7 @@ const plex = {
   queueRemove: invoke('plex:queue-remove'),
   searchLibrary: invoke('plex:search-library'),
   listAllAlbums: invoke('plex:list-all-albums'),
+  getLibrarySnapshot: invoke('plex:get-library-snapshot'),
   listLibraryArtistsWithGuids: invoke('plex:list-library-artists-with-guids'),
   getArtistCreditedWorks: invoke('mb:get-artist-credited-works'),
   getArtistDiscography: invoke('mb:get-artist-discography'),

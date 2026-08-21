@@ -52,6 +52,7 @@ import {
   overlayOriginalYears
 } from './musicbrainz.js'
 import { originalYears } from './original-years.js'
+import { librarySnapshot, snapshotKey } from './library-snapshot.js'
 import { isValidMbid } from '../shared/guid.js'
 import { startLabelIndex, stopLabelIndex, getLabelIndexProgress } from './label-index.js'
 import {
@@ -403,6 +404,9 @@ export function registerIpc(): void {
       setValue('preferredServerId', null)
     }
     clearServerContextCache()
+    // The persisted library snapshot belongs to the account that just left —
+    // never serve it to whoever signs in next.
+    void librarySnapshot.clear()
     return { ok: true as const }
   })
 
@@ -976,7 +980,20 @@ export function registerIpc(): void {
     const ctx = await resolveServerContext(args.serverId)
     const albums = await listAllAlbums(ctx, args.sectionKey)
     await overlayOriginalYears(albums)
+    // Persist exactly what the renderer is about to receive (years included)
+    // so the next launch can paint the crate before Plex answers. Fire and
+    // forget — the disk write must not delay the response.
+    void librarySnapshot.set(snapshotKey(args.serverId, args.sectionKey), albums)
     return albums
+  })
+
+  // The stale-while-revalidate read behind ensureAllAlbums: the previous
+  // run's full-library snapshot, or null when none was captured for exactly
+  // this server+section. Served as stored — years were overlaid at capture
+  // time, so overlaying again here would be redundant (the fresh fetch that
+  // always follows carries any newly-learned years).
+  register('plex:get-library-snapshot', async (_e, args) => {
+    return await librarySnapshot.get(snapshotKey(args.serverId, args.sectionKey))
   })
 
   // Snapshot of every library artist with their Plex-stored MBID (when
@@ -1267,7 +1284,11 @@ export function registerIpc(): void {
   if (!PUBLIC_BUILD) {
     register('plex:delete-album', async (_e, args) => {
       const ctx = await resolveServerContext(args.serverId)
-      return await deleteAlbum(ctx, args)
+      const entry = await deleteAlbum(ctx, args)
+      // Keep the persisted library snapshot in step, so the deleted album
+      // can't flash back into the grid on the next warm launch.
+      void librarySnapshot.removeAlbum(args.ratingKey)
+      return entry
     })
   }
 

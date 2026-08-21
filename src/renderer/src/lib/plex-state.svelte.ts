@@ -245,6 +245,12 @@ class PlexState {
   allAlbums = $state<PlexAlbum[] | null>(null)
   allAlbumsLoading = $state(false)
   private allAlbumsKey: string | null = null
+  // Which key this session has NETWORK data for. Distinct from allAlbumsKey,
+  // which the disk snapshot also satisfies: the force-refresh paths (shows'
+  // refreshAllAlbums, triage's reloadAllAlbums) null allAlbums specifically to
+  // pick up library changes, so they must reach Plex — the snapshot fast-path
+  // in ensureAllAlbums only runs while this key differs.
+  private allAlbumsFetchedKey: string | null = null
   private allAlbumsPromise: Promise<PlexAlbum[]> | null = null
   libraryScrollY = 0
 
@@ -1454,18 +1460,53 @@ class PlexState {
     const serverId = this.session.preferredServerId
     const sectionKey = this.activeSectionKey
     this.allAlbumsLoading = true
-    this.allAlbumsPromise = (async () => {
+    // The network fetch always runs — it's the revalidation behind a served
+    // snapshot and the whole answer when there isn't one. It stays parked in
+    // allAlbumsPromise for its entire flight so a force refresh (which nulls
+    // allAlbums) dedupes onto the fetch, never onto the disk snapshot. Main
+    // persists each result to disk as a side effect of plex:list-all-albums.
+    const fetchFresh = (async () => {
       try {
         const albums = await window.cratedigger.plex.listAllAlbums({ serverId, sectionKey })
+        // Assigning (not splicing) swaps the whole $state array, so consumers
+        // re-render even when this lands behind an already-served snapshot.
         this.allAlbums = albums
         this.allAlbumsKey = key
+        this.allAlbumsFetchedKey = key
         return albums
       } finally {
         this.allAlbumsLoading = false
         this.allAlbumsPromise = null
       }
     })()
-    return this.allAlbumsPromise
+    this.allAlbumsPromise = fetchFresh
+
+    // Stale-while-revalidate: on the first load of a key this session (app
+    // launch, or switching into a section), paint from the last run's disk
+    // snapshot immediately and let the fetch above swap in the fresh result
+    // when it lands. Data converges within seconds; the launch feels instant.
+    if (this.allAlbumsFetchedKey !== key) {
+      const snapshot = await window.cratedigger.plex
+        .getLibrarySnapshot({ serverId, sectionKey })
+        .catch(() => null)
+      // Serve it only if nothing overtook the disk read: the fetch may have
+      // already landed (allAlbumsKey === key), or the user may have moved to
+      // another server/section while we were away.
+      const currentKey =
+        this.session?.signedIn && this.session.preferredServerId && this.activeSectionKey
+          ? `${this.session.preferredServerId}:${this.activeSectionKey}`
+          : null
+      if (snapshot && snapshot.length > 0 && currentKey === key && this.allAlbumsKey !== key) {
+        this.allAlbums = snapshot
+        this.allAlbumsKey = key
+        // Consumers have a full library to render; the revalidation is silent
+        // — and its failure harmless, since the snapshot stays up.
+        this.allAlbumsLoading = false
+        fetchFresh.catch(() => {})
+        return snapshot
+      }
+    }
+    return fetchFresh
   }
 
   async ensureAllAlbumsLoaded(): Promise<PlexAlbum[]> {
