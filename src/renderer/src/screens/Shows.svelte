@@ -133,6 +133,7 @@
 <div class="page">
   <ScreenHeader
     --screen-header-bleed="1.5rem"
+    --screen-header-gap="1.1rem"
     onback={() => plexState.closeShows()}
     kicker="live"
     title="Shows in SF"
@@ -319,7 +320,10 @@
   .page {
     height: 100%;
     overflow: auto;
-    padding: 1.25rem 1.5rem 4rem;
+    /* No top padding: the sticky ScreenHeader pins to the scroller's content
+       box, so scroller padding-top would hold it below the visible top and
+       leave a strip that rows scroll through. See ScreenHeader's styles. */
+    padding: 0 1.5rem 4rem;
     background: var(--paper);
   }
   .primary {

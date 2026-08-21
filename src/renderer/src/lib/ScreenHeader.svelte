@@ -74,6 +74,16 @@
     top: 0;
     z-index: 5;
     margin-inline: calc(-1 * var(--screen-header-bleed, 2rem));
+    /* Breathing room between the bar and the screen's first element. A var,
+       not a fixed margin: Library spaces its children with flex gap and needs
+       this at 0, while block-flow screens pass their own rhythm.
+
+       Screens must NOT recreate the space above the bar with scroller
+       padding-top: sticky can never be offset outside its parent's content
+       box, so any top padding on the scroller becomes a permanent strip above
+       the pinned bar that content scrolls through in plain view. Top padding
+       belongs below the bar (this gap), never above it. */
+    margin-bottom: var(--screen-header-gap, 0);
     padding: 0.7rem var(--screen-header-bleed, 2rem);
     background: color-mix(in srgb, var(--paper) 88%, transparent);
     backdrop-filter: blur(20px) saturate(1.1);

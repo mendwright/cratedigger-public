@@ -29,6 +29,7 @@
   <ScreenHeader
     --screen-header-bleed="1.75rem"
     --screen-header-max="900px"
+    --screen-header-gap="1.1rem"
     onback={() => plexState.closeCharts()}
     kicker="listening"
     title="Charts"
@@ -110,7 +111,9 @@
   .page {
     max-width: 900px;
     margin: 0 auto;
-    padding: 1.5rem 1.75rem 4rem;
+    /* No top padding — it would pin the sticky ScreenHeader below the
+       visible top and open a see-through strip. See ScreenHeader's styles. */
+    padding: 0 1.75rem 4rem;
   }
   .empty {
     text-align: center;

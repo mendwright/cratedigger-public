@@ -60,6 +60,7 @@
 
 <div class="page">
   <ScreenHeader
+    --screen-header-gap="1.1rem"
     onback={() => plexState.closeClassical()}
     kicker="classical workspace"
     title="Classical"
@@ -193,7 +194,9 @@
 </div>
 
 <style>
-  .page { width:100%; height:100%; max-width:1120px; margin:0 auto; padding:2rem 2rem 7rem; box-sizing:border-box; overflow-y:auto; }
+  /* .page has no top padding — it would pin the sticky ScreenHeader below the
+     visible top and open a see-through strip. See ScreenHeader's styles. */
+  .page { width:100%; height:100%; max-width:1120px; margin:0 auto; padding:0 2rem 7rem; box-sizing:border-box; overflow-y:auto; }
   h2 { margin:.2rem 0; font-family:var(--font-display); font-size:2.2rem; color:var(--espresso); }
   h3 { margin:2rem 0 .65rem; color:var(--espresso); font-size:.88rem; text-transform:uppercase; letter-spacing:.08em; }
   h3 span { color:var(--faded); font-weight:400; }
