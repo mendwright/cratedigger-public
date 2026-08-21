@@ -37,6 +37,7 @@
 <div class="page">
   <ScreenHeader
     --screen-header-bleed="2rem"
+    --screen-header-gap="1.1rem"
     --screen-header-max="1100px"
     onback={() => plexState.closeListenLater()}
     kicker="queue"
@@ -86,7 +87,9 @@
   .page {
     height: 100%;
     overflow-y: auto;
-    padding: 1.5rem 2rem 4rem;
+    /* No top padding — it would pin the sticky ScreenHeader below the
+       visible top and open a see-through strip. See ScreenHeader's styles. */
+    padding: 0 2rem 4rem;
     box-sizing: border-box;
   }
   .page > * {

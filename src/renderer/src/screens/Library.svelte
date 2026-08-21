@@ -672,7 +672,10 @@
     display: flex;
     flex-direction: column;
     gap: 1.1rem;
-    padding: 2.25rem 2rem 1rem;
+    /* No top padding — it would pin the sticky ScreenHeader below the visible
+       top and open a see-through strip (see ScreenHeader's styles). It also
+       kept CrateRail's `top: headerHeight` math honest only by accident. */
+    padding: 0 2rem 1rem;
     box-sizing: border-box;
     overflow-y: auto;
     background: var(--paper);
