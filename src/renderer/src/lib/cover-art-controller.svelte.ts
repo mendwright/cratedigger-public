@@ -13,6 +13,12 @@ export interface CoverArtDeps {
   serverId?: () => string | null
   /** Plex IPC. Defaults to the live bridge; tests pass a stub. */
   plex?: PlexApi
+  /**
+   * Fired after an override is pinned or cleared for an album. The owner
+   * (PlexState) drops that album's cached detail so a back-nav can't flash
+   * the pre-edit cover. Optional — tests and a bare controller skip it.
+   */
+  onOverrideChanged?: (plexRatingKey: string) => void
 }
 
 /** The cover-picker modal's state, or null when the modal is closed. */
@@ -143,6 +149,7 @@ export class CoverArtController {
         override
       })
       this.overrides = { ...this.overrides, [state.plexRatingKey]: override }
+      this.#deps.onOverrideChanged?.(state.plexRatingKey)
       this.picker = null
       if (res) this.#reportPlexWrite(res)
     } catch (err) {
@@ -171,6 +178,7 @@ export class CoverArtController {
         return
       }
       this.overrides = { ...this.overrides, [state.plexRatingKey]: res.override }
+      this.#deps.onOverrideChanged?.(state.plexRatingKey)
       this.picker = null
       this.#reportPlexWrite(res)
     } catch (err) {
@@ -187,6 +195,7 @@ export class CoverArtController {
       const next = { ...this.overrides }
       delete next[plexRatingKey]
       this.overrides = next
+      this.#deps.onOverrideChanged?.(plexRatingKey)
       if (this.picker && this.picker.plexRatingKey === plexRatingKey) {
         this.picker = null
       }

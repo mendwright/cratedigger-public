@@ -54,8 +54,14 @@ function makePlex(over: Record<string, unknown> = {}) {
 function makeController(plex?: ReturnType<typeof makePlex>, serverId: () => string | null = () => 'srv-1') {
   const p = plex ?? makePlex()
   const flashToast = vi.fn()
-  const deps: CoverArtDeps = { flashToast, serverId, plex: p as unknown as PlexApi }
-  return { c: new CoverArtController(deps), plex: p, flashToast }
+  const onOverrideChanged = vi.fn()
+  const deps: CoverArtDeps = {
+    flashToast,
+    serverId,
+    plex: p as unknown as PlexApi,
+    onOverrideChanged
+  }
+  return { c: new CoverArtController(deps), plex: p, flashToast, onOverrideChanged }
 }
 
 describe('CoverArtController — load', () => {
@@ -268,5 +274,61 @@ describe('CoverArtController — clearForAlbum', () => {
     await c.clearForAlbum('rk1')
     expect(flashToast).toHaveBeenCalledWith('err', 'clear failed')
     expect(c.overrides.rk1).toBeDefined()
+  })
+})
+
+describe('CoverArtController — onOverrideChanged notifications', () => {
+  // The owner (PlexState) uses this to drop the album's cached detail so a
+  // back-nav can't flash the pre-edit cover.
+  it('confirm() notifies with the album ratingKey on success', async () => {
+    const { c, onOverrideChanged } = makeController()
+    c.picker = pickerFor('rk1')
+    await c.confirm(candidate('u1'))
+    expect(onOverrideChanged).toHaveBeenCalledWith('rk1')
+  })
+
+  it('confirm() does not notify when the save fails', async () => {
+    const plex = makePlex({
+      setCoverOverride: vi.fn(async () => {
+        throw new Error('save failed')
+      })
+    })
+    const { c, onOverrideChanged } = makeController(plex)
+    c.picker = pickerFor('rk1')
+    await c.confirm(candidate('u1'))
+    expect(onOverrideChanged).not.toHaveBeenCalled()
+  })
+
+  it('uploadLocal() notifies on success but not on cancel', async () => {
+    const ov = override('file://pic')
+    const plex = makePlex({
+      uploadLocalCover: vi
+        .fn()
+        .mockResolvedValueOnce({ canceled: true, override: null })
+        .mockResolvedValueOnce({ canceled: false, override: ov })
+    })
+    const { c, onOverrideChanged } = makeController(plex)
+    c.picker = pickerFor('rk1')
+    await c.uploadLocal() // canceled
+    expect(onOverrideChanged).not.toHaveBeenCalled()
+    await c.uploadLocal() // pinned
+    expect(onOverrideChanged).toHaveBeenCalledWith('rk1')
+  })
+
+  it('clearForAlbum() notifies on success but not on failure', async () => {
+    const failing = makePlex({
+      clearCoverOverride: vi.fn(async () => {
+        throw new Error('clear failed')
+      })
+    })
+    const bad = makeController(failing)
+    bad.c.overrides = { rk1: override('u') }
+    await bad.c.clearForAlbum('rk1')
+    expect(bad.onOverrideChanged).not.toHaveBeenCalled()
+
+    const { c, onOverrideChanged } = makeController()
+    c.overrides = { rk1: override('u') }
+    await c.clearForAlbum('rk1')
+    expect(onOverrideChanged).toHaveBeenCalledWith('rk1')
   })
 })

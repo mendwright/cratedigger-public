@@ -13,7 +13,15 @@ function deferred<T>() {
 }
 
 function album(ratingKey: string, year: number | null): PlexAlbum {
-  return { ratingKey, year } as unknown as PlexAlbum
+  // artist / title / guids so the fixture survives the library indexing in
+  // matchCreditedWorks and missingFromLibrary.
+  return {
+    ratingKey,
+    year,
+    artist: 'Some Artist',
+    title: `Album ${ratingKey}`,
+    guids: []
+  } as unknown as PlexAlbum
 }
 
 /** Plex IPC stub — vi.fn per artist endpoint, with benign defaults. */
@@ -146,5 +154,111 @@ describe('EntityController', () => {
     c.load('A', 'Artist A')
     expect(c.entity).toBeNull()
     expect(plex.browseArtist).not.toHaveBeenCalled()
+  })
+})
+
+describe('EntityController — entity LRU (stale-while-revalidate)', () => {
+  it('back-nav cache hit hydrates every section synchronously, then revalidates', async () => {
+    const plex = makePlex()
+    plex.getInLibraryAppearances.mockResolvedValue([{ plexRatingKey: 'rk1', roles: ['x'] }] as never)
+    const { c } = makeController({ plex, albums: [album('rk1', 2000)] })
+    c.load('A', 'Artist A')
+    await flush()
+    c.load('B', 'Artist B')
+    await flush()
+
+    c.load('A', 'Artist A')
+    // Everything is on screen before any fetch resolves — no spinners.
+    expect(c.entity?.browse).toEqual({ albums: [] })
+    expect(c.bio).toEqual({ summary: 'a bio' })
+    expect(c.credited).not.toBeNull()
+    expect(c.appearances).toHaveLength(1)
+    expect(c.missing).not.toBeNull()
+    expect(c.loading).toBe(false)
+    expect(c.bioLoading).toBe(false)
+    expect(c.creditedLoading).toBe(false)
+    expect(c.missingLoading).toBe(false)
+    // The background refresh still fired: two cold loads + one revalidate.
+    expect(plex.browseArtist).toHaveBeenCalledTimes(3)
+  })
+
+  it('a cache miss keeps the cold path: skeleton + loading flags', async () => {
+    const { c } = makeController()
+    c.load('A', 'Artist A')
+    await flush()
+    c.load('C', 'Artist C') // never visited
+    expect(c.entity).toEqual({ browse: null, info: null, name: 'Artist C' })
+    expect(c.loading).toBe(true)
+    expect(c.bioLoading).toBe(true)
+    expect(c.creditedLoading).toBe(true)
+    expect(c.missingLoading).toBe(true)
+  })
+
+  it('revalidation replaces cached data in place when the answer changed', async () => {
+    const plex = makePlex()
+    const { c } = makeController({ plex })
+    c.load('A', 'Artist A')
+    await flush()
+    c.load('B', 'Artist B')
+    await flush()
+
+    plex.getArtistBio.mockResolvedValue({ summary: 'rewritten' } as never)
+    c.load('A', 'Artist A')
+    expect(c.bio).toEqual({ summary: 'a bio' }) // stale render first
+    await flush()
+    expect(c.bio).toEqual({ summary: 'rewritten' }) // refreshed in place
+  })
+
+  it('mbid guard: a slow revalidate for a previous artist cannot clobber the newer one', async () => {
+    const plex = makePlex()
+    const { c } = makeController({ plex })
+    c.load('A', 'Artist A')
+    await flush()
+    c.load('B', 'Artist B')
+    await flush()
+
+    const slow = deferred<{ albums: unknown[] }>()
+    plex.browseArtist.mockImplementation((({ mbid }: { mbid: string }) =>
+      mbid === 'A' ? slow.promise : Promise.resolve({ albums: [] })) as never)
+    c.load('A', 'Artist A') // hit; revalidate pending
+    c.load('B', 'Artist B') // user bounced back again
+    slow.resolve({ albums: ['stale-A-album'] })
+    await flush()
+
+    expect(c.mbid).toBe('B')
+    expect(c.entity?.name).toBe('Artist B')
+    expect(c.entity?.browse).toEqual({ albums: [] })
+  })
+
+  it('evicts the least-recently-visited artist beyond the LRU cap', async () => {
+    const { c } = makeController()
+    for (let i = 1; i <= 9; i++) {
+      c.load(`M${i}`, `Artist ${i}`)
+      await flush()
+    }
+    c.load('M1', 'Artist 1') // cap is 8 — M1 was evicted, so this is a cold load
+    expect(c.bio).toBeNull()
+    expect(c.bioLoading).toBe(true)
+    expect(c.loading).toBe(true)
+  })
+
+  it('clear() keeps the cache — reopening the artist still hydrates instantly', async () => {
+    const { c } = makeController()
+    c.load('A', 'Artist A')
+    await flush()
+    c.clear()
+    c.load('A', 'Artist A')
+    expect(c.bio).toEqual({ summary: 'a bio' })
+    expect(c.bioLoading).toBe(false)
+  })
+
+  it('invalidateCache() drops every cached bundle', async () => {
+    const { c } = makeController()
+    c.load('A', 'Artist A')
+    await flush()
+    c.invalidateCache()
+    c.load('A', 'Artist A')
+    expect(c.bio).toBeNull()
+    expect(c.bioLoading).toBe(true)
   })
 })

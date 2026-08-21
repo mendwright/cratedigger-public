@@ -24,6 +24,7 @@ import type {
 import { isCuratedPlexSummary, pickMoreCompleteBio } from '../../../shared/bio-text'
 import { mbidFromGuid, splitAlbumMbids } from '../../../shared/guid'
 import { yearFromDate } from '../../../shared/original-year'
+import type { LruCache } from './lru'
 import type { Session } from './plex-state.svelte'
 
 type PlexApi = Window['cratedigger']['plex']
@@ -58,10 +59,10 @@ function formatCreditsError(err: unknown): string {
 }
 
 export interface LoadOptions {
-  // Pre-fetched AlbumDetail (e.g. from the hover-prefetch LRU on plex-state).
-  // When supplied AND its ratingKey matches, skip the getAlbumDetail
-  // round-trip and use the seed directly. Caller is responsible for
-  // confirming the seed matches the ratingKey it intends to load.
+  // Pre-fetched AlbumDetail already in the caller's hands. When supplied AND
+  // its ratingKey matches, render it immediately instead of waiting on the
+  // getAlbumDetail round-trip; a background revalidate still refreshes it
+  // (same stale-while-revalidate shape as a detailCache hit).
   seed?: AlbumDetail
   // Whether to also fetch the album booklet. Default true for the
   // album-detail scope; now-playing scope passes false since it doesn't
@@ -106,6 +107,14 @@ export interface AlbumDetailLoaderDeps {
    * in the stats row. Optional — null when not wired (tests).
    */
   mediaInfoFor?: (ratingKey: string) => AlbumMediaInfo | null
+  /**
+   * Session-scoped AlbumDetail LRU shared with the hover-prefetch path (and,
+   * in production, between the album-detail and now-playing loader instances —
+   * the payload is identical). A hit renders instantly on load() with a
+   * background revalidate; a cold fetch is stored for the next back-nav.
+   * Optional — a bare loader just always fetches.
+   */
+  detailCache?: LruCache<string, AlbumDetail>
 }
 
 export class AlbumDetailLoader {
@@ -210,12 +219,19 @@ export class AlbumDetailLoader {
     const seq = ++this.loadSeq
     this._resetCascadeState()
 
-    // Seed path — caller already has the AlbumDetail (e.g. hover-prefetch
-    // hit). Render the hero immediately and fire credits/bio in parallel.
-    if (opts.seed && opts.seed.album.ratingKey === ratingKey) {
-      this.album = opts.seed
+    // Warm path — the caller handed us a seed, or the shared detail LRU holds
+    // this album from an earlier visit (hover-prefetch or back-nav). Render
+    // the hero immediately and fire credits/bio in parallel, then revalidate
+    // against the server in the background: the cached payload could predate
+    // an edit, so a silent refetch swaps it in place if the answer changed.
+    const cached =
+      (opts.seed?.album.ratingKey === ratingKey ? opts.seed : undefined) ??
+      this.deps.detailCache?.get(ratingKey)
+    if (cached) {
+      this.album = cached
       this.albumLoading = false
-      this._continueCascade(opts.seed, seq, includeBooklet)
+      this._continueCascade(cached, seq, includeBooklet)
+      void this._revalidate(serverId, ratingKey, cached, seq)
       return
     }
 
@@ -225,6 +241,7 @@ export class AlbumDetailLoader {
         serverId,
         ratingKey
       })
+      this.deps.detailCache?.set(ratingKey, detail)
       if (seq !== this.loadSeq) return
       this.album = detail
       this._continueCascade(detail, seq, includeBooklet)
@@ -234,6 +251,31 @@ export class AlbumDetailLoader {
       }
     } finally {
       if (seq === this.loadSeq) this.albumLoading = false
+    }
+  }
+
+  // Background half of stale-while-revalidate. The cache always takes the
+  // fresh copy (it's correct data for that ratingKey no matter what's on
+  // screen); state is only touched when this load is still current (loadSeq)
+  // — a user who navigated away mid-revalidate must not get clobbered — and
+  // only when the payload actually changed, so an identical answer doesn't
+  // re-render the hero and track list for nothing.
+  private async _revalidate(
+    serverId: string,
+    ratingKey: string,
+    cached: AlbumDetail,
+    seq: number
+  ): Promise<void> {
+    try {
+      const fresh = await this.plex.getAlbumDetail({ serverId, ratingKey })
+      this.deps.detailCache?.set(ratingKey, fresh)
+      if (seq !== this.loadSeq) return
+      if (JSON.stringify(fresh) !== JSON.stringify(cached)) {
+        this.album = fresh
+      }
+    } catch {
+      // Best-effort freshness — the cached render stands. The next cold
+      // load has real error handling.
     }
   }
 

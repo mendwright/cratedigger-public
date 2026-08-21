@@ -7,6 +7,7 @@ import type {
 } from '../../../shared/plex'
 import { matchCreditedWorks } from '../../../shared/title-match'
 import { missingFromLibrary, type MissingRelease } from './entity-view'
+import { LruCache } from './lru'
 import type { MbArtistInfo, Session } from './plex-state.svelte'
 
 /** The artist/person header payload, filled in across three parallel fetches. */
@@ -21,6 +22,23 @@ type CreditedResult = {
   notInLibrary: CreditedWork[]
 }
 type AppearanceRow = { album: PlexAlbum; roles: PersonAppearance['roles'] }
+
+// One artist's cached page, filled piece-by-piece as each fetch settles —
+// the pieces land at very different speeds (appearances is a local index hit,
+// the MB credit walk can take seconds), so caching them individually beats
+// waiting for the whole bundle. `undefined` means "never settled for this
+// artist"; the matching load() flag then shows the spinner as usual.
+type EntityCacheEntry = {
+  entity?: EntityData
+  credited?: CreditedResult
+  appearances?: AppearanceRow[]
+  bio?: ArtistBio | null
+  missing?: MissingRelease[] | null
+}
+
+// Walking a credit graph means bouncing between a handful of people —
+// 8 entries comfortably covers a bounce loop without hoarding album arrays.
+const ENTITY_LRU = 8
 
 type PlexApi = Window['cratedigger']['plex']
 
@@ -62,6 +80,11 @@ export class EntityController {
    *  Entity.svelte to reset per-artist view state (bio tab, expansion). */
   mbid = $state<string | null>(null)
 
+  // Session-scoped stale-while-revalidate cache, keyed by MBID. Bouncing
+  // between two artists while walking the credit graph re-renders each page
+  // instantly from here while load() re-fires every fetch to freshen it.
+  #cache = new LruCache<string, EntityCacheEntry>(ENTITY_LRU)
+
   #deps: EntityDeps
   #plex: PlexApi
 
@@ -78,27 +101,37 @@ export class EntityController {
    * Fire the entity page's fetches (bio, browse, info, credited, appearances).
    * Each result is dropped unless `mbid` still matches when it lands — the
    * guard against a stale earlier artist overwriting a newer selection.
+   *
+   * Stale-while-revalidate: a recently viewed artist hydrates every section
+   * from the cache synchronously (no spinners for pieces already settled),
+   * and the fetches below all still run, updating both state and the cache in
+   * place as fresher answers land. A cache miss is exactly the old cold path.
    */
   load(mbid: string, name: string): void {
     const s = this.session
     if (!s?.signedIn || !s.preferredServerId) return
+    const entry = this.#cache.get(mbid) ?? {}
+    this.#cache.set(mbid, entry)
     this.mbid = mbid
-    this.entity = { browse: null, info: null, name }
-    this.loading = true
+    this.entity = entry.entity ?? { browse: null, info: null, name }
+    this.loading = !entry.entity?.browse
     this.error = null
-    this.credited = null
+    this.credited = entry.credited ?? null
     this.creditedError = null
-    this.creditedLoading = true
-    this.appearances = null
-    this.bio = null
-    this.bioLoading = true
-    this.missing = null
-    this.missingLoading = true
+    this.creditedLoading = !entry.credited
+    this.appearances = entry.appearances ?? null
+    this.bio = entry.bio ?? null
+    this.bioLoading = entry.bio === undefined
+    this.missing = entry.missing ?? null
+    this.missingLoading = entry.missing === undefined
     const serverId = s.preferredServerId
 
     void this.#plex
       .getArtistBio({ mbid, name })
       .then((bio) => {
+        // Fresh data for this MBID is cache-worthy even if the user has
+        // already moved on — only the *state* write needs the guard.
+        entry.bio = bio
         if (this.mbid !== mbid) return
         this.bio = bio
       })
@@ -114,6 +147,7 @@ export class EntityController {
       .then((browse) => {
         if (this.mbid !== mbid || !this.entity) return
         this.entity = { ...this.entity, browse }
+        entry.entity = this.entity
       })
       .catch((err) => {
         if (this.mbid !== mbid) return
@@ -128,14 +162,15 @@ export class EntityController {
       .then((info) => {
         if (this.mbid !== mbid || !this.entity) return
         this.entity = { ...this.entity, info }
+        entry.entity = this.entity
       })
       .catch(() => {
         // non-essential; header just stays minimal
       })
 
-    void this.#loadCredited(mbid)
-    void this.#loadAppearances(mbid)
-    void this.#loadMissing(mbid, name, browsePromise)
+    void this.#loadCredited(mbid, entry)
+    void this.#loadAppearances(mbid, entry)
+    void this.#loadMissing(mbid, name, browsePromise, entry)
   }
 
   // The artist's own discography diffed against the library — "albums not on
@@ -145,7 +180,8 @@ export class EntityController {
   async #loadMissing(
     mbid: string,
     name: string,
-    browsePromise: Promise<ArtistBrowse>
+    browsePromise: Promise<ArtistBrowse>,
+    entry: EntityCacheEntry
   ): Promise<void> {
     try {
       const [groups, albums, browse] = await Promise.all([
@@ -157,6 +193,7 @@ export class EntityController {
       const names = [name]
       if (browse?.plexArtist?.title) names.push(browse.plexArtist.title)
       this.missing = missingFromLibrary(groups, names, albums)
+      entry.missing = this.missing
     } catch {
       // non-essential enrichment — the section just doesn't render
     } finally {
@@ -167,7 +204,7 @@ export class EntityController {
   // Hits the inverted album-credits index. No MB roundtrip; the entity page
   // shows in-library credits the moment the index has built (~once per
   // session). Independent of #loadCredited's slower MB walk.
-  async #loadAppearances(mbid: string): Promise<void> {
+  async #loadAppearances(mbid: string, entry: EntityCacheEntry): Promise<void> {
     try {
       const [appearances, albums] = await Promise.all([
         this.#plex.getInLibraryAppearances({ mbid }),
@@ -183,6 +220,7 @@ export class EntityController {
         rows.push({ album, roles: ap.roles })
       }
       rows.sort((a, b) => (a.album.year ?? 9999) - (b.album.year ?? 9999))
+      entry.appearances = rows
       if (this.mbid === mbid) this.appearances = rows
     } catch (err) {
       // non-fatal — the user still gets the MB-walked credited section
@@ -192,13 +230,14 @@ export class EntityController {
 
   // Note: unlike the other fetches this has no mbid guard — matches the
   // original loadEntityCredited (a known quirk, preserved by this refactor).
-  async #loadCredited(mbid: string): Promise<void> {
+  async #loadCredited(mbid: string, entry: EntityCacheEntry): Promise<void> {
     try {
       const [works, albums] = await Promise.all([
         this.#plex.getArtistCreditedWorks({ mbid }),
         this.#deps.ensureAllAlbums()
       ])
       this.credited = matchCreditedWorks(works, albums)
+      entry.credited = this.credited
       this.creditedError = null
     } catch (err) {
       this.creditedError = err instanceof Error ? err.message : String(err)
@@ -207,8 +246,19 @@ export class EntityController {
     }
   }
 
+  /**
+   * Drop every cached artist bundle. Called when the library itself mutates
+   * (album deletion, server/section switch) — the in-library sections of a
+   * cached page would otherwise flash rows that no longer exist.
+   */
+  invalidateCache(): void {
+    this.#cache.clear()
+  }
+
   // Note: deliberately leaves `appearances` untouched (matches the original
-  // clearEntityState) — load() resets it before the next page renders.
+  // clearEntityState) — load() resets it before the next page renders. The
+  // cache also survives clear(): closing the page shouldn't cost the instant
+  // re-open.
   clear(): void {
     this.entity = null
     this.mbid = null

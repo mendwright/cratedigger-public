@@ -26,6 +26,7 @@ import { redSearchUrl } from '../../../shared/urls'
 import { applyTheme, loadStoredThemeId, storeThemeId } from './themes'
 import { flushCoverTransition } from './cover-transition'
 import { AlbumDetailLoader, type AlbumDetailLoaderDeps } from './album-detail-loader.svelte'
+import { LruCache } from './lru'
 import { LyricsController } from './lyrics-controller.svelte'
 import { CoverArtController } from './cover-art-controller.svelte'
 import { OriginalYearController } from './original-year-controller.svelte'
@@ -153,6 +154,16 @@ class PlexState {
   coverSize = $state<number>(loadCoverSize())
   sortKey = $state<AlbumSortKey>(loadSort())
   private sortSeed: string | null = loadSort() === 'random' ? makeSortSeed() : null
+  // Session-scoped AlbumDetail LRU shared by hover-prefetch (which warms it),
+  // both loader instances (which hit it on load and revalidate in the
+  // background), and back-nav (the whole point: returning to a recently
+  // viewed album renders instantly). Declared before loaderDeps so the value
+  // exists when the loaders construct below. Invalidation: cover-override
+  // changes and album deletion drop the entry; applyOriginalYear patches it
+  // in place; resetLibrary / section switches clear it wholesale.
+  private static readonly DETAIL_LRU = 24
+  private detailCache = new LruCache<string, AlbumDetail>(PlexState.DETAIL_LRU)
+
   // Album object + credits + bio + booklet + the two discovery rails (label /
   // similar-artists) live on these two loader instances (see
   // src/renderer/src/lib/album-detail-loader.svelte.ts). openAlbumLoader drives
@@ -167,7 +178,8 @@ class PlexState {
     session: () => this.session,
     onOriginalYear: (ratingKey, originalYear) => this.applyOriginalYear(ratingKey, originalYear),
     originalYearOverride: (ratingKey) => this.originalYear.get(ratingKey) ?? null,
-    mediaInfoFor: (ratingKey) => this.mediaInfo.infoFor(ratingKey)
+    mediaInfoFor: (ratingKey) => this.mediaInfo.infoFor(ratingKey),
+    detailCache: this.detailCache
   })
   openAlbumLoader = new AlbumDetailLoader(this.loaderDeps())
   nowPlayingAlbumLoader = new AlbumDetailLoader(this.loaderDeps())
@@ -351,7 +363,10 @@ class PlexState {
   // modal. Extracted into CoverArtController; components read plexState.coverArt.*.
   coverArt = new CoverArtController({
     flashToast: (kind, text) => this.flashToast(kind, text),
-    serverId: () => (this.session?.signedIn ? this.session.preferredServerId : null)
+    serverId: () => (this.session?.signedIn ? this.session.preferredServerId : null),
+    // A pinned/cleared cover changes what the detail view shows — drop the
+    // cached detail so a back-nav can't flash the pre-edit cover.
+    onOverrideChanged: (plexRatingKey) => this.detailCache.delete(plexRatingKey)
   })
 
   // Manual original-release-year overrides (read by the album page and by
@@ -767,6 +782,10 @@ class PlexState {
     this.openAlbumLoader.clear()
     this.playback.resetPlayers()
     this.nav.reset()
+    // ratingKeys aren't unique across servers, and cached entity pages carry
+    // in-library matches from the old one — both caches are dead weight now.
+    this.detailCache.clear()
+    this.entityPage.invalidateCache()
   }
 
   async enterLibrary(serverId: string): Promise<void> {
@@ -1027,11 +1046,15 @@ class PlexState {
     const sectionChanged = this.activeSectionKey !== sectionKey
     if (sectionChanged) {
       // New library section: previous albums are no longer relevant, blank
-      // the grid while we fetch the new section's first page.
+      // the grid while we fetch the new section's first page. The nav caches
+      // go too — cached entity pages carry in-library matches from the old
+      // section.
       this.allAlbums = null
       this.allAlbumsKey = null
       this.albums = []
       this.albumsTotal = 0
+      this.detailCache.clear()
+      this.entityPage.invalidateCache()
     }
     // Sort / filter change in the same section: KEEP the existing albums
     // visible while the new page fetches. The user sees a brief stale-order
@@ -1167,34 +1190,23 @@ class PlexState {
     }
   }
 
-  // Renderer-side LRU of pre-warmed AlbumDetail payloads. AlbumCard hover
-  // (120ms dwell) populates this; openAlbumDetail hits it first to skip the
-  // loading flash when the click is predicted. Cap is small — typical
-  // hover-then-click sessions visit < 12 distinct cards.
-  private prefetchedDetails = new Map<string, AlbumDetail>()
+  // Hover-prefetch into the shared detail LRU (declared next to loaderDeps
+  // above). AlbumCard hover (120ms dwell) warms it; the loaders hit it on
+  // load() so the predicted click opens without a loading flash, and back-nav
+  // gets the same instant render.
   private prefetchingDetails = new Set<string>()
-  private static readonly PREFETCH_LRU = 12
 
   prefetchAlbumDetail(ratingKey: string): void {
     if (!this.session?.signedIn || !this.session.preferredServerId) return
-    const existing = this.prefetchedDetails.get(ratingKey)
-    if (existing) {
-      // bump to MRU
-      this.prefetchedDetails.delete(ratingKey)
-      this.prefetchedDetails.set(ratingKey, existing)
-      return
-    }
+    // get() bumps a cached entry to MRU, so a re-hover keeps it warm.
+    if (this.detailCache.get(ratingKey)) return
     if (this.prefetchingDetails.has(ratingKey)) return
     this.prefetchingDetails.add(ratingKey)
     const serverId = this.session.preferredServerId
     void window.cratedigger.plex
       .getAlbumDetail({ serverId, ratingKey })
       .then((detail) => {
-        this.prefetchedDetails.set(ratingKey, detail)
-        while (this.prefetchedDetails.size > PlexState.PREFETCH_LRU) {
-          const oldest = this.prefetchedDetails.keys().next().value
-          if (oldest) this.prefetchedDetails.delete(oldest)
-        }
+        this.detailCache.set(ratingKey, detail)
       })
       .catch(() => {
         // prefetch is best-effort; a failure here is harmless — the real
@@ -1214,10 +1226,9 @@ class PlexState {
     this.entityPage.entity = null
 
     // Hand the cascade (album fetch / credits / bio / booklet) to the
-    // loader. Seed it with any hover-prefetched payload so the screen
-    // opens without a loading flash on the hot path.
-    const prefetched = this.prefetchedDetails.get(ratingKey)
-    if (prefetched) this.prefetchedDetails.delete(ratingKey)
+    // loader. It consults the shared detail LRU itself — a hover-prefetched
+    // or previously visited album renders without a loading flash, then
+    // revalidates in the background.
 
     if (!opts.fromNav) this.nav.push({ kind: 'album', ratingKey })
     if (ratingKey === this.lastClosedAlbumKey) {
@@ -1225,13 +1236,12 @@ class PlexState {
     }
 
     // Fire the loader cascade + its two rails in parallel. Once the detail is
-    // in hand (seed or network), kick the silent background lyrics prefetch.
-    // Gating this on `prefetched` regressed it to "only prefetch on the
-    // hover-prefetch hot path" — a direct click that never warmed the LRU got
-    // no lyrics until each track row was opened.
+    // in hand (cache hit or network), kick the silent background lyrics
+    // prefetch. Gating this on a cache hit regressed it to "only prefetch on
+    // the hover-prefetch hot path" — a direct click that never warmed the LRU
+    // got no lyrics until each track row was opened.
     void this.openAlbumLoader
       .load(this.session.preferredServerId, ratingKey, {
-        seed: prefetched ?? undefined,
         includeBooklet: true
       })
       .then(() => {
@@ -1489,6 +1499,10 @@ class PlexState {
     }
     patch(this.allAlbums?.find((a) => a.ratingKey === ratingKey))
     patch(this.albums.find((a) => a.ratingKey === ratingKey))
+    // Patch (don't drop) the cached detail — credits resolve on every album
+    // open, so dropping here would evict every reissue from the back-nav
+    // cache the moment it loads. peek() so a year fix doesn't count as a visit.
+    patch(this.detailCache.peek(ratingKey)?.album)
   }
 
   openLabelFilter(): void {
@@ -2033,6 +2047,11 @@ class PlexState {
       if (this.allAlbums) this.allAlbums = this.allAlbums.filter((a) => a.ratingKey !== ratingKey)
       this.albums = this.albums.filter((a) => a.ratingKey !== ratingKey)
       if (this.albumsTotal > 0) this.albumsTotal -= 1
+      // The album no longer exists — a back-nav must not render it from
+      // cache, and cached entity pages could still list it in their
+      // in-library sections.
+      this.detailCache.delete(ratingKey)
+      this.entityPage.invalidateCache()
       this.flashToast('ok', `Deleted "${entry.title}"`)
       return entry
     } catch (err) {

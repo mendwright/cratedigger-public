@@ -8,6 +8,7 @@ import type {
   SimilarArtist
 } from '../../../shared/plex'
 import { AlbumDetailLoader, type AlbumDetailLoaderDeps } from './album-detail-loader.svelte'
+import { LruCache } from './lru'
 
 type PlexApi = Window['cratedigger']['plex']
 type TaggerApi = Window['cratedigger']['tagger']
@@ -352,6 +353,122 @@ describe('AlbumDetailLoader — original year callback', () => {
     const { loader, onOriginalYear } = makeCreditsLoader(null)
     await loader.load('srv-1', 'born', { seed: seed('born', 2005), includeBooklet: false })
     await vi.waitFor(() => expect(onOriginalYear).toHaveBeenCalledWith('born', null))
+  })
+})
+
+describe('AlbumDetailLoader — detail LRU (stale-while-revalidate)', () => {
+  // Curated summary skips the bio fetch; includeBooklet:false skips the
+  // booklet; getAlbumCredits stubbed — getAlbumDetail is the only fetch that
+  // matters here.
+  function payload(ratingKey: string, title: string): AlbumDetail {
+    return {
+      album: {
+        ratingKey,
+        artist: 'Artist',
+        title,
+        artistRatingKey: null,
+        year: 2000,
+        studio: null,
+        genres: []
+      },
+      summary: 'present so bio is skipped',
+      genres: [],
+      guids: [],
+      tracks: []
+    } as unknown as AlbumDetail
+  }
+
+  function makeSwrLoader(cache = new LruCache<string, AlbumDetail>(24)) {
+    const getAlbumDetail = vi.fn(async ({ ratingKey }: { ratingKey: string }) =>
+      payload(ratingKey, `fresh ${ratingKey}`)
+    )
+    const plex = {
+      ...makePlex(),
+      getAlbumDetail,
+      getAlbumCredits: vi.fn(async () => null)
+    }
+    const deps: AlbumDetailLoaderDeps = {
+      ensureAllAlbums: async () => [],
+      albumLabels: () => ({}),
+      session: () => ({ signedIn: true, user: {} as never, preferredServerId: 'srv-1' }),
+      plex: plex as unknown as PlexApi,
+      tagger: makeTagger() as unknown as TaggerApi,
+      detailCache: cache
+    }
+    return { loader: new AlbumDetailLoader(deps), getAlbumDetail, cache }
+  }
+
+  it('a cold load stores the fetched detail in the shared LRU', async () => {
+    const { loader, getAlbumDetail, cache } = makeSwrLoader()
+    await loader.load('srv-1', 'rk1', { includeBooklet: false })
+    expect(getAlbumDetail).toHaveBeenCalledTimes(1)
+    expect(loader.album?.album.title).toBe('fresh rk1')
+    expect(cache.peek('rk1')?.album.title).toBe('fresh rk1')
+  })
+
+  it('back-nav cache hit renders synchronously, then revalidates in the background', async () => {
+    const { loader, getAlbumDetail } = makeSwrLoader()
+    await loader.load('srv-1', 'rk1', { includeBooklet: false })
+    await loader.load('srv-1', 'rk2', { includeBooklet: false })
+
+    const p = loader.load('srv-1', 'rk1', { includeBooklet: false })
+    // Rendered from cache before any fetch could possibly resolve.
+    expect(loader.album?.album.ratingKey).toBe('rk1')
+    expect(loader.albumLoading).toBe(false)
+    await p
+    // Two cold loads + one background revalidate.
+    await vi.waitFor(() => expect(getAlbumDetail).toHaveBeenCalledTimes(3))
+  })
+
+  it('a revalidate that finds changed data updates state and the cache in place', async () => {
+    const cache = new LruCache<string, AlbumDetail>(24)
+    cache.set('rk1', payload('rk1', 'stale title'))
+    const { loader } = makeSwrLoader(cache)
+
+    void loader.load('srv-1', 'rk1', { includeBooklet: false })
+    expect(loader.album?.album.title).toBe('stale title') // instant render
+    await vi.waitFor(() => expect(loader.album?.album.title).toBe('fresh rk1'))
+    expect(cache.peek('rk1')?.album.title).toBe('fresh rk1')
+  })
+
+  it('an identical revalidate answer leaves the rendered album untouched', async () => {
+    const cache = new LruCache<string, AlbumDetail>(24)
+    cache.set('rk1', payload('rk1', 'fresh rk1')) // already what the server will say
+    const { loader, getAlbumDetail } = makeSwrLoader(cache)
+
+    void loader.load('srv-1', 'rk1', { includeBooklet: false })
+    const rendered = loader.album
+    await vi.waitFor(() => expect(getAlbumDetail).toHaveBeenCalledTimes(1))
+    expect(loader.album).toBe(rendered) // no pointless reassignment
+  })
+
+  it('generation guard: a stale revalidate cannot clobber the album the user switched to', async () => {
+    const cache = new LruCache<string, AlbumDetail>(24)
+    cache.set('rk1', payload('rk1', 'stale title'))
+    const { loader, getAlbumDetail } = makeSwrLoader(cache)
+    const slow = deferred<AlbumDetail>()
+    getAlbumDetail.mockImplementation(async ({ ratingKey }: { ratingKey: string }) =>
+      ratingKey === 'rk1' ? slow.promise : payload(ratingKey, `fresh ${ratingKey}`)
+    )
+
+    void loader.load('srv-1', 'rk1', { includeBooklet: false }) // hit; revalidate pending
+    await loader.load('srv-1', 'rk2', { includeBooklet: false }) // user moved on
+    slow.resolve(payload('rk1', 'fresh rk1'))
+    await vi.waitFor(() => expect(cache.peek('rk1')?.album.title).toBe('fresh rk1'))
+
+    // The fresh answer still landed in the cache, but not in the view.
+    expect(loader.album?.album.ratingKey).toBe('rk2')
+  })
+
+  it('evicts the least-recently-visited album once the LRU is over capacity', async () => {
+    const cache = new LruCache<string, AlbumDetail>(2)
+    const { loader, cache: c } = makeSwrLoader(cache)
+    await loader.load('srv-1', 'rk1', { includeBooklet: false })
+    await loader.load('srv-1', 'rk2', { includeBooklet: false })
+    await loader.load('srv-1', 'rk3', { includeBooklet: false })
+    expect(c.peek('rk1')).toBeUndefined()
+    expect(c.peek('rk2')).toBeDefined()
+    expect(c.peek('rk3')).toBeDefined()
   })
 })
 
