@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" rx="230" ry="230" fill="#f3ead4"/>
+  <!-- crate: open-top U -->
+  <g fill="none" stroke="#8c3522" stroke-width="80" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M 200 270 L 200 824 L 824 824 L 824 270" />
+  </g>
+  <!-- record spines: three vertical strokes, slightly varied heights -->
+  <g stroke="#8c3522" stroke-width="64" stroke-linecap="round">
+    <line x1="330" y1="380" x2="330" y2="744"/>
+    <line x1="512" y1="330" x2="512" y2="744"/>
+    <line x1="694" y1="400" x2="694" y2="744"/>
+  </g>
+</svg>
