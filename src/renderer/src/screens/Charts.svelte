@@ -109,6 +109,12 @@
 
 <style>
   .page {
+    /* The screen shell (main.screen) is overflow: hidden and expects every
+       screen to scroll itself — see Classical for the same shape. Without
+       this, a chart taller than the window is just clipped. */
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
     max-width: 900px;
     margin: 0 auto;
     /* No top padding — it would pin the sticky ScreenHeader below the
