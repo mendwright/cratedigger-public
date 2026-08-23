@@ -94,6 +94,7 @@ describe('store defaults', () => {
       spotifyImports: [],
       spotifyImportDir: '',
       mbTrackCounts: {},
+      lastGoodConnections: {},
       lastfmApiKey: '',
       ticketmasterApiKey: '',
       geniusClientId: '',

@@ -170,6 +170,10 @@ export interface StoreSchema {
   // on every Playlists-screen open so the import list survives reloads.
   spotifyImportDir: string
   mbTrackCounts: Record<string, number>
+  // serverId → the base URL that most recently answered a connection probe.
+  // Tried first on the next resolve, so a stable setup reconnects with one
+  // fast probe instead of re-racing the server's full advertised list.
+  lastGoodConnections: Record<string, string>
   lastfmApiKey: string
   ticketmasterApiKey: string
   // Genius API client credentials. We use the client_credentials grant to mint
@@ -339,6 +343,7 @@ const DEFAULTS: StoreSchema = {
   spotifyImports: [],
   spotifyImportDir: '',
   mbTrackCounts: {},
+  lastGoodConnections: {},
   lastfmApiKey: '',
   ticketmasterApiKey: '',
   geniusClientId: '',

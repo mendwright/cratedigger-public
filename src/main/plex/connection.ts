@@ -6,7 +6,7 @@ import type {
 } from '../../shared/plex.js'
 import { plexHeaders } from './headers.js'
 import { listResources } from './resources.js'
-import { getAuthToken } from '../store.js'
+import { getAuthToken, getValue, setValue } from '../store.js'
 
 const contextCache = new Map<string, ServerContext>()
 const playerCache = new Map<string, PlayerContext>()
@@ -38,26 +38,66 @@ export async function resolveServerContext(serverId: string): Promise<ServerCont
   if (!server) throw new Error(`Server ${serverId} not found on this account`)
   if (!server.accessToken) throw new Error(`No access token for ${server.name}`)
 
-  const baseUrl = await pickConnection(server)
-  if (!baseUrl) throw new Error(`No reachable connection for ${server.name}`)
-
-  const ctx: ServerContext = {
+  const accessToken = server.accessToken
+  const makeCtx = (baseUrl: string): ServerContext => ({
     id: server.clientIdentifier,
     name: server.name,
     baseUrl,
-    token: server.accessToken
+    token: accessToken
+  })
+  const adopt = (baseUrl: string): ServerContext => {
+    const ctx = makeCtx(baseUrl)
+    contextCache.set(serverId, ctx)
+    if (getValue('lastGoodConnections')[serverId] !== baseUrl) {
+      setValue('lastGoodConnections', {
+        ...getValue('lastGoodConnections'),
+        [serverId]: baseUrl
+      })
+    }
+    return ctx
   }
-  contextCache.set(serverId, ctx)
-  return ctx
+
+  // Fast path: the address that answered last time, when the server still
+  // advertises it (a stored URL the server no longer lists could have been
+  // reassigned to something else entirely). One ~100ms probe on a stable
+  // setup, instead of re-racing the whole list. The full race still runs in
+  // the background so a better route (e.g. LAN once we're back on it) takes
+  // over for later requests and for the next launch.
+  const lastGood = getValue('lastGoodConnections')[serverId] ?? null
+  const advertised = lastGood
+    ? server.connections.some((c) => c.uri.replace(/\/$/, '') === lastGood)
+    : false
+  if (lastGood && advertised && (await probe(lastGood))) {
+    const ctx = adopt(lastGood)
+    void pickConnection(server)
+      .then((best) => {
+        if (best && best !== lastGood) adopt(best)
+      })
+      .catch(() => undefined)
+    return ctx
+  }
+
+  const baseUrl = await pickConnection(server)
+  if (!baseUrl) throw new Error(`No reachable connection for ${server.name}`)
+  return adopt(baseUrl)
 }
 
 async function pickConnection(server: PlexResource): Promise<string | null> {
   const ranked = [...server.connections].sort(scoreConnection)
+  // Probe every candidate at once and take the best-ranked responder.
+  // Servers routinely advertise addresses that are unreachable from this
+  // machine — Docker bridge networks, another site's LAN, a VPN that's off —
+  // and probing them one at a time serialized those timeouts into a ~20s
+  // stall before the app's first byte of library data. Awaiting in rank
+  // order over already-running probes keeps the ranking preference while
+  // bounding the wait to a single probe timeout.
+  //
   // Two passes: first startup probes can all fail before DNS/Wi-Fi settle, so
   // if nothing answers, wait briefly and try once more before giving up.
   for (let attempt = 0; attempt < 2; attempt++) {
-    for (const conn of ranked) {
-      if (await probe(conn.uri)) return conn.uri.replace(/\/$/, '')
+    const probes = ranked.map((conn) => probe(conn.uri))
+    for (let i = 0; i < probes.length; i++) {
+      if (await probes[i]) return ranked[i].uri.replace(/\/$/, '')
     }
     if (attempt === 0) await new Promise((r) => setTimeout(r, 750))
   }
