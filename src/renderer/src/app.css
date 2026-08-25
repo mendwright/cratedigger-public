@@ -1,0 +1,1871 @@
+/*
+ * Cratedigger — Sleeve color scheme (the default; see DEFAULT_THEME_ID).
+ *
+ * Tokens live here as CSS custom properties on :root so every component
+ * picks them up via inheritance. Components should consume tokens, not
+ * hard-coded hex, so future scheme tweaks are one-file edits.
+ */
+:root {
+  color-scheme: dark;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Track numbers, durations, years — a music app is full of columns of
+     digits; tabular figures keep them aligned everywhere at once. */
+  font-variant-numeric: tabular-nums;
+
+  /* — Typography: display face for headlines & serif accents, body for
+       everything else, mono for codes/durations. Themes swap all three. */
+  --font-display: 'Iowan Old Style', 'Iowan Old Style BT', 'Apple Garamond', 'Hoefler Text',
+    Charter, Georgia, ui-serif, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+  --font-mono: 'SF Mono', ui-monospace, Menlo, monospace;
+
+  /* — Shape: one radius scale, themed (brutalist squares it to 0, the zine
+       themes chub it up). Components never hard-code px radii. */
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-pill: 0;
+
+  /* — Texture: full-viewport overlay (paper grain for liner-notes; themes
+       swap in grain / vignettes / glows). Painted by body::before below. */
+  --texture: none;
+
+  /* — Paper layers (near-black, so album art is the only lit thing) */
+  --paper: #0c0b0a;
+  --surface: #100e0d;
+  --surface-deep: #080706;
+  --inset: #141210;
+
+  /* — Ink: inverted for the dark default — `espresso` is now the light one */
+  --espresso: #efe9df;
+  --walnut: #cfc7bb;
+  --faded: #8a8278;
+  --whisper: #6f6860;
+
+  /* — Hairlines: warm gray borders, the kind you'd see on liner-note tables */
+  --hairline: #1c1917;
+  --hairline-strong: #2a2724;
+
+  /* — Brick: deep clay, the single splash of color. Vermilion was too signage; */
+  /*   brick reads kiln-fired. */
+  --brick: #b5474d;
+  --brick-deep: #8f3339;
+  --brick-wash: #2a1518;
+
+  /* — Ink tints (former rgba(255,255,255,X) translucent overlays, restated as */
+  /*   espresso on cream so they read the same visual weight) */
+  --ink-tint-04: rgba(239, 233, 223, 0.04);
+  --ink-tint-06: rgba(239, 233, 223, 0.06);
+  --ink-tint-08: rgba(239, 233, 223, 0.08);
+  --ink-tint-12: rgba(239, 233, 223, 0.12);
+  --ink-tint-16: rgba(239, 233, 223, 0.16);
+
+  /* — Semantic: include/exclude on FocusBar chips, error toasts */
+  --ok-fg: #9bbf8e;
+  --ok-bg: rgba(155, 191, 142, 0.1);
+  --ok-border: rgba(155, 191, 142, 0.32);
+  --warn-fg: #d9a45c;
+  --warn-bg: rgba(217, 164, 92, 0.1);
+  --warn-border: rgba(217, 164, 92, 0.32);
+  --err-fg: #d9686e;
+
+  /* — Shadow ink. A bare "R, G, B" triplet, not a color, so the call sites
+       that need their own alpha can write rgba(var(--shadow-color), 0.28).
+       Every shadow and scrim in the app used to bake liner-notes' espresso,
+       which stayed warm brown under every theme. */
+  --shadow-color: 0, 0, 0;
+
+  /* — Shadows: raised cards and panels */
+  --shadow-sm: 0 10px 24px -12px rgba(0, 0, 0, 0.9);
+  --shadow-md: 0 24px 50px -24px rgba(0, 0, 0, 0.92);
+  --shadow-lg: 0 40px 80px -30px rgba(0, 0, 0, 0.95);
+
+  /* — Motion grammar: three durations × three easings.
+   *   Everything in the app should consume these instead of ad-hoc ms/curves
+   *   so the whole surface moves with one shared sensibility.
+   *
+   *   Durations:
+   *     instant — color/hover state changes, feels reactive not animated.
+   *     base    — most transitions: panels appearing, cards growing, etc.
+   *     slow    — large-scale screen morphs, cover-art crossfades.
+   *
+   *   Easings:
+   *     out     — UI entrance (decelerate into rest). Default for "appearing".
+   *     in-out  — reversible state changes (open/close, expand/collapse).
+   *     spring  — physical, used sparingly for the crate-flip / sleeve-peek
+   *               motions where the surface should feel like it has mass.
+   */
+  --dur-instant: 120ms;
+  --dur-base: 220ms;
+  --dur-slow: 380ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  color: var(--espresso);
+  background: var(--paper);
+}
+
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Theme texture overlay — grain, vignette, or neon glow, depending on the
+   active theme. Sits above everything (film grain reads as part of the
+   medium, not the content) but never intercepts input. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--texture);
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+/* Honor the OS-level motion preference: collapse the motion grammar to
+   near-zero so transitions still fire their events but don't animate. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 1ms;
+    --dur-base: 1ms;
+    --dur-slow: 1ms;
+  }
+}
+
+/* Scrollbars in the theme's ink, not the OS default chrome. */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--ink-tint-12);
+  border-radius: var(--radius-pill);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ink-tint-16);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Keyboard-focus default for anything a component doesn't style itself. */
+:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: 2px;
+}
+
+body.has-now-playing #app {
+  padding-bottom: 78px;
+  box-sizing: border-box;
+}
+
+/* View Transitions API — drive every named pair off the shared motion
+   grammar. Browsers without the API ignore these rules silently. The
+   default crossfade for unnamed elements stays out of the way. */
+::view-transition-old(album-cover-active),
+::view-transition-new(album-cover-active) {
+  animation-duration: var(--dur-base);
+  animation-timing-function: var(--ease-out);
+}
+
+/* Native form controls come from the OS — keep them in tone */
+::selection {
+  background: var(--brick-wash);
+  color: var(--espresso);
+}
+
+/* Per-theme structural CSS. `applyTheme` writes [data-theme] on <html>; only
+   these rules read it. Presentation only — nothing here touches hit targets,
+   pointer-events, or the visibility of anything interactive.
+
+   Brutalist Night: only what is sounding has color. The grid's covers go
+   near-monochrome and the playing one snaps back to full saturation. Scoped
+   through [data-grid='albums'] > li > [data-card='album'] so it can only ever match the album grid.
+   :root raises specificity above Svelte's scoped class selectors. */
+:root[data-theme='brutalist-night'] [data-grid='albums'] [data-card='album'] .cover img,
+:root[data-theme='brutalist-night'] [data-grid='albums'] [data-card='album'] .cover-fallback {
+  filter: saturate(0.12);
+}
+:root[data-theme='brutalist-night'] [data-grid='albums'] [data-card='album']:hover .cover img,
+:root[data-theme='brutalist-night'] [data-grid='albums'] [data-card='album']:hover .cover-fallback,
+:root[data-theme='brutalist-night'] [data-grid='albums'] [data-card='album'] .cover.playing img,
+:root[data-theme='brutalist-night'] [data-grid='albums'] [data-card='album'] .cover.playing .cover-fallback {
+  filter: none;
+}
+
+/* Zine: the theme's whole point is what happens *after* the tokens. Toner
+   black, one pink pass, art posterised and halftoned, everything a hard-edged
+   box slightly off true. Token colors only got you a white app.
+
+   All of it is presentation — no hit target, pointer-events, or visibility of
+   anything interactive changes. */
+
+/* Screen titles go poster-sized. --font-display is Futura here. */
+:root[data-theme='zine'] .screen-header .title {
+  font-size: 3.6rem;
+  line-height: 0.92;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+:root[data-theme='zine'] .screen-header .kicker {
+  color: var(--brick);
+  font-weight: 800;
+}
+:root[data-theme='zine'] .screen-header {
+  border-bottom: 3px solid var(--espresso);
+}
+
+/* Toolbar is a solid black band with a pink current place. */
+:root[data-theme='zine'] [data-chrome='toolbar'] {
+  background: var(--espresso);
+  border-bottom: 0;
+}
+:root[data-theme='zine'] [data-chrome='toolbar'] .home,
+:root[data-theme='zine'] [data-chrome='toolbar'] .place,
+:root[data-theme='zine'] [data-chrome='toolbar'] .secondary,
+:root[data-theme='zine'] [data-chrome='toolbar'] .theme-chip,
+:root[data-theme='zine'] [data-chrome='toolbar'] .trigger {
+  color: var(--paper);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+:root[data-theme='zine'] [data-chrome='toolbar'] .home { text-transform: none; }
+/* .secondary and the picker keep a near-white --inset fill by default, which
+   is invisible against white text on the black band. */
+:root[data-theme='zine'] [data-chrome='toolbar'] .secondary,
+:root[data-theme='zine'] [data-chrome='toolbar'] .trigger {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+/* The player name is a proper noun, not a label — tracking it out wraps it. */
+:root[data-theme='zine'] [data-chrome='toolbar'] .trigger {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 600;
+}
+:root[data-theme='zine'] [data-chrome='toolbar'] .place:hover,
+:root[data-theme='zine'] [data-chrome='toolbar'] .secondary:hover,
+:root[data-theme='zine'] [data-chrome='toolbar'] .theme-chip:hover {
+  color: var(--brick);
+  background: transparent;
+}
+:root[data-theme='zine'] [data-chrome='toolbar'] .place.selected {
+  background: var(--brick);
+  color: var(--paper);
+}
+:root[data-theme='zine'] [data-chrome='toolbar'] .version {
+  color: var(--paper);
+  background: rgba(255, 255, 255, 0.16);
+}
+:root[data-theme='zine'] [data-chrome='toolbar'] .version.dev {
+  color: var(--paper);
+  background: var(--brick);
+}
+:root[data-theme='zine'] [data-chrome='toolbar'] .trigger {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Every chip is a hard-ruled box. */
+:root[data-theme='zine'] .dig,
+:root[data-theme='zine'] .dig-chip {
+  border: 2px solid var(--espresso);
+}
+:root[data-theme='zine'] .dig-label,
+:root[data-theme='zine'] .dig-chip {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Art gets posterised — grayscale, crushed to near two tones, then a white
+   halftone screened over it so the dark areas break into dots and the light
+   areas stay paper. ::after doubles as the frame; .cover already isolates,
+   so the blend stays inside the cover. */
+:root[data-theme='zine'] [data-card='album'] .cover img,
+:root[data-theme='zine'] [data-card='album'] .cover-fallback {
+  filter: grayscale(1) contrast(2.15) brightness(1.06);
+  box-shadow: none;
+  /* Outline, not border — it frames without entering layout. It can't live on
+     the ::after below: that layer is a `screen` blend, and screen makes black
+     fully transparent, so a black frame there would paint nothing. */
+  outline: 2px solid var(--espresso);
+  outline-offset: -1px;
+}
+:root[data-theme='zine'] [data-card='album'] .cover.playing img,
+:root[data-theme='zine'] [data-card='album'] .cover.playing .cover-fallback {
+  outline: 3px solid var(--brick);
+}
+:root[data-theme='zine'] [data-card='album'] .cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: radial-gradient(#fff 32%, transparent 33%);
+  background-size: 4px 4px;
+  mix-blend-mode: screen;
+}
+
+/* Caption is a black block under the art: white title, pink artist. */
+:root[data-theme='zine'] [data-card='album'] { gap: 0; }
+:root[data-theme='zine'] [data-card='album'] > .title,
+:root[data-theme='zine'] [data-card='album'] > .artist,
+:root[data-theme='zine'] [data-card='album'] > .meta {
+  background: var(--espresso);
+  padding-inline: 0.5rem;
+}
+:root[data-theme='zine'] [data-card='album'] > .title {
+  padding-top: 0.5rem;
+  color: var(--paper);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+:root[data-theme='zine'] [data-card='album'] > .artist {
+  color: var(--brick);
+  font-weight: 700;
+}
+:root[data-theme='zine'] [data-card='album'] > .meta {
+  padding-bottom: 0.5rem;
+  color: color-mix(in srgb, var(--paper) 58%, transparent);
+}
+:root[data-theme='zine'] [data-card='album']:not(:has(> .meta)) > .artist { padding-bottom: 0.5rem; }
+
+/* Photocopied off true. The hover lift animates `transform` on .cover img,
+   not on [data-card='album'], so rotating the card here doesn't fight it. */
+:root[data-theme='zine'] [data-grid='albums'] > li:nth-child(3n) [data-card='album'] { transform: rotate(-0.7deg); }
+:root[data-theme='zine'] [data-grid='albums'] > li:nth-child(3n + 1) [data-card='album'] { transform: rotate(0.5deg); }
+:root[data-theme='zine'] [data-grid='albums'] > li:nth-child(5n) [data-card='album'] { transform: rotate(1deg); }
+
+/* ── Sleeve ────────────────────────────────────────────────────────────────
+   The art is the interface. Chrome loses its fills, borders and shadows and
+   becomes text with wide tracking; the only shadow left in the app is the one
+   under album art. Screen titles go to 60px. */
+:root[data-theme='sleeve'] .screen-header .title {
+  font-size: 3.4rem;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+:root[data-theme='sleeve'] .screen-header .kicker,
+:root[data-theme='sleeve'] .screen-header .sub {
+  letter-spacing: 0.16em;
+}
+:root[data-theme='sleeve'] .screen-header .kicker { color: var(--faded); }
+:root[data-theme='sleeve'] [data-chrome='toolbar'] .place {
+  letter-spacing: 0.13em;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+}
+:root[data-theme='sleeve'] [data-chrome='toolbar'] .place.selected {
+  background: transparent;
+  color: var(--espresso);
+  border-bottom-color: var(--brick);
+}
+/* Dig strip stops being a card and becomes a line of text links. */
+:root[data-theme='sleeve'] .dig {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  gap: 1.9rem;
+  padding: 0.2rem 0 1rem;
+}
+:root[data-theme='sleeve'] .dig-chip {
+  background: transparent;
+  border: 0;
+  /* Transparent rule reserved on every chip so marking the open one doesn't
+     shift the strip. */
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  padding: 0 0 3px;
+  letter-spacing: 0.08em;
+}
+/* The open shelf's chip is `color: var(--surface)` on an `--espresso` fill.
+   Themes that strip the fill have to restate the colour or the label goes
+   near-black on near-black and reads as missing until you hover it. */
+:root[data-theme='sleeve'] .dig-chip-open,
+:root[data-theme='sleeve'] .dig-chip-open:hover {
+  background: transparent;
+  /* --brick on Sleeve's paper is only 3.97:1 — under the 4.5 floor for text
+     this functional. Mark it the way the toolbar marks the current place:
+     full-contrast label, brick underline. */
+  color: var(--espresso);
+  border-bottom-color: var(--brick);
+  font-weight: 600;
+}
+:root[data-theme='sleeve'] [data-grid='albums'] {
+  gap: calc(var(--cover-size, 180px) * 0.3) calc(var(--cover-size, 180px) * 0.22);
+}
+:root[data-theme='sleeve'] [data-card='album'] { gap: 1rem; }
+:root[data-theme='sleeve'] [data-card='album'] .cover img,
+:root[data-theme='sleeve'] [data-card='album'] .cover-fallback {
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9);
+}
+/* Re-state the now-playing ring: the rule above outranks AlbumCard's
+   .cover.playing img and would otherwise drop the marker entirely. */
+:root[data-theme='sleeve'] [data-card='album'] .cover.playing img,
+:root[data-theme='sleeve'] [data-card='album'] .cover.playing .cover-fallback {
+  box-shadow: 0 0 0 2px var(--brick), 0 40px 80px -30px rgba(0, 0, 0, 0.9);
+}
+:root[data-theme='sleeve'] [data-card='album'] .cover::before { display: none; }
+
+/* ── Card Catalogue ───────────────────────────────────────────────────────
+   Rows, not a grid. Typewriter data in ruled cards, art demoted to a small
+   mounted plate. --cover-size drives nothing here; the control stays in the
+   DOM and its stored value is untouched, so switching back restores it. */
+:root[data-theme='card-catalogue'] [data-grid='albums'] { display: block; gap: 0; }
+:root[data-theme='card-catalogue'] [data-card='album'] {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) 190px 130px;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.55rem 1.35rem;
+  border-bottom: 1px solid var(--hairline);
+}
+:root[data-theme='card-catalogue'] [data-card='album']:hover { background: var(--ink-tint-04); }
+:root[data-theme='card-catalogue'] [data-card='album'] .cover {
+  width: 46px;
+  height: 46px;
+  aspect-ratio: auto;
+}
+:root[data-theme='card-catalogue'] [data-card='album'] .cover::before { display: none; }
+:root[data-theme='card-catalogue'] [data-card='album'] .cover img,
+:root[data-theme='card-catalogue'] [data-card='album'] .cover-fallback {
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--surface);
+  outline: 1px solid var(--hairline);
+  box-shadow: none;
+  box-sizing: border-box;
+}
+/* The cover lift is a grid-scale gesture; at 46px it just jitters the row. */
+:root[data-theme='card-catalogue'] [data-card='album'] .cover.playing img,
+:root[data-theme='card-catalogue'] [data-card='album'] .cover.playing .cover-fallback {
+  outline: 2px solid var(--brick);
+}
+:root[data-theme='card-catalogue'] [data-card='album']:hover .cover img,
+:root[data-theme='card-catalogue'] [data-card='album']:hover .cover-fallback {
+  transform: none;
+}
+/* Both badges stay — they carry information (source format, how recently it
+   was played) that nothing else in the row shows. They're sized to the plate
+   instead of to --cover-size, which a row layout never sets, and squared off
+   so they read as stickers on a mounted plate rather than floating pills. */
+:root[data-theme='card-catalogue'] [data-card='album'] .format-badge,
+:root[data-theme='card-catalogue'] [data-card='album'] .played-badge {
+  top: 2px;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  border-radius: 0;
+  backdrop-filter: none;
+  gap: 2px;
+}
+/* Stacked down the right edge rather than across the top: side by side they
+   are ~42px of badge on a 46px plate and run into each other. Bottom-left is
+   left free for the now-playing meter, which lives there. */
+:root[data-theme='card-catalogue'] [data-card='album'] .format-badge {
+  right: 2px;
+  padding: 2px 3px;
+}
+:root[data-theme='card-catalogue'] [data-card='album'] .played-badge {
+  top: auto;
+  bottom: 2px;
+  left: auto;
+  right: 2px;
+  padding: 2px 3px;
+}
+/* The lift is off, so the badges must not travel with it either. */
+:root[data-theme='card-catalogue'] [data-card='album']:hover .cover .format-badge,
+:root[data-theme='card-catalogue'] [data-card='album']:hover .cover .played-badge {
+  transform: none;
+}
+:root[data-theme='card-catalogue'] [data-card='album'] > .title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+:root[data-theme='card-catalogue'] [data-card='album'] > .artist {
+  font-size: 0.78rem;
+  color: var(--walnut);
+}
+:root[data-theme='card-catalogue'] [data-card='album'] > .meta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-align: right;
+}
+:root[data-theme='card-catalogue'] .screen-header { border-bottom: 2px solid var(--brick); }
+:root[data-theme='card-catalogue'] .screen-header .title { font-size: 1.65rem; font-weight: 400; }
+:root[data-theme='card-catalogue'] .screen-header .sub,
+:root[data-theme='card-catalogue'] [data-chrome='toolbar'] .place,
+:root[data-theme='card-catalogue'] .dig-chip,
+:root[data-theme='card-catalogue'] .dig-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+:root[data-theme='card-catalogue'] [data-chrome='toolbar'] .place {
+  border-radius: 0;
+  border-bottom: 1px solid transparent;
+}
+:root[data-theme='card-catalogue'] [data-chrome='toolbar'] .place.selected {
+  background: transparent;
+  color: var(--brick);
+  border-bottom-color: var(--brick);
+}
+/* Dig becomes a ruled drawer-front: square cells, one hairline between. */
+:root[data-theme='card-catalogue'] .dig {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  gap: 0;
+  padding: 0;
+}
+:root[data-theme='card-catalogue'] .dig-chip {
+  border: 0;
+  border-right: 1px solid var(--hairline);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.45rem 0.8rem;
+}
+/* The open shelf's chip is `color: var(--surface)` on an `--espresso` fill.
+   Themes that strip the fill have to restate the colour or the label goes
+   near-black on near-black and reads as missing until you hover it. */
+:root[data-theme='card-catalogue'] .dig-chip-open,
+:root[data-theme='card-catalogue'] .dig-chip-open:hover {
+  background: transparent;
+  color: var(--brick);
+}
+:root[data-theme='card-catalogue'] .dig-label { padding-right: 0.9rem; }
+
+/* ── Brutalist Night ──────────────────────────────────────────────────────
+   The grid made visible: every cell ruled, 3px rules between sections, no
+   radius, no shadow. Colour only on the record that's sounding (the
+   desaturation rule lives further up with the other cover filters). */
+:root[data-theme='brutalist-night'] [data-grid='albums'] {
+  gap: 0;
+  border-top: 1px solid var(--hairline);
+  border-left: 1px solid var(--hairline);
+}
+:root[data-theme='brutalist-night'] [data-grid='albums'] > li {
+  border-right: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  padding: 12px;
+}
+:root[data-theme='brutalist-night'] [data-card='album'] .cover::before { display: none; }
+:root[data-theme='brutalist-night'] [data-card='album'] > .title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+:root[data-theme='brutalist-night'] [data-card='album'] > .artist,
+:root[data-theme='brutalist-night'] [data-card='album'] > .meta {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+}
+:root[data-theme='brutalist-night'] .screen-header {
+  border-bottom: 3px solid var(--hairline-strong);
+}
+:root[data-theme='brutalist-night'] .screen-header .title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+:root[data-theme='brutalist-night'] .screen-header .sub {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+:root[data-theme='brutalist-night'] .dig {
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid var(--hairline-strong);
+  border-radius: 0;
+  gap: 0;
+  padding: 0;
+}
+:root[data-theme='brutalist-night'] .dig-chip {
+  flex: 1;
+  justify-content: center;
+  border: 0;
+  border-right: 1px solid var(--hairline);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  padding: 0.55rem 0.25rem;
+}
+/* The open shelf's chip is `color: var(--surface)` on an `--espresso` fill.
+   Themes that strip the fill have to restate the colour or the label goes
+   near-black on near-black and reads as missing until you hover it. */
+:root[data-theme='brutalist-night'] .dig-chip-open,
+:root[data-theme='brutalist-night'] .dig-chip-open:hover {
+  background: var(--brick);
+  color: var(--paper);
+}
+:root[data-theme='brutalist-night'] .dig-label {
+  font-family: var(--font-mono);
+  padding-right: 0.9rem;
+}
+:root[data-theme='brutalist-night'] [data-chrome='toolbar'] .place {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+:root[data-theme='brutalist-night'] [data-chrome='toolbar'] .place.selected {
+  background: var(--brick);
+  color: var(--paper);
+}
+
+/* ── Listening Bar ────────────────────────────────────────────────────────
+   Three records at a time and no hurry. The grid ignores --cover-size in
+   favour of three big columns with a lot of air; the stored value is left
+   alone, so the size control comes back the moment you switch away. */
+:root[data-theme='listening-bar'] [data-grid='albums'] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3.25rem 2.75rem;
+}
+:root[data-theme='listening-bar'] [data-card='album'] { gap: 1.1rem; }
+:root[data-theme='listening-bar'] [data-card='album'] .cover::before { display: none; }
+:root[data-theme='listening-bar'] [data-card='album'] .cover img,
+:root[data-theme='listening-bar'] [data-card='album'] .cover-fallback {
+  box-shadow: 0 40px 80px -34px rgba(var(--shadow-color), 0.95);
+}
+:root[data-theme='listening-bar'] [data-card='album'] .cover.playing img,
+:root[data-theme='listening-bar'] [data-card='album'] .cover.playing .cover-fallback {
+  box-shadow: 0 0 0 2px var(--brick), 0 40px 80px -34px rgba(var(--shadow-color), 0.95);
+}
+:root[data-theme='listening-bar'] [data-card='album'] > .title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+:root[data-theme='listening-bar'] [data-card='album'] > .meta { letter-spacing: 0.14em; }
+:root[data-theme='listening-bar'] .screen-header .title {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
+}
+:root[data-theme='listening-bar'] .screen-header .kicker,
+:root[data-theme='listening-bar'] .screen-header .sub {
+  letter-spacing: 0.18em;
+}
+:root[data-theme='listening-bar'] .screen-header .kicker { color: var(--faded); }
+:root[data-theme='listening-bar'] .dig {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  gap: 1.75rem;
+  padding: 0.4rem 0 1.2rem;
+}
+:root[data-theme='listening-bar'] .dig-chip {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  letter-spacing: 0.1em;
+}
+/* The open shelf's chip is `color: var(--surface)` on an `--espresso` fill.
+   Themes that strip the fill have to restate the colour or the label goes
+   near-black on near-black and reads as missing until you hover it. */
+:root[data-theme='listening-bar'] .dig-chip-open,
+:root[data-theme='listening-bar'] .dig-chip-open:hover {
+  background: transparent;
+  color: var(--brick);
+  font-weight: 600;
+}
+:root[data-theme='listening-bar'] [data-chrome='toolbar'] .place {
+  letter-spacing: 0.16em;
+  border-radius: 0;
+}
+:root[data-theme='listening-bar'] [data-chrome='toolbar'] .place.selected {
+  background: transparent;
+  color: var(--brick);
+}
+
+
+/* ── Warehouse ────────────────────────────────────────────────────────────
+   Back room of the record shop. Everything is stock: dense grid, stencil
+   caps, hi-vis tape on the edges, hard print offsets instead of soft drops.
+   The accent is a hi-vis yellow, so anything filled with it takes dark text
+   (`--paper`) — the opposite of every other theme. */
+:root[data-theme='warehouse'] [data-grid='albums'] {
+  /* Five across minimum however small the cover slider is set: stock is
+     stacked tight, and the slider still widens the cells past that. */
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--cover-size, 180px), 18%), 1fr));
+  gap: 1.35rem 0.85rem;
+}
+:root[data-theme='warehouse'] [data-card='album'] { gap: 0.45rem; }
+:root[data-theme='warehouse'] [data-card='album'] .cover::before { display: none; }
+:root[data-theme='warehouse'] [data-card='album'] .cover img,
+:root[data-theme='warehouse'] [data-card='album'] .cover-fallback {
+  border: 1px solid var(--surface-deep);
+  box-shadow: var(--shadow-sm);
+}
+:root[data-theme='warehouse'] [data-card='album']:hover .cover img,
+:root[data-theme='warehouse'] [data-card='album']:hover .cover-fallback {
+  box-shadow: var(--shadow-md);
+}
+:root[data-theme='warehouse'] [data-card='album'] .cover.playing img,
+:root[data-theme='warehouse'] [data-card='album'] .cover.playing .cover-fallback {
+  border-color: var(--brick);
+  box-shadow: var(--shadow-md);
+}
+:root[data-theme='warehouse'] [data-card='album'] > .title {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+:root[data-theme='warehouse'] [data-card='album'] > .artist,
+:root[data-theme='warehouse'] [data-card='album'] > .meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+/* The format badge becomes the price sticker slapped on the sleeve. */
+:root[data-theme='warehouse'] [data-card='album'] .format-badge {
+  background: var(--brick);
+  color: var(--paper);
+  border: 0;
+  font-weight: 800;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0;
+}
+:root[data-theme='warehouse'] [data-card='album'] .played-badge {
+  border-radius: 0;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+:root[data-theme='warehouse'] .screen-header {
+  border-bottom: 1px solid var(--hairline);
+}
+:root[data-theme='warehouse'] .screen-header .title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+:root[data-theme='warehouse'] .screen-header .kicker,
+:root[data-theme='warehouse'] .screen-header .sub {
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+/* Toolbar as edge-to-edge stock cells under a strip of hi-vis tape. */
+:root[data-theme='warehouse'] [data-chrome='toolbar'] {
+  border-bottom: 2px solid var(--brick);
+  gap: 0;
+}
+:root[data-theme='warehouse'] [data-chrome='toolbar'] .home {
+  background: var(--brick);
+  color: var(--paper);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 0.55rem 1rem;
+}
+:root[data-theme='warehouse'] [data-chrome='toolbar'] .place,
+:root[data-theme='warehouse'] [data-chrome='toolbar'] .secondary,
+:root[data-theme='warehouse'] [data-chrome='toolbar'] .theme-chip {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  border-radius: 0;
+}
+:root[data-theme='warehouse'] [data-chrome='toolbar'] .place.selected {
+  background: var(--ink-tint-08);
+  color: var(--brick);
+}
+:root[data-theme='warehouse'] [data-chrome='toolbar'] .trigger {
+  border-radius: 0;
+  color: var(--brick);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+/* The library's sort control is `.sort` / `.sort-label`, not a toolbar button,
+   so the stencil caps have to reach it separately. */
+:root[data-theme='warehouse'] .sort-label {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+:root[data-theme='warehouse'] .dig {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  gap: 0.4rem;
+  padding: 0.6rem 0 0.9rem;
+}
+:root[data-theme='warehouse'] .dig-label,
+:root[data-theme='warehouse'] .dig-chip {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.66rem;
+}
+:root[data-theme='warehouse'] .dig-chip {
+  border: 1px solid var(--hairline-strong);
+  border-radius: 0;
+  padding: 0.25rem 0.55rem;
+}
+:root[data-theme='warehouse'] .dig-chip-open,
+:root[data-theme='warehouse'] .dig-chip-open:hover {
+  background: var(--brick);
+  color: var(--paper);
+  border-color: var(--brick);
+}
+
+/* ══ Album view ═══════════════════════════════════════════════════════════
+   AlbumViewShell carries data-view="album", and both album detail and Now
+   Playing render it, so everything below themes both screens at once. Without
+   this the themes stopped at the library door, which is what made them read
+   as half-finished. Presentation only, as above.
+
+   The hooks are attributes, not classes, for the reason data-grid/data-card
+   exist on the library: `.title`, `.tracks`, `.sub` and friends are shared by
+   a dozen other components, and an earlier pass at this block guessed class
+   names (`.album-title`, `.track`, `.credit-chip`) that never existed in the
+   markup — so half of it silently did nothing. The live hooks are:
+
+     [data-album-art]      the sticky cover column (AlbumViewShell)
+     [data-album-title]    the h1                 (AlbumMeta)
+     [data-album-sub]      artist · year · genre  (AlbumMeta)
+     [data-album-actions]  the Play Album row     (AlbumMeta)
+     [data-album-facts]    the facts <dl>         (AlbumFacts)
+     [data-album-tabs]     the tab strip          (AlbumDetail)
+     [data-tracks="album"] each track <ol>, [data-track] each row
+     [data-personnel]      the credits block      (AlbumCredits)
+
+   Track rows route through [data-tracks='album'] even when only the row is
+   being styled: AlbumTrackList's own `.tracks li.active` rule is a four-class
+   scoped selector, and a single attribute wouldn't outrank it. */
+
+/* — Sleeve: the cover's shadow is the only depth on the page. Nothing is
+     filled, nothing is bordered; the accent carries every state by itself. */
+:root[data-theme='sleeve'] [data-view='album'] .art img,
+:root[data-theme='sleeve'] [data-view='album'] .cover-fallback {
+  box-shadow: 0 40px 80px -30px rgba(var(--shadow-color), 0.95);
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-album-title] {
+  font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-album-sub],
+:root[data-theme='sleeve'] [data-view='album'] [data-album-sub] .artist-link {
+  color: var(--brick);
+  font-size: 1rem;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-album-tabs] { gap: 1.7rem; }
+:root[data-theme='sleeve'] [data-view='album'] [data-album-tabs] .tab {
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-album-tabs] .tab-active {
+  box-shadow: inset 0 -2px 0 var(--brick);
+}
+/* A fixed narrow key column, and one hairline between the facts and the
+   actions above them. */
+:root[data-theme='sleeve'] [data-view='album'] [data-album-facts] .fact dt {
+  flex-basis: 68px;
+  letter-spacing: 0.12em;
+}
+/* The primary action loses its fill and is carried by the accent alone. */
+:root[data-theme='sleeve'] [data-view='album'] [data-album-actions] .play-album {
+  background: transparent;
+  color: var(--brick);
+  border: 1px solid var(--brick);
+  box-shadow: none;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+/* The playing track is marked by colour alone — no fill, no bar, no icon. */
+:root[data-theme='sleeve'] [data-view='album'] [data-tracks='album'] [data-track].active {
+  background: transparent;
+  box-shadow: none;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-tracks='album'] [data-track].active .t-title {
+  color: var(--brick);
+  font-weight: 400;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-personnel] .credit-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem 2rem;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-personnel] .credit-groups li {
+  flex-direction: column;
+  gap: 0.3rem;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-personnel] .role {
+  min-width: 0;
+  padding-top: 0;
+  order: 2;
+  letter-spacing: 0.14em;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-personnel] .people { order: 1; }
+:root[data-theme='sleeve'] [data-view='album'] [data-personnel] .person {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+/* — Card Catalogue: the cover is a mounted plate, the data is typed, and the
+     personnel are the cross-reference on the back of the card. */
+:root[data-theme='card-catalogue'] [data-view='album'] .art img,
+:root[data-theme='card-catalogue'] [data-view='album'] .cover-fallback {
+  border: 10px solid var(--surface);
+  outline: 1px solid var(--hairline-strong);
+  box-shadow: var(--shadow-md);
+  box-sizing: border-box;
+}
+:root[data-theme='card-catalogue'] [data-view='album'] [data-album-title] {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+:root[data-theme='card-catalogue'] [data-view='album'] [data-album-facts] .fact dt,
+:root[data-theme='card-catalogue'] [data-view='album'] [data-album-facts] .fact dd,
+:root[data-theme='card-catalogue'] [data-view='album'] [data-album-sub],
+:root[data-theme='card-catalogue'] [data-view='album'] [data-tracks='album'] .idx,
+:root[data-theme='card-catalogue'] [data-view='album'] [data-tracks='album'] .dur,
+:root[data-theme='card-catalogue'] [data-view='album'] [data-album-tabs] .tab {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+:root[data-theme='card-catalogue'] [data-view='album'] [data-album-facts] {
+  border-top-width: 2px;
+  border-top-color: var(--brick);
+}
+:root[data-theme='card-catalogue'] [data-view='album'] [data-album-facts] .fact dt {
+  color: var(--faded);
+}
+/* Dotted rules rather than solid — the ruled line on a typed catalogue card. */
+:root[data-theme='card-catalogue'] [data-view='album'] [data-tracks='album'] [data-track] {
+  border-bottom: 1px dotted var(--hairline-strong);
+}
+:root[data-theme='card-catalogue'] [data-view='album'] [data-tracks='album'] [data-track].active {
+  background: var(--brick-wash);
+  box-shadow: inset 3px 0 0 var(--brick);
+}
+/* SEE ALSO — is typographic furniture, the way it is on the back of a real
+   card. (The call number the design called for is derived data, not
+   presentation, so it isn't invented here.) */
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .credit-groups::before {
+  content: 'SEE ALSO —';
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--brick);
+  grid-column: 1 / -1;
+  padding-bottom: 0.4rem;
+}
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .credit-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.75rem;
+}
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .credit-groups li {
+  flex-direction: column;
+  gap: 0.15rem;
+}
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .role {
+  min-width: 0;
+  padding-top: 0;
+  order: 2;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .people { order: 1; }
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .person {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+/* — Zine: the cover gets the same posterise + halftone as the grid. ::after
+     is sized to the square cover rather than to .art, which also holds the
+     action row and the facts block. */
+:root[data-theme='zine'] [data-view='album'] .art { position: relative; }
+:root[data-theme='zine'] [data-view='album'] .art img,
+:root[data-theme='zine'] [data-view='album'] .cover-fallback {
+  filter: grayscale(1) contrast(2.15) brightness(1.06);
+  box-shadow: none;
+  outline: 3px solid var(--espresso);
+  outline-offset: -1px;
+}
+:root[data-theme='zine'] [data-view='album'] .art::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: var(--album-cover-max);
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+  background-image: radial-gradient(#fff 32%, transparent 33%);
+  background-size: 5px 5px;
+  mix-blend-mode: screen;
+}
+:root[data-theme='zine'] [data-view='album'] [data-album-title] {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+/* The artist is a stamped block, not a line of body copy. */
+:root[data-theme='zine'] [data-view='album'] [data-album-sub],
+:root[data-theme='zine'] [data-view='album'] [data-album-sub] * {
+  color: var(--paper);
+}
+:root[data-theme='zine'] [data-view='album'] [data-album-sub] {
+  display: inline-block;
+  background: var(--brick);
+  color: var(--paper);
+  padding: 0.15rem 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+}
+:root[data-theme='zine'] [data-view='album'] [data-album-tabs] {
+  border-bottom-width: 3px;
+  gap: 0;
+}
+:root[data-theme='zine'] [data-view='album'] [data-album-tabs] .tab {
+  border: 2px solid var(--espresso);
+  border-bottom: 0;
+  margin: 0 -2px -3px 0;
+  padding: 0.35rem 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+:root[data-theme='zine'] [data-view='album'] [data-album-tabs] .tab-active {
+  background: var(--brick);
+  color: var(--paper);
+  border-color: var(--espresso);
+}
+:root[data-theme='zine'] [data-view='album'] [data-album-actions] .play-album {
+  border-radius: 0;
+  color: var(--paper);
+  background: var(--brick);
+  box-shadow: var(--shadow-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+/* Thick rules between tracks, and the playing row is a solid fill — not a
+   tint, not a colour change. */
+:root[data-theme='zine'] [data-view='album'] [data-tracks='album'] [data-track] {
+  border-bottom: 3px solid var(--espresso);
+}
+:root[data-theme='zine'] [data-view='album'] [data-tracks='album'] [data-track].active {
+  background: var(--brick);
+  box-shadow: none;
+}
+:root[data-theme='zine'] [data-view='album'] [data-tracks='album'] [data-track].active,
+:root[data-theme='zine'] [data-view='album'] [data-tracks='album'] [data-track].active * {
+  color: var(--paper);
+}
+:root[data-theme='zine'] [data-view='album'] [data-tracks='album'] [data-track].active .t-lyrics {
+  border-color: var(--paper);
+}
+:root[data-theme='zine'] [data-view='album'] [data-personnel] .person {
+  background: var(--espresso);
+  color: var(--paper);
+  border: 0;
+  border-radius: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+}
+:root[data-theme='zine'] [data-view='album'] [data-personnel] .role {
+  font-weight: 700;
+  color: var(--espresso);
+}
+
+/* — Brutalist Night: the album page on the same visible grid as the library.
+     Every division is a rule; nothing anywhere gets a shadow. */
+:root[data-theme='brutalist-night'] [data-view='album'] .art img,
+:root[data-theme='brutalist-night'] [data-view='album'] .cover-fallback {
+  box-shadow: none;
+  outline: 3px solid var(--hairline-strong);
+  outline-offset: 0;
+}
+/* --hairline-strong is white in this theme, and the rule dividing the cover
+   column from the body is meant to read that way. */
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-art] {
+  border-right: 1px solid var(--hairline-strong);
+  padding-right: 1.75rem;
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-title] {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-tabs] {
+  border-bottom: 3px solid var(--hairline-strong);
+  gap: 0;
+}
+/* Equal-width cells across the full column, divided by hairlines. */
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-tabs] .tab {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid var(--hairline);
+  padding: 0.5rem 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-tabs] .tab-active {
+  background: var(--espresso);
+  color: var(--paper);
+  border-bottom-color: transparent;
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-facts] .fact dt,
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-facts] .fact dd,
+:root[data-theme='brutalist-night'] [data-view='album'] [data-tracks='album'] .idx,
+:root[data-theme='brutalist-night'] [data-view='album'] [data-tracks='album'] .t-artist,
+:root[data-theme='brutalist-night'] [data-view='album'] [data-tracks='album'] .dur {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-facts] .fact dt {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-facts] {
+  border-top: 3px solid var(--hairline-strong);
+  gap: 0;
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-facts] .fact {
+  border-bottom: 1px solid var(--hairline);
+  padding: 0.4rem 0;
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-album-actions] .play-album {
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--brick);
+  color: var(--paper);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+/* Full-bleed table rows: no side padding, a hairline between each. */
+:root[data-theme='brutalist-night'] [data-view='album'] [data-tracks='album'] [data-track] {
+  border-bottom: 1px solid var(--hairline);
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-tracks='album'] [data-track] .t-row {
+  padding-left: 0;
+  padding-right: 0;
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-tracks='album'] [data-track].active {
+  background: var(--brick-wash);
+  box-shadow: inset 3px 0 0 var(--brick);
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-personnel] .credit-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--hairline);
+  border-left: 1px solid var(--hairline);
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-personnel] .credit-groups li {
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.75rem;
+  border-right: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-personnel] .role {
+  min-width: 0;
+  padding-top: 0;
+  font-family: var(--font-mono);
+}
+:root[data-theme='brutalist-night'] [data-view='album'] [data-personnel] .person {
+  border-radius: 0;
+  border-color: var(--hairline-strong);
+}
+
+/* — Listening Bar: air, serif, gold, one lamp. Nothing is bordered. */
+:root[data-theme='listening-bar'] [data-view='album'] .art img,
+:root[data-theme='listening-bar'] [data-view='album'] .cover-fallback {
+  /* The lamp: the theme's big drop, plus a warm bloom off the accent. */
+  box-shadow:
+    0 40px 80px -34px rgba(var(--shadow-color), 0.95),
+    0 0 120px -40px color-mix(in srgb, var(--brick) 60%, transparent);
+}
+:root[data-theme='listening-bar'] [data-view='album'] .layout { gap: 3.5rem; }
+:root[data-theme='listening-bar'] [data-view='album'] [data-album-title] {
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+:root[data-theme='listening-bar'] [data-view='album'] [data-album-tabs] { gap: 2rem; }
+:root[data-theme='listening-bar'] [data-view='album'] [data-album-tabs] .tab {
+  letter-spacing: 0.16em;
+}
+:root[data-theme='listening-bar'] [data-view='album'] [data-album-facts] .fact dt {
+  letter-spacing: 0.2em;
+}
+:root[data-theme='listening-bar'] [data-view='album'] [data-tracks='album'] [data-track] {
+  border-bottom: 1px solid var(--hairline);
+}
+:root[data-theme='listening-bar'] [data-view='album'] [data-tracks='album'] [data-track] .t-row {
+  padding: 0.85rem 0.25rem;
+}
+:root[data-theme='listening-bar'] [data-view='album'] [data-personnel] .credit-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem 2.25rem;
+}
+:root[data-theme='listening-bar'] [data-view='album'] [data-personnel] .credit-groups li {
+  flex-direction: column;
+  gap: 0.35rem;
+}
+:root[data-theme='listening-bar'] [data-view='album'] [data-personnel] .role {
+  min-width: 0;
+  padding-top: 0;
+  order: 2;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.22em;
+  text-transform: none;
+}
+:root[data-theme='listening-bar'] [data-view='album'] [data-personnel] .people { order: 1; }
+:root[data-theme='listening-bar'] [data-view='album'] [data-personnel] .person {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+/* — Liner-notes credits (Sleeve, Card Catalogue, Listening Bar). These three
+     strip the name pills to plain type, which left "Deniz Tek  Roky Erickson"
+     with no separator and the role label *under* the block — it read as one
+     unknown person with no job. Role first, then the names as a sentence. */
+:root[data-theme='sleeve'] [data-view='album'] [data-personnel] .role,
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .role,
+:root[data-theme='listening-bar'] [data-view='album'] [data-personnel] .role {
+  order: 0;
+  margin-bottom: 0.15rem;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-personnel] .people,
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .people,
+:root[data-theme='listening-bar'] [data-view='album'] [data-personnel] .people {
+  order: 1;
+  display: block;
+  line-height: 1.55;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-personnel] .person,
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .person,
+:root[data-theme='listening-bar'] [data-view='album'] [data-personnel] .person {
+  display: inline;
+  text-align: left;
+}
+:root[data-theme='sleeve'] [data-view='album'] [data-personnel] .person:not(:last-child)::after,
+:root[data-theme='card-catalogue'] [data-view='album'] [data-personnel] .person:not(:last-child)::after,
+:root[data-theme='listening-bar'] [data-view='album'] [data-personnel] .person:not(:last-child)::after {
+  content: ', ';
+  color: var(--faded);
+}
+
+/* — Warehouse: stock, stencilled and taped. Hi-vis fills always take dark
+     text (`--paper`), never white. */
+:root[data-theme='warehouse'] [data-view='album'] .art img,
+:root[data-theme='warehouse'] [data-view='album'] .cover-fallback {
+  border: 2px solid var(--surface-deep);
+  box-shadow: var(--shadow-md);
+  box-sizing: border-box;
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-album-title] {
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-album-sub] {
+  color: var(--brick);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-album-tabs] {
+  gap: 0.25rem;
+  border-bottom: 0;
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-album-tabs] .tab {
+  background: var(--ink-tint-06);
+  padding: 0.4rem 0.85rem;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-album-tabs] .tab-active {
+  background: var(--brick);
+  color: var(--paper);
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-album-facts] .fact dt {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faded);
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-album-actions] .play-album {
+  background: var(--brick);
+  color: var(--paper);
+  border-radius: 0;
+  box-shadow: var(--shadow-sm);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-tracks='album'] [data-track] {
+  border-bottom: 1px solid var(--hairline);
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-tracks='album'] .t-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 0.82rem;
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-tracks='album'] [data-track].active {
+  background: transparent;
+  box-shadow: inset 4px 0 0 var(--brick);
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-tracks='album'] [data-track].active .t-title {
+  color: var(--brick);
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-personnel] .role {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+:root[data-theme='warehouse'] [data-view='album'] [data-personnel] .person {
+  border-radius: 0;
+  border-color: var(--hairline-strong);
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ══ Artist and Playlists ═════════════════════════════════════════════════
+   The last two screens the themes hadn't reached. Most of the work is free:
+   the artist page's four album grids and the playlist detail's album grid now
+   carry data-grid="albums" / data-card="album", so every theme's card
+   treatment — Card Catalogue's ruled rows, Zine's halftone and tilt,
+   Brutalist Night's ruled cells, Listening Bar's three-up, Warehouse's dense
+   stock — applies to them without a line of new CSS. What's left is the
+   chrome around those grids:
+
+     [data-view="artist"]      the screen root      (Entity)
+     [data-artist-hero]        the portrait band
+     [data-artist-title]       the h1
+     [data-artist-tabs]        the tab strip, .etab / .etab-active
+     [data-section-head]       each h2 section heading
+     [data-view="playlists"]   the screen root      (Playlists)
+     [data-playlist-list]      the sidebar list, [data-playlist-row] each row
+     [data-tracks="playlist"]  the track list, [data-track] each row
+
+   data-track is deliberately shared with the album view; the two are told
+   apart by their [data-view] ancestor, so neither block can leak into the
+   other. */
+
+/* Entity's h1 is painted through a gradient with -webkit-text-fill-color, so
+   a theme that wants a flat colour has to unset the fill, not just set
+   `color`. Each theme below that touches the title does exactly that. */
+
+/* — Sleeve: flat serif, no gradient, no glow. */
+:root[data-theme='sleeve'] [data-view='artist'] [data-artist-title] {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  background: none;
+  -webkit-text-fill-color: var(--espresso);
+  color: var(--espresso);
+  text-shadow: none;
+}
+:root[data-theme='sleeve'] [data-view='artist'] [data-artist-tabs] { gap: 1.7rem; }
+:root[data-theme='sleeve'] [data-view='artist'] [data-artist-tabs] .etab {
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+:root[data-theme='sleeve'] [data-view='artist'] [data-section-head],
+:root[data-theme='sleeve'] [data-view='playlists'] .label {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+:root[data-theme='sleeve'] [data-view='playlists'] [data-playlist-row] {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+}
+:root[data-theme='sleeve'] [data-view='playlists'] [data-playlist-row].active {
+  box-shadow: none;
+  color: var(--brick);
+}
+:root[data-theme='sleeve'] [data-view='playlists'] [data-tracks='playlist'] [data-track] {
+  border-bottom-color: var(--hairline);
+}
+
+/* — Card Catalogue: typed headings, ruled rows, the drawer label in mono. */
+:root[data-theme='card-catalogue'] [data-view='artist'] [data-artist-title] {
+  font-family: var(--font-display);
+  font-weight: 400;
+  background: none;
+  -webkit-text-fill-color: var(--espresso);
+  color: var(--espresso);
+}
+:root[data-theme='card-catalogue'] [data-view='artist'] [data-artist-tabs] .etab,
+:root[data-theme='card-catalogue'] [data-view='artist'] [data-section-head] .count,
+:root[data-theme='card-catalogue'] [data-view='playlists'] .pl-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+:root[data-theme='card-catalogue'] [data-view='artist'] [data-section-head] {
+  font-family: var(--font-display);
+  font-weight: 400;
+  border-bottom: 1px solid var(--brick);
+  padding-bottom: 0.4rem;
+}
+:root[data-theme='card-catalogue'] [data-view='playlists'] [data-playlist-row] {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px dotted var(--hairline-strong);
+  background: transparent;
+}
+:root[data-theme='card-catalogue'] [data-view='playlists'] [data-playlist-row].active {
+  background: var(--brick-wash);
+}
+:root[data-theme='card-catalogue'] [data-view='playlists'] [data-tracks='playlist'] [data-track] {
+  border-bottom: 1px dotted var(--hairline-strong);
+}
+/* An album card outside the library has no `.meta` column, so the row layout
+   would leave 130px of dead space at the end of every artist-page row. */
+:root[data-theme='card-catalogue'] [data-card='album']:not(:has(> .meta)) {
+  grid-template-columns: 62px minmax(0, 1fr) 250px;
+}
+
+/* — Zine: everything shouted, everything ruled in black. */
+:root[data-theme='zine'] [data-view='artist'] [data-artist-title] {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  background: none;
+  -webkit-text-fill-color: var(--espresso);
+  color: var(--espresso);
+  text-shadow: none;
+}
+:root[data-theme='zine'] [data-view='artist'] [data-artist-tabs] {
+  border-bottom-width: 3px;
+  gap: 0;
+}
+:root[data-theme='zine'] [data-view='artist'] [data-artist-tabs] .etab {
+  border: 2px solid var(--espresso);
+  border-bottom: 0;
+  margin: 0 -2px -3px 0;
+  padding: 0.35rem 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+:root[data-theme='zine'] [data-view='artist'] [data-artist-tabs] .etab-active {
+  background: var(--brick);
+  color: var(--paper);
+  border-color: var(--espresso);
+}
+:root[data-theme='zine'] [data-view='artist'] [data-section-head] {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  border-bottom: 3px solid var(--espresso);
+  padding-bottom: 0.3rem;
+}
+:root[data-theme='zine'] [data-view='artist'] [data-section-head] .count {
+  background: var(--brick);
+  color: var(--paper);
+  padding: 0 0.35rem;
+  font-weight: 700;
+}
+:root[data-theme='zine'] [data-view='playlists'] [data-playlist-row] {
+  border: 2px solid var(--espresso);
+  border-radius: 0;
+  background: var(--surface);
+}
+:root[data-theme='zine'] [data-view='playlists'] [data-playlist-row].active {
+  background: var(--brick);
+  box-shadow: none;
+}
+/* Every child — the sub line and the `smart` badge both set their own colour,
+   and the badge's border would otherwise be brick on brick. */
+:root[data-theme='zine'] [data-view='playlists'] [data-playlist-row].active,
+:root[data-theme='zine'] [data-view='playlists'] [data-playlist-row].active * {
+  color: var(--paper);
+  border-color: var(--paper);
+}
+:root[data-theme='zine'] [data-view='playlists'] [data-tracks='playlist'] [data-track] {
+  border-bottom: 2px solid var(--espresso);
+}
+
+/* — Brutalist Night: the grid made visible here too. */
+:root[data-theme='brutalist-night'] [data-view='artist'] [data-artist-title] {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  background: none;
+  -webkit-text-fill-color: var(--espresso);
+  color: var(--espresso);
+  text-shadow: none;
+}
+:root[data-theme='brutalist-night'] [data-view='artist'] [data-artist-tabs] {
+  border-bottom: 3px solid var(--hairline-strong);
+  gap: 0;
+}
+:root[data-theme='brutalist-night'] [data-view='artist'] [data-artist-tabs] .etab {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid var(--hairline);
+  padding: 0.5rem 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+:root[data-theme='brutalist-night'] [data-view='artist'] [data-artist-tabs] .etab-active {
+  background: var(--espresso);
+  color: var(--paper);
+  border-bottom-color: transparent;
+}
+:root[data-theme='brutalist-night'] [data-view='artist'] [data-section-head] {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--hairline-strong);
+  padding-bottom: 0.4rem;
+}
+:root[data-theme='brutalist-night'] [data-view='artist'] [data-section-head] .count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+:root[data-theme='brutalist-night'] [data-view='playlists'] [data-playlist-list] { gap: 0; }
+:root[data-theme='brutalist-night'] [data-view='playlists'] [data-playlist-row] {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  background: transparent;
+}
+:root[data-theme='brutalist-night'] [data-view='playlists'] [data-playlist-row].active {
+  background: var(--brick-wash);
+}
+:root[data-theme='brutalist-night'] [data-view='playlists'] [data-tracks='playlist'] [data-track] {
+  border-bottom-color: var(--hairline);
+}
+
+/* — Listening Bar: air and serif, nothing bordered. */
+:root[data-theme='listening-bar'] [data-view='artist'] [data-artist-title] {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  background: none;
+  -webkit-text-fill-color: var(--espresso);
+  color: var(--espresso);
+}
+:root[data-theme='listening-bar'] [data-view='artist'] [data-artist-tabs] { gap: 2rem; }
+:root[data-theme='listening-bar'] [data-view='artist'] [data-artist-tabs] .etab {
+  letter-spacing: 0.16em;
+}
+:root[data-theme='listening-bar'] [data-view='artist'] [data-section-head] {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  margin-top: 3rem;
+}
+:root[data-theme='listening-bar'] [data-view='playlists'] [data-playlist-list] { gap: 0; }
+:root[data-theme='listening-bar'] [data-view='playlists'] [data-playlist-row] {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  padding: 0.85rem 0.4rem;
+}
+:root[data-theme='listening-bar'] [data-view='playlists'] [data-playlist-row].active {
+  box-shadow: none;
+  color: var(--brick);
+}
+:root[data-theme='listening-bar'] [data-view='playlists'] .pl-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+}
+:root[data-theme='listening-bar'] [data-view='playlists'] [data-tracks='playlist'] [data-track] {
+  border-bottom-color: var(--hairline);
+  padding: 0.6rem 0.4rem;
+}
+
+/* — Warehouse: stencil caps and stock rows. */
+:root[data-theme='warehouse'] [data-view='artist'] [data-artist-title] {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  background: none;
+  -webkit-text-fill-color: var(--espresso);
+  color: var(--espresso);
+  text-shadow: none;
+}
+:root[data-theme='warehouse'] [data-view='artist'] [data-artist-tabs] {
+  gap: 0.25rem;
+  border-bottom: 0;
+}
+:root[data-theme='warehouse'] [data-view='artist'] [data-artist-tabs] .etab {
+  background: var(--ink-tint-06);
+  padding: 0.4rem 0.85rem;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 0;
+}
+:root[data-theme='warehouse'] [data-view='artist'] [data-artist-tabs] .etab-active {
+  background: var(--brick);
+  color: var(--paper);
+}
+:root[data-theme='warehouse'] [data-view='artist'] [data-section-head] {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid var(--brick);
+  padding-bottom: 0.35rem;
+}
+:root[data-theme='warehouse'] [data-view='artist'] [data-section-head] .count {
+  background: var(--brick);
+  color: var(--paper);
+  font-weight: 800;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 0.05rem 0.3rem;
+}
+:root[data-theme='warehouse'] [data-view='playlists'] [data-playlist-list] { gap: 0; }
+:root[data-theme='warehouse'] [data-view='playlists'] [data-playlist-row] {
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  background: transparent;
+}
+:root[data-theme='warehouse'] [data-view='playlists'] [data-playlist-row].active {
+  background: var(--ink-tint-06);
+  box-shadow: inset 4px 0 0 var(--brick);
+}
+:root[data-theme='warehouse'] [data-view='playlists'] .pl-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 0.82rem;
+}
+:root[data-theme='warehouse'] [data-view='playlists'] [data-tracks='playlist'] [data-track] {
+  border-bottom-color: var(--hairline);
+}
+:root[data-theme='warehouse'] [data-view='playlists'] [data-tracks='playlist'] .t-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+/* The artist portrait is not an album card, so it misses the per-theme cover
+   treatment the grids get for free. Each theme that gives its covers a frame
+   gives the portrait the same one. */
+:root[data-theme='card-catalogue'] [data-artist-hero] .hero-portrait img {
+  border: 8px solid var(--surface);
+  outline: 1px solid var(--hairline-strong);
+  box-sizing: border-box;
+}
+:root[data-theme='zine'] [data-artist-hero] .hero-portrait { position: relative; }
+:root[data-theme='zine'] [data-artist-hero] .hero-portrait img {
+  filter: grayscale(1) contrast(2.15) brightness(1.06);
+  outline: 3px solid var(--espresso);
+  outline-offset: -1px;
+  box-shadow: var(--shadow-sm);
+}
+:root[data-theme='zine'] [data-artist-hero] .hero-portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(#fff 32%, transparent 33%);
+  background-size: 4px 4px;
+  mix-blend-mode: screen;
+}
+:root[data-theme='brutalist-night'] [data-artist-hero] .hero-portrait img {
+  outline: 3px solid var(--hairline-strong);
+  box-shadow: none;
+}
+:root[data-theme='warehouse'] [data-artist-hero] .hero-portrait img {
+  border: 2px solid var(--surface-deep);
+  box-shadow: var(--shadow-md);
+  box-sizing: border-box;
+}
+
+/* ══ The crate rail ═══════════════════════════════════════════════════════
+   A Library feature rather than a theme — Warehouse was cut from the first
+   five precisely because a theme isn't allowed to add navigation — so every
+   theme gets it and every theme styles it in its own separator grammar.
+   [data-rail="crates"] on the aside, [data-crate] on each row, .crate-open on
+   the one you're in. A filled open row always takes --paper for its text,
+   which is what keeps Warehouse's hi-vis accent readable. */
+
+/* — Sleeve: nothing filled, nothing ruled. The crate you're in is a colour. */
+:root[data-theme='sleeve'] [data-rail='crates'] {
+  border-right: 0;
+}
+:root[data-theme='sleeve'] [data-rail='crates'] [data-crate] {
+  letter-spacing: 0.04em;
+}
+:root[data-theme='sleeve'] [data-rail='crates'] .crate-open,
+:root[data-theme='sleeve'] [data-rail='crates'] .crate-open:hover {
+  background: transparent;
+  color: var(--brick);
+}
+:root[data-theme='sleeve'] [data-rail='crates'] .crate-open .crate-count {
+  color: var(--brick);
+  opacity: 1;
+}
+
+/* — Card Catalogue: the drawer index. Typed, ruled, one line per crate. */
+:root[data-theme='card-catalogue'] [data-rail='crates'] {
+  border-right: 1px solid var(--hairline-strong);
+}
+:root[data-theme='card-catalogue'] [data-rail='crates'] .crate-label,
+:root[data-theme='card-catalogue'] [data-rail='crates'] [data-crate] {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+:root[data-theme='card-catalogue'] [data-rail='crates'] [data-crate] {
+  border-bottom: 1px dotted var(--hairline-strong);
+  border-radius: 0;
+}
+
+/* — Zine: hard black box, shouted labels, the open crate a solid fill. */
+:root[data-theme='zine'] [data-rail='crates'] {
+  border: 2px solid var(--espresso);
+  padding: 0.5rem;
+}
+:root[data-theme='zine'] [data-rail='crates'] .crate-label,
+:root[data-theme='zine'] [data-rail='crates'] [data-crate] {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 0;
+}
+:root[data-theme='zine'] [data-rail='crates'] [data-crate] {
+  border-bottom: 2px solid var(--espresso);
+}
+:root[data-theme='zine'] [data-rail='crates'] .crate-open .crate-count {
+  opacity: 1;
+}
+
+/* — Brutalist Night: every crate a ruled cell, the open one inverted. */
+:root[data-theme='brutalist-night'] [data-rail='crates'] {
+  border-right: 1px solid var(--hairline-strong);
+}
+:root[data-theme='brutalist-night'] [data-rail='crates'] .crate-label,
+:root[data-theme='brutalist-night'] [data-rail='crates'] [data-crate] {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+:root[data-theme='brutalist-night'] [data-rail='crates'] [data-crate] {
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+}
+:root[data-theme='brutalist-night'] [data-rail='crates'] .crate-open,
+:root[data-theme='brutalist-night'] [data-rail='crates'] .crate-open:hover {
+  background: var(--espresso);
+  color: var(--paper);
+}
+
+/* — Listening Bar: air and tracking, no rule anywhere, the crate you're in
+     carried by the lamp colour rather than a fill. */
+:root[data-theme='listening-bar'] [data-rail='crates'] {
+  border-right: 0;
+  gap: 0.6rem;
+}
+:root[data-theme='listening-bar'] [data-rail='crates'] [data-crate] {
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.5rem;
+}
+:root[data-theme='listening-bar'] [data-rail='crates'] .crate-list { gap: 0.2rem; }
+:root[data-theme='listening-bar'] [data-rail='crates'] .crate-open,
+:root[data-theme='listening-bar'] [data-rail='crates'] .crate-open:hover {
+  background: transparent;
+  color: var(--brick);
+}
+:root[data-theme='listening-bar'] [data-rail='crates'] .crate-open .crate-count {
+  color: var(--brick);
+  opacity: 1;
+}
+
+/* — Warehouse: this is the theme the rail was drawn for. Stock cells,
+     stencil caps, hi-vis tape on the crate you're standing in front of. */
+:root[data-theme='warehouse'] [data-rail='crates'] {
+  border-right: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 0.5rem 0.4rem;
+  width: 150px;
+}
+:root[data-theme='warehouse'] [data-rail='crates'] .crate-label,
+:root[data-theme='warehouse'] [data-rail='crates'] [data-crate] {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  border-radius: 0;
+}
+:root[data-theme='warehouse'] [data-rail='crates'] [data-crate] {
+  border-bottom: 1px solid var(--hairline);
+  padding: 0.4rem 0.5rem;
+}
+:root[data-theme='warehouse'] [data-rail='crates'] .crate-open .crate-count {
+  opacity: 1;
+}
