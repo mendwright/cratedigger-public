@@ -1,0 +1,271 @@
+/*
+ * Cratedigger — the Crate theme, drawn from the app icon: navy tile, cream
+ * sleeve, orange label, mustard and teal sleeves fanned behind.
+ *
+ * Tokens live here as CSS custom properties on :root so every component
+ * picks them up via inheritance. This is the only copy — lib/themes.ts reads
+ * them back for the window background and the kiosk. Components should
+ * consume tokens, not hard-coded hex, so palette tweaks are one-file edits.
+ */
+:root {
+  color-scheme: dark;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Track numbers, durations, years — a music app is full of columns of
+     digits; tabular figures keep them aligned everywhere at once. */
+  font-variant-numeric: tabular-nums;
+
+  /* — Typography: display face for headlines & serif accents, body for
+       everything else, mono for codes/durations. */
+  --font-display: Futura, 'Avenir Next', 'Helvetica Neue', sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+  --font-mono: 'SF Mono', ui-monospace, Menlo, monospace;
+
+  /* — Shape: one radius scale. Components never hard-code px radii. */
+  --radius-xs: 1px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+  --radius-2xl: 14px;
+  --radius-pill: 999px;
+
+  /* — Texture: a faint paper grain over everything. Painted by body::before. */
+  --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+
+  /* — Paper layers: the icon's navy tile */
+  --paper: #1d2a3a;
+  --surface: #243447;
+  --surface-deep: #16212e;
+  --inset: #243447;
+
+  /* — Ink: the cream sleeve. `espresso` is the main (light) ink — the names
+       predate the dark palette. */
+  --espresso: #f4ead6;
+  --walnut: #d8ccb4;
+  --faded: #9fa9b4;
+  --whisper: #9fa9b4;
+
+  /* — Hairlines */
+  --hairline: #2f4157;
+  --hairline-strong: #466078;
+
+  /* — Brick: the orange label, the main accent. (Mustard and teal, the other
+       two sleeves, live in the [data-theme='crate'] block at the bottom.) */
+  --brick: #f0703f;
+  --brick-deep: #cc5528;
+  --brick-wash: #3b3238;
+  /* Text on any accent fill (orange, mustard, teal): the navy paper, never
+     the cream ink. */
+  --on-brick: #1d2a3a;
+
+  /* — Ink tints: translucent cream overlays */
+  --ink-tint-04: color-mix(in srgb, #f4ead6 4%, transparent);
+  --ink-tint-06: color-mix(in srgb, #f4ead6 6%, transparent);
+  --ink-tint-08: color-mix(in srgb, #f4ead6 8%, transparent);
+  --ink-tint-12: color-mix(in srgb, #f4ead6 12%, transparent);
+  --ink-tint-16: color-mix(in srgb, #f4ead6 16%, transparent);
+
+  /* — Semantic: include/exclude on FocusBar chips, error toasts */
+  --ok-fg: #6cc3b8;
+  --ok-bg: rgba(108, 195, 184, 0.1);
+  --ok-border: rgba(108, 195, 184, 0.32);
+  --warn-fg: #efc35a;
+  --warn-bg: rgba(239, 195, 90, 0.1);
+  --warn-border: rgba(239, 195, 90, 0.32);
+  --err-fg: #d9686e;
+
+  /* — Shadow ink. A bare "R, G, B" triplet, not a color, so the call sites
+       that need their own alpha can write rgba(var(--shadow-color), 0.28). */
+  --shadow-color: 8, 14, 22;
+
+  /* — Shadows: raised cards and panels */
+  --shadow-sm: 0 3px 10px color-mix(in srgb, #f4ead6 10%, transparent);
+  --shadow-md: 0 12px 32px color-mix(in srgb, #f4ead6 12%, transparent);
+  --shadow-lg: 0 24px 64px color-mix(in srgb, #f4ead6 18%, transparent);
+
+  /* — Motion grammar: three durations × three easings.
+   *   Everything in the app should consume these instead of ad-hoc ms/curves
+   *   so the whole surface moves with one shared sensibility.
+   *
+   *   Durations:
+   *     instant — color/hover state changes, feels reactive not animated.
+   *     base    — most transitions: panels appearing, cards growing, etc.
+   *     slow    — large-scale screen morphs, cover-art crossfades.
+   *
+   *   Easings:
+   *     out     — UI entrance (decelerate into rest). Default for "appearing".
+   *     in-out  — reversible state changes (open/close, expand/collapse).
+   *     spring  — physical, used sparingly for the crate-flip / sleeve-peek
+   *               motions where the surface should feel like it has mass.
+   */
+  --dur-instant: 120ms;
+  --dur-base: 220ms;
+  --dur-slow: 380ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  color: var(--espresso);
+  background: var(--paper);
+}
+
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Texture overlay — the paper grain. Sits above everything (film grain reads as part of the
+   medium, not the content) but never intercepts input. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--texture);
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+/* Honor the OS-level motion preference: collapse the motion grammar to
+   near-zero so transitions still fire their events but don't animate. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 1ms;
+    --dur-base: 1ms;
+    --dur-slow: 1ms;
+  }
+}
+
+/* Scrollbars in the app's ink, not the OS default chrome. */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--ink-tint-12);
+  border-radius: var(--radius-pill);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ink-tint-16);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Keyboard-focus default for anything a component doesn't style itself. */
+:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: 2px;
+}
+
+body.has-now-playing #app {
+  padding-bottom: 78px;
+  box-sizing: border-box;
+}
+
+/* View Transitions API — drive every named pair off the shared motion
+   grammar. Browsers without the API ignore these rules silently. The
+   default crossfade for unnamed elements stays out of the way. */
+::view-transition-old(album-cover-active),
+::view-transition-new(album-cover-active) {
+  animation-duration: var(--dur-base);
+  animation-timing-function: var(--ease-out);
+}
+
+/* Native form controls come from the OS — keep them in tone */
+::selection {
+  background: var(--brick-wash);
+  color: var(--espresso);
+}
+
+/* ── Crate structure ──────────────────────────────────────────────────────
+   index.html puts data-theme='crate' on <html>; only these rules read it (it
+   also lifts their specificity above Svelte's scoped class selectors).
+   The app icon as a room: navy tile, orange label, mustard and teal sleeves
+   fanned behind. Orange is --brick; mustard and teal only live here, so each
+   gets a job — mustard for "where you are" (selected place, open shelf,
+   headers' kickers), teal for secondary accents. All three fills carry navy
+   text (--on-brick), never the cream ink. Nothing below changes a size in the
+   toolbar: the stripe is a background layer, not a border. */
+:root[data-theme='crate'] {
+  --crate-mustard: #efc35a;
+  --crate-teal: #57b3aa;
+}
+/* The three sleeves as a strip of tape under the toolbar. */
+:root[data-theme='crate'] [data-chrome='toolbar'] {
+  background-image: linear-gradient(
+    90deg,
+    var(--brick) 0 33.33%,
+    var(--crate-mustard) 33.33% 66.66%,
+    var(--crate-teal) 66.66% 100%
+  );
+  background-size: 100% 3px;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  border-bottom-color: transparent;
+}
+/* The home button becomes the record's label. */
+:root[data-theme='crate'] [data-chrome='toolbar'] .home {
+  background: var(--brick);
+  color: var(--on-brick);
+}
+:root[data-theme='crate'] [data-chrome='toolbar'] .home:hover {
+  background: var(--crate-mustard);
+  color: var(--on-brick);
+}
+:root[data-theme='crate'] [data-chrome='toolbar'] .place.selected {
+  background: var(--crate-mustard);
+  color: var(--on-brick);
+}
+:root[data-theme='crate'] .screen-header .title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+:root[data-theme='crate'] .screen-header .kicker {
+  color: var(--crate-mustard);
+  letter-spacing: 0.16em;
+}
+:root[data-theme='crate'] .dig-chip-open,
+:root[data-theme='crate'] .dig-chip-open:hover {
+  background: var(--crate-mustard);
+  color: var(--on-brick);
+}
+:root[data-theme='crate'] [data-card='album'] .cover img,
+:root[data-theme='crate'] [data-card='album'] .cover-fallback {
+  border-radius: var(--radius-md);
+}
+:root[data-theme='crate'] [data-card='album'] .cover.playing img,
+:root[data-theme='crate'] [data-card='album'] .cover.playing .cover-fallback {
+  box-shadow: 0 0 0 3px var(--brick), var(--shadow-md);
+}
+:root[data-theme='crate'] [data-card='album'] > .title {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+/* Format stickers cycle through the three sleeve colours down the grid. */
+:root[data-theme='crate'] [data-card='album'] .format-badge {
+  background: var(--brick);
+  color: var(--on-brick);
+  border: 0;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+}
+:root[data-theme='crate'] [data-grid='albums'] > li:nth-child(3n + 2) [data-card='album'] .format-badge {
+  background: var(--crate-mustard);
+}
+:root[data-theme='crate'] [data-grid='albums'] > li:nth-child(3n) [data-card='album'] .format-badge {
+  background: var(--crate-teal);
+}
+:root[data-theme='crate'] [data-view='artist'] [data-section-head] {
+  font-family: var(--font-display);
+  border-bottom: 3px solid var(--crate-teal);
+  padding-bottom: 0.4rem;
+}
