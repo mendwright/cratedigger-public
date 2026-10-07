@@ -1,0 +1,312 @@
+{
+ "name": "schiff-bach-partitas-MATCHED",
+ "ratingKey": "68794",
+ "album": {
+  "title": "Six Partitas (András Schiff) cd 1",
+  "parentTitle": "Johann Sebastian Bach",
+  "year": 2009,
+  "guids": [
+   "mbid://ce31b6c4-9463-4026-8089-800dd7147678"
+  ],
+  "leafCount": 27
+ },
+ "tracks": [
+  {
+   "ratingKey": "68795",
+   "index": 1,
+   "parentIndex": 1,
+   "title": "Partita No.5 In G, BWV 829:Praeambulum",
+   "duration": 131701,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://57b1f91f-9bfe-391f-b811-420acb88e760"
+   ]
+  },
+  {
+   "ratingKey": "68796",
+   "index": 2,
+   "parentIndex": 1,
+   "title": "Partita No.5 In G, BWV 829:Allemande",
+   "duration": 257207,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://403eaafa-9342-3d8e-b058-9ae8610f79b4"
+   ]
+  },
+  {
+   "ratingKey": "68797",
+   "index": 3,
+   "parentIndex": 1,
+   "title": "Partita No.5 In G, BWV 829:Corrente",
+   "duration": 94793,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://bd2a6d87-70b3-39a3-a216-6e1a7f83571d"
+   ]
+  },
+  {
+   "ratingKey": "68798",
+   "index": 4,
+   "parentIndex": 1,
+   "title": "Partita No.5 In G, BWV 829:Sarabande",
+   "duration": 247691,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://c7db445a-d93a-335b-a782-470ec866c9ba"
+   ]
+  },
+  {
+   "ratingKey": "68799",
+   "index": 5,
+   "parentIndex": 1,
+   "title": "Partita No.5 In G, BWV 829:Tempo di Minuetta",
+   "duration": 143177,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://f4ed06d8-8ff8-371d-a469-361e5963ff52"
+   ]
+  },
+  {
+   "ratingKey": "68800",
+   "index": 6,
+   "parentIndex": 1,
+   "title": "Partita No.5 In G, BWV 829:Passepied",
+   "duration": 90928,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://25fec774-8bf6-3245-ac3e-d7dc0d998c5d"
+   ]
+  },
+  {
+   "ratingKey": "68801",
+   "index": 7,
+   "parentIndex": 1,
+   "title": "Partita No.5 In G, BWV 829:Gigue",
+   "duration": 227063,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://fbced1a2-6066-34d2-9611-a87cede1da41"
+   ]
+  },
+  {
+   "ratingKey": "68802",
+   "index": 8,
+   "parentIndex": 1,
+   "title": "Partita No.3 In A Minor, BWV 827:Fantasia",
+   "duration": 111158,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://4cc83fb5-4b28-3a5b-b64d-d4ca216a3bfd"
+   ]
+  },
+  {
+   "ratingKey": "68803",
+   "index": 9,
+   "parentIndex": 1,
+   "title": "Partita No.3 In A Minor, BWV 827:Allemande",
+   "duration": 167506,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://43db5719-9937-3feb-9e06-36ecce5dea12"
+   ]
+  },
+  {
+   "ratingKey": "68804",
+   "index": 10,
+   "parentIndex": 1,
+   "title": "Partita No.3 In A Minor, BWV 827:Corrente",
+   "duration": 160431,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://45f95115-ae13-3826-9af2-f03687518e5c"
+   ]
+  },
+  {
+   "ratingKey": "68805",
+   "index": 11,
+   "parentIndex": 1,
+   "title": "Partita No.3 In A Minor, BWV 827:Sarabande",
+   "duration": 194344,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://cc56f1cf-fba1-329e-ab8e-a511378f759f"
+   ]
+  },
+  {
+   "ratingKey": "68806",
+   "index": 12,
+   "parentIndex": 1,
+   "title": "Partita No.3 In A Minor, BWV 827:Burlesca",
+   "duration": 120334,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://523323a7-feb2-3bd4-a7e0-f80fb9230c6d"
+   ]
+  },
+  {
+   "ratingKey": "68807",
+   "index": 13,
+   "parentIndex": 1,
+   "title": "Partita No.3 In A Minor, BWV 827:Scherzo",
+   "duration": 59772,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://f4f75a5c-bcb9-304a-982e-c4108c4a6065"
+   ]
+  },
+  {
+   "ratingKey": "68808",
+   "index": 14,
+   "parentIndex": 1,
+   "title": "Partita No.3 In A Minor, BWV 827:Gigue",
+   "duration": 177471,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://a1e21396-8ecd-373d-a2cf-1ce469af9382"
+   ]
+  },
+  {
+   "ratingKey": "68809",
+   "index": 15,
+   "parentIndex": 1,
+   "title": "Partita No.1 In B Flat, BWV 825:Praeludium",
+   "duration": 113002,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://864956e2-915d-3439-9886-23e5ffe873c9"
+   ]
+  },
+  {
+   "ratingKey": "68810",
+   "index": 16,
+   "parentIndex": 1,
+   "title": "Partita No.1 In B Flat, BWV 825:Allemande",
+   "duration": 189436,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://84bbb557-d0cb-30f6-ace5-67e2966da2a4"
+   ]
+  },
+  {
+   "ratingKey": "68811",
+   "index": 17,
+   "parentIndex": 1,
+   "title": "Partita No.1 In B Flat, BWV 825:Corrente",
+   "duration": 162990,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://a834c7d7-5d3b-3258-8c5a-15f4f6d2299a"
+   ]
+  },
+  {
+   "ratingKey": "68812",
+   "index": 18,
+   "parentIndex": 1,
+   "title": "Partita No.1 In B Flat, BWV 825:Sarabande",
+   "duration": 265982,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://44e260a9-caaa-3fc4-9d38-4d0393bfde26"
+   ]
+  },
+  {
+   "ratingKey": "68813",
+   "index": 19,
+   "parentIndex": 1,
+   "title": "Partita No.1 In B Flat, BWV 825:Menuet I",
+   "duration": 75695,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://e6b2c9c0-64f2-3a03-8c4a-12173b8195ca"
+   ]
+  },
+  {
+   "ratingKey": "68814",
+   "index": 20,
+   "parentIndex": 1,
+   "title": "Partita No.1 In B Flat, BWV 825:Menuet II",
+   "duration": 77614,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://cc488462-525c-37d7-be2e-7de5d88a82a7"
+   ]
+  },
+  {
+   "ratingKey": "68815",
+   "index": 21,
+   "parentIndex": 1,
+   "title": "Partita No.1 In B Flat, BWV 825:Gigue",
+   "duration": 132458,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://21e03f1f-dc2c-3b2e-9495-cb6405cda621"
+   ]
+  },
+  {
+   "ratingKey": "68816",
+   "index": 22,
+   "parentIndex": 1,
+   "title": "Partita No.2 In C Minor, BWV 826:Sinfonia",
+   "duration": 257377,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://73cc0258-bae7-38b3-a909-c76e8fe4407e"
+   ]
+  },
+  {
+   "ratingKey": "68817",
+   "index": 23,
+   "parentIndex": 1,
+   "title": "Partita No.2 In C Minor, BWV 826:Allemande",
+   "duration": 271641,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://21ef7f3e-b688-39ec-863a-85388b3157ce"
+   ]
+  },
+  {
+   "ratingKey": "68818",
+   "index": 24,
+   "parentIndex": 1,
+   "title": "Partita No.2 In C Minor, BWV 826:Courante",
+   "duration": 125440,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://770c0dbd-e9e0-3e6e-ad65-7b4b68268d24"
+   ]
+  },
+  {
+   "ratingKey": "68819",
+   "index": 25,
+   "parentIndex": 1,
+   "title": "Partita No.2 In C Minor, BWV 826:Sarabande",
+   "duration": 181320,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://ee33e37d-db33-320c-9ceb-5660c447445c"
+   ]
+  },
+  {
+   "ratingKey": "68820",
+   "index": 26,
+   "parentIndex": 1,
+   "title": "Partita No.2 In C Minor, BWV 826:Rondeau",
+   "duration": 87995,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://4fec0408-9f60-3825-a270-cb42a230c81f"
+   ]
+  },
+  {
+   "ratingKey": "68821",
+   "index": 27,
+   "parentIndex": 1,
+   "title": "Partita No.2 In C Minor, BWV 826:Capriccio",
+   "duration": 198803,
+   "originalTitle": "Johann Sebastian Bach",
+   "guids": [
+    "mbid://11d2017a-68d2-39e8-aa12-f98005982b60"
+   ]
+  }
+ ]
+}
