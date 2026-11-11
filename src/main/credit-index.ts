@@ -1,0 +1,151 @@
+import { readdir, readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import type { AlbumCredits } from '../shared/plex.js'
+import { ALBUM_CREDITS_BUCKET, bucketDir } from './mb-cache.js'
+
+// Inverted view over the on-disk album-credits cache:
+//   `personMbid → appearances` across every album the library-warmer has
+//   already credited-walked. The build walks the ALBUM_CREDITS_BUCKET
+//   directory directly (bypassing JsonCache so we can enumerate keys), holds
+//   the result in process memory, and rebuilds from scratch on invalidation.
+//   Full build is well under 100ms for thousands of albums.
+//
+// Used by the Entity page to populate "your library credits" instantly,
+// without the 10–30s MusicBrainz walk that getArtistCreditedWorks needs.
+
+export interface PersonAppearance {
+  plexRatingKey: string
+  // role / instrument pairs distinct to this album. "instrument" is the
+  // specific instrument when the credit came from a per-recording relation
+  // ("instrument" + instrument="guitar"); null when the relation didn't
+  // carry an instrument (producer, vocals, member-of, etc).
+  roles: { role: string; instrument: string | null }[]
+}
+
+const CACHE_ENVELOPE_VERSION = 1 // matches mb-cache.ts CACHE_VERSION
+
+interface CreditIndex {
+  byMbid: Map<string, PersonAppearance[]>
+  // Every credited person's name as MusicBrainz spells it, for resolving
+  // the studio-badge names (Settings) to MBIDs without a network call.
+  names: Map<string, string>
+}
+
+let cache: CreditIndex | null = null
+let building: Promise<CreditIndex> | null = null
+
+async function build(): Promise<CreditIndex> {
+  const dir = bucketDir(ALBUM_CREDITS_BUCKET)
+  const index = new Map<string, PersonAppearance[]>()
+  const names = new Map<string, string>()
+  let files: string[] = []
+  try {
+    files = await readdir(dir)
+  } catch {
+    // Directory doesn't exist yet — nothing's been credited-walked.
+    return { byMbid: index, names }
+  }
+  for (const f of files) {
+    if (!f.endsWith('.json')) continue
+    const plexRatingKey = f.slice(0, -'.json'.length)
+    let env: { v: number; d: AlbumCredits | null }
+    try {
+      env = JSON.parse(await readFile(join(dir, f), 'utf8'))
+    } catch {
+      continue
+    }
+    if (env.v !== CACHE_ENVELOPE_VERSION || !env.d) continue
+    const credits = env.d
+
+    // Collect distinct (role, instrument) pairs per mbid for this album.
+    const perPerson = new Map<string, Map<string, string | null>>()
+    const add = (mbid: string, role: string, instrument: string | null): void => {
+      if (!mbid) return
+      let roles = perPerson.get(mbid)
+      if (!roles) {
+        roles = new Map()
+        perPerson.set(mbid, roles)
+      }
+      const key = instrument ? `${role}::${instrument}` : role
+      if (!roles.has(key)) roles.set(key, instrument)
+    }
+
+    const named = (mbid: string, name: string | undefined): void => {
+      if (mbid && name && !names.has(mbid)) names.set(mbid, name)
+    }
+    for (const r of credits.releaseLevel) {
+      add(r.person.mbid, r.role, null)
+      named(r.person.mbid, r.person.name)
+    }
+    for (const list of Object.values(credits.byTrack)) {
+      for (const c of list) {
+        add(c.person.mbid, c.role, c.instrument)
+        named(c.person.mbid, c.person.name)
+      }
+    }
+    for (const m of credits.members) {
+      add(m.mbid, 'member', null)
+      named(m.mbid, m.name)
+    }
+
+    for (const [mbid, rolesMap] of perPerson) {
+      const roles: PersonAppearance['roles'] = []
+      for (const [key, instrument] of rolesMap) {
+        const role = key.includes('::') ? key.split('::', 1)[0] : key
+        roles.push({ role, instrument })
+      }
+      const list = index.get(mbid)
+      if (list) list.push({ plexRatingKey, roles })
+      else index.set(mbid, [{ plexRatingKey, roles }])
+    }
+  }
+  return { byMbid: index, names }
+}
+
+async function load(): Promise<CreditIndex> {
+  if (!cache) {
+    if (!building) building = build()
+    cache = await building
+    building = null
+  }
+  return cache
+}
+
+export async function getInLibraryAppearances(mbid: string): Promise<PersonAppearance[]> {
+  if (!mbid) return []
+  return (await load()).byMbid.get(mbid) ?? []
+}
+
+/**
+ * How many library albums credit each person, for the album page's "on N of
+ * your records" counts. Distinct albums, not credits; the album being viewed is
+ * left out so the number means "elsewhere in your library". Coverage is
+ * whatever the library warmer and album visits have credited-walked so far.
+ */
+export async function getLibraryCreditCounts(
+  mbids: string[],
+  excludeRatingKey?: string | null
+): Promise<Record<string, number>> {
+  const index = (await load()).byMbid
+  const out: Record<string, number> = {}
+  for (const mbid of mbids) {
+    if (!mbid) continue
+    const albums = new Set((index.get(mbid) ?? []).map((a) => a.plexRatingKey))
+    if (excludeRatingKey) albums.delete(excludeRatingKey)
+    out[mbid] = albums.size
+  }
+  return out
+}
+
+/** Every credited person in the library, as mbid → name. */
+export async function getCreditedNames(): Promise<Map<string, string>> {
+  return (await load()).names
+}
+
+// Bust the in-memory index. Callers in musicbrainz.ts hook this whenever the
+// album-credits cache is written or invalidated so a follow-up lookup
+// reflects the change without an app restart.
+export function invalidateCreditIndex(): void {
+  cache = null
+  building = null
+}
