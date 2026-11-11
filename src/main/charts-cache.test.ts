@@ -1,0 +1,25 @@
+import { beforeEach, afterEach, describe, it, expect, vi } from 'vitest'
+const mocks = vi.hoisted(() => ({ account: 'a', server: 's1', get: vi.fn(async (_key: string) => null), set: vi.fn(async (_key: string, _value: unknown) => {}) }))
+vi.mock('./store.js', () => ({ getActiveAccountId: () => mocks.account, getValue: () => mocks.server }))
+vi.mock('./mb-cache.js', () => ({ JsonCache: class { get = mocks.get; set = mocks.set } }))
+beforeEach(() => { vi.resetModules(); vi.clearAllMocks(); mocks.account = 'a'; mocks.server = 's1'; vi.stubGlobal('__PUBLIC_BUILD__', false) })
+afterEach(() => vi.unstubAllGlobals())
+describe('chart disk cache privacy', () => {
+  it('isolates accounts and servers', async () => {
+    const { readChartsCache } = await import('./charts-cache')
+    await readChartsCache('you|month'); mocks.account = 'b'; await readChartsCache('you|month')
+    mocks.server = 's2'; await readChartsCache('you|month')
+    expect(mocks.get.mock.calls.map(call => call[0])).toEqual(['private|a|s1|you|month', 'private|b|s1|you|month', 'private|b|s2|you|month'])
+  })
+  it('public builds refuse personal cache writes and never read the private namespace', async () => {
+    vi.stubGlobal('__PUBLIC_BUILD__', true)
+    const { readChartsCache, writeChartsCache } = await import('./charts-cache')
+    await writeChartsCache('you|month', { result: null })
+    await writeChartsCache('bootstrap', { review: { plays: 1 } as never })
+    expect(mocks.set).not.toHaveBeenCalled()
+    await writeChartsCache('household|month', { result: null })
+    expect(mocks.set).toHaveBeenCalledWith('public|a|s1|household|month', { result: null })
+    await readChartsCache('bootstrap')
+    expect(mocks.get).toHaveBeenCalledWith('public|a|s1|bootstrap')
+  })
+})

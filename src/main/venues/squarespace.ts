@@ -1,0 +1,106 @@
+import type { Venue, VenueId, VenueShow } from '../../shared/plex.js'
+import type { VenueAdapter } from './types.js'
+import { makeEventId, splitArtists } from './types.js'
+
+// Squarespace events collections expose their data via `?format=json-pretty`
+// on the collection's URL. We rely on `venue.url` pointing at the events
+// collection page (not the homepage) — e.g. theknockoutsf.com/events-2-1
+// rather than theknockoutsf.com.
+//
+// Some Squarespace sites render their events block client-side (homepage
+// embed without a backing collection page) — those return upcoming=[] from
+// this endpoint and must route through the webview adapter instead.
+
+const UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127 Safari/537.36'
+
+interface SquarespaceEvent {
+  id?: string
+  title?: string
+  fullUrl?: string
+  startDate?: number  // unix ms
+}
+interface SquarespaceResponse {
+  upcoming?: SquarespaceEvent[]
+}
+
+// Per-venue title cleanup. Most Squarespace venues title an event with just
+// the bill; venues that mix in films or decorate titles get a cleaner here.
+// Returning null drops the event.
+const TITLE_CLEANERS: Partial<Record<VenueId, (title: string) => string | null>> = {
+  fourstar: cleanFourStarTitle
+}
+
+/** 4 Star Theater runs mostly films; concerts are titled
+ *  "LIVE MUSIC: A, B, C (Presented by X) ~ Doors at 7:00 PM & Music at 8:00 PM".
+ *  Keep only LIVE MUSIC rows and strip the prefix, the "~ time" tail and any
+ *  parentheticals ("(Record Release)", "(Presented by …)"). */
+export function cleanFourStarTitle(title: string): string | null {
+  const m = /^\s*LIVE MUSIC:\s*(.*)$/i.exec(title)
+  if (!m) return null
+  const bill = m[1]
+    .split(/\s+~\s+/)[0]
+    .replace(/\s*\([^)]*\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return bill || null
+}
+
+function decodeEntities(s: string): string {
+  return s
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&rsquo;|&#8217;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+}
+
+export const squarespaceAdapter: VenueAdapter = {
+  async fetchShows(venue: Venue): Promise<VenueShow[]> {
+    const url = `${venue.url}${venue.url.includes('?') ? '&' : '?'}format=json-pretty`
+    const res = await fetch(url, {
+      headers: { 'User-Agent': UA, Accept: 'application/json' }
+    })
+    if (!res.ok) {
+      throw new Error(`Squarespace ${res.status} for ${venue.name}`)
+    }
+    const data = (await res.json()) as SquarespaceResponse
+    const events = data.upcoming ?? []
+    const out: VenueShow[] = []
+    for (const e of events) {
+      if (!e.startDate || !e.title) continue
+      const d = new Date(e.startDate)
+      const date =
+        `${d.getFullYear()}-` +
+        `${String(d.getMonth() + 1).padStart(2, '0')}-` +
+        `${String(d.getDate()).padStart(2, '0')}`
+      const raw = decodeEntities(e.title)
+      const cleaner = TITLE_CLEANERS[venue.id]
+      const title = cleaner ? cleaner(raw) : raw
+      if (!title) continue
+      const { headliner, supports } = splitArtists(title)
+      if (!headliner) continue
+      const eventUrl = e.fullUrl ? absolutize(e.fullUrl, venue.url) : venue.url
+      out.push({
+        id: makeEventId(venue.id, date, headliner),
+        venueId: venue.id,
+        artistName: headliner,
+        supportArtists: supports,
+        date,
+        url: eventUrl
+      })
+    }
+    return out
+  }
+}
+
+function absolutize(maybeRelative: string, base: string): string {
+  if (maybeRelative.startsWith('http://') || maybeRelative.startsWith('https://')) {
+    return maybeRelative
+  }
+  try {
+    return new URL(maybeRelative, base).toString()
+  } catch {
+    return base
+  }
+}

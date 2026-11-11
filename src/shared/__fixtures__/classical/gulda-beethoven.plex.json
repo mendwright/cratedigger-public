@@ -1,0 +1,913 @@
+{
+ "name": "gulda-beethoven",
+ "ratingKey": "135374",
+ "album": {
+  "title": "Beethoven: Complete Piano Sonatas (Gulda)",
+  "parentTitle": "Friedrich Gulda",
+  "year": 1968,
+  "guids": [],
+  "leafCount": 100
+ },
+ "tracks": [
+  {
+   "ratingKey": "135375",
+   "index": 1,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 1 in F-Moll, Op. 2,1: Allegro",
+   "duration": 211798,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135376",
+   "index": 2,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 1 in F-Moll, Op. 2,1: Adagio",
+   "duration": 275243,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135377",
+   "index": 3,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 1 in F-Moll, Op. 2,1: Menuetto - Allegretto",
+   "duration": 154283,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135378",
+   "index": 4,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 1 in F-Moll, Op. 2,1: Prestissimo",
+   "duration": 277721,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135379",
+   "index": 5,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 2 in A-Dur, Op. 2,2: Allegro Vivace",
+   "duration": 380029,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135380",
+   "index": 6,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 2 in A-Dur, Op. 2,2: Largo Appassionato",
+   "duration": 390481,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135381",
+   "index": 7,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 2 in A-Dur, Op. 2,2: Scherzo- Allegretto",
+   "duration": 160228,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135382",
+   "index": 8,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 2 in A-Dur, Op. 2,2: Rondo- Grazioso",
+   "duration": 353200,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135383",
+   "index": 9,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 12 in As-Dur, Op. 26: Andante Con Variazioni",
+   "duration": 411624,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135384",
+   "index": 10,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 12 in As-Dur, Op. 26: Scherzo - Allegro Molto",
+   "duration": 144325,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135385",
+   "index": 11,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 12 in As-Dur, Op. 26: Marcia Funebre",
+   "duration": 423758,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135386",
+   "index": 12,
+   "parentIndex": 1,
+   "title": "Klaviersonate Nr. 12 in As-Dur, Op. 26: Allegro",
+   "duration": 151614,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135387",
+   "index": 1,
+   "parentIndex": 2,
+   "title": "Klaviersonate Nr. 3 in C-Dur, Op. 2,3: Allegro Con Brio",
+   "duration": 589899,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135388",
+   "index": 2,
+   "parentIndex": 2,
+   "title": "Klaviersonate Nr. 3 in C-Dur, Op. 2,3: Adagio",
+   "duration": 350452,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135389",
+   "index": 3,
+   "parentIndex": 2,
+   "title": "Klaviersonate Nr. 3 in C-Dur, Op. 2,3: Scherzo- Allegro",
+   "duration": 163561,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135390",
+   "index": 4,
+   "parentIndex": 2,
+   "title": "Klaviersonate Nr. 3 in C-Dur, Op. 2,3: Allegro Assai",
+   "duration": 289683,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135391",
+   "index": 5,
+   "parentIndex": 2,
+   "title": "Klaviersonate Nr. 4 in Es-Dur, Op. 7: Allegro Molto E Con Brio",
+   "duration": 448475,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135392",
+   "index": 6,
+   "parentIndex": 2,
+   "title": "Klaviersonate Nr. 4 in Es-Dur, Op. 7: Largo, Con Gran Espressione",
+   "duration": 422490,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135393",
+   "index": 7,
+   "parentIndex": 2,
+   "title": "Klaviersonate Nr. 4 in Es-Dur, Op. 7: Allegro",
+   "duration": 290844,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135394",
+   "index": 8,
+   "parentIndex": 2,
+   "title": "Klaviersonate Nr. 4 in Es-Dur, Op. 7: Rondo - Poco Allegretto E Grazioso",
+   "duration": 352703,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135395",
+   "index": 1,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 5 in c-Moll, Op. 10,1: Allegro Molto E Con Brio",
+   "duration": 294044,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135396",
+   "index": 2,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 5 in c-Moll, Op. 10,1: Adagio Molto",
+   "duration": 435034,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135397",
+   "index": 3,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 5 in c-Moll, Op. 10,1: Finale, Prestissimo",
+   "duration": 232319,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135398",
+   "index": 4,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 6 in F-Dur, Op. 10,2: Allegro",
+   "duration": 298323,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135399",
+   "index": 5,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 6 in F-Dur, Op. 10,2: Allegretto",
+   "duration": 189132,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135400",
+   "index": 6,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 6 in F-Dur, Op. 10,2: Presto",
+   "duration": 223612,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135401",
+   "index": 7,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 7 in D-Dur, Op. 10,3: Presto",
+   "duration": 384842,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135402",
+   "index": 8,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 7 in D-Dur, Op. 10,3: Largo E Mesto",
+   "duration": 476209,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135403",
+   "index": 9,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 7 in D-Dur, Op. 10,3: Menuetto- Allegro",
+   "duration": 171618,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135404",
+   "index": 10,
+   "parentIndex": 3,
+   "title": "Klaviersonate Nr. 7 in D-Dur, Op. 10,3: Rondo - Allegro",
+   "duration": 211470,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135405",
+   "index": 1,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 8 in c-Moll, Op. 13 „Pathétique“: Grave - Allegro Di Molto E Con Brio",
+   "duration": 497202,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135406",
+   "index": 2,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 8 in c-Moll, Op. 13 „Pathétique“: Adagio Cantabile",
+   "duration": 315204,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135407",
+   "index": 3,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 8 in c-Moll, Op. 13 „Pathétique“: Rondo- Allegro",
+   "duration": 259748,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135408",
+   "index": 4,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 22 in F-Dur, Op. 54: In Tempo D'Un Menuetto",
+   "duration": 313718,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135409",
+   "index": 5,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 22 in F-Dur, Op. 54: Allegretto",
+   "duration": 329598,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135410",
+   "index": 6,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 9 in E-Dur, Op. 14,1: Allegro",
+   "duration": 376573,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135411",
+   "index": 7,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 9 in E-Dur, Op. 14,1: Allegretto",
+   "duration": 179539,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135412",
+   "index": 8,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 9 in E-Dur, Op. 14,1: Rondo - Allegro Commodo",
+   "duration": 191911,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135413",
+   "index": 9,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 10 in G-Dur, Op. 14,2: Allegro",
+   "duration": 416514,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135414",
+   "index": 10,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 10 in G-Dur, Op. 14,2: Andante",
+   "duration": 290466,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135415",
+   "index": 11,
+   "parentIndex": 4,
+   "title": "Klaviersonate Nr. 10 in G-Dur, Op. 14,2: Scherzo - Allegro Assai",
+   "duration": 176565,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135416",
+   "index": 1,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 14 in cis-Moll, Op. 27,2: Adagio Sostenuto",
+   "duration": 391041,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135417",
+   "index": 2,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 14 in cis-Moll, Op. 27,2: Allegretto - Trio",
+   "duration": 148224,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135418",
+   "index": 3,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 14 in cis-Moll, Op. 27,2: Presto Agitato",
+   "duration": 421857,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135419",
+   "index": 4,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 11 in B-Dur, Op. 22: Allegro Con Brio",
+   "duration": 410103,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135420",
+   "index": 5,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 11 in B-Dur, Op. 22: Adagio E Con Molt' Espressione",
+   "duration": 334311,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135421",
+   "index": 6,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 11 in B-Dur, Op. 22: Menuetto",
+   "duration": 185096,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135422",
+   "index": 7,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 11 in B-Dur, Op. 22: Rondo - Allegretto",
+   "duration": 308993,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135423",
+   "index": 8,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 23 in f-Moll, Op. 57, „Appassionata“: Allegro Assai",
+   "duration": 451193,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135424",
+   "index": 9,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 23 in f-Moll, Op. 57, „Appassionata“: Andante Con Moto",
+   "duration": 333401,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135425",
+   "index": 10,
+   "parentIndex": 5,
+   "title": "Klaviersonate Nr. 23 in f-Moll, Op. 57, „Appassionata“: Allegro Ma Non Troppo - Presto",
+   "duration": 439073,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135426",
+   "index": 1,
+   "parentIndex": 6,
+   "title": "Klaviersonate Nr. 16 in G-Dur, Op. 31,1: Allegro Vivace",
+   "duration": 358211,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135427",
+   "index": 2,
+   "parentIndex": 6,
+   "title": "Klaviersonate Nr. 16 in G-Dur, Op. 31,1: Adagio Grazioso",
+   "duration": 474343,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135428",
+   "index": 3,
+   "parentIndex": 6,
+   "title": "Klaviersonate Nr. 16 in G-Dur, Op. 31,1: Rondo - Allegretto - Adagio - Presto",
+   "duration": 357767,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135429",
+   "index": 4,
+   "parentIndex": 6,
+   "title": "Klaviersonate Nr. 17 in d-Moll, Op. 31,2 'Der Sturm': Largo - Allegro",
+   "duration": 425049,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135430",
+   "index": 5,
+   "parentIndex": 6,
+   "title": "Klaviersonate Nr. 17 in d-Moll, Op. 31,2 'Der Sturm': Adagio",
+   "duration": 470369,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135431",
+   "index": 6,
+   "parentIndex": 6,
+   "title": "Klaviersonate Nr. 17 in d-Moll, Op. 31,2 'Der Sturm': Allegretto",
+   "duration": 361149,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135432",
+   "index": 7,
+   "parentIndex": 6,
+   "title": "Klaviersonate Nr. 27 in e-Moll, Op. 90: Mit Lebhaftigkeit Und Durchaus Mit Empfindung Und Ausdruck",
+   "duration": 273531,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135433",
+   "index": 8,
+   "parentIndex": 6,
+   "title": "Klaviersonate Nr. 27 in e-Moll, Op. 90: Nicht Zu Geschwind Und Sehr Singbar Vorzutragen",
+   "duration": 367577,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135434",
+   "index": 1,
+   "parentIndex": 7,
+   "title": "Klaviersonate Nr. 15 in D-Dur, Op. 28, „Pastorale“: Allegro",
+   "duration": 543718,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135435",
+   "index": 2,
+   "parentIndex": 7,
+   "title": "Klaviersonate Nr. 15 in D-Dur, Op. 28, „Pastorale“: Andante",
+   "duration": 371296,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135436",
+   "index": 3,
+   "parentIndex": 7,
+   "title": "Klaviersonate Nr. 15 in D-Dur, Op. 28, „Pastorale“: Scherzo - Allegro Vivace",
+   "duration": 122056,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135437",
+   "index": 4,
+   "parentIndex": 7,
+   "title": "Klaviersonate Nr. 15 in D-Dur, Op. 28, „Pastorale“: Rondo - Allegro Ma Non Troppo",
+   "duration": 292117,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135438",
+   "index": 5,
+   "parentIndex": 7,
+   "title": "Klaviersonate Nr. 18 in Es-Dur, Op. 31,3: Allegro",
+   "duration": 474158,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135439",
+   "index": 6,
+   "parentIndex": 7,
+   "title": "Klaviersonate Nr. 18 in Es-Dur, Op. 31,3: Scherzo - Allegretto Vivace",
+   "duration": 259842,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135440",
+   "index": 7,
+   "parentIndex": 7,
+   "title": "Klaviersonate Nr. 18 in Es-Dur, Op. 31,3: Menuetto - Moderato E Grazioso",
+   "duration": 229317,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135441",
+   "index": 8,
+   "parentIndex": 7,
+   "title": "Klaviersonate Nr. 18 in Es-Dur, Op. 31,3: Presto Con Fuoco",
+   "duration": 258539,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135442",
+   "index": 1,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 19 in g-Moll, Op. 49,1: Andante",
+   "duration": 298984,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135443",
+   "index": 2,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 19 in g-Moll, Op. 49,1: Rondo - Allegro",
+   "duration": 182224,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135444",
+   "index": 3,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 20 in G-Dur, Op. 49,2: Allegro Ma Non Troppo",
+   "duration": 259224,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135445",
+   "index": 4,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 20 in G-Dur, Op. 49,2: Tempo Di Menuetto",
+   "duration": 191840,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135446",
+   "index": 5,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 24 in Fis-Dur, Op. 78: Adagio Cantabile - Allegro Ma Non Troppo",
+   "duration": 379929,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135447",
+   "index": 6,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 24 in Fis-Dur, Op. 78: Allegro Vivace",
+   "duration": 173195,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135448",
+   "index": 7,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 25 in G-Dur, Op. 79: Presto Alla Tedesca",
+   "duration": 270585,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135449",
+   "index": 8,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 25 in G-Dur, Op. 79: Andante",
+   "duration": 155023,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135450",
+   "index": 9,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 25 in G-Dur, Op. 79: Vivace",
+   "duration": 111614,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135451",
+   "index": 10,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 28 in A-Dur, Op. 101: Etwas Lebhaft Und Mit Der Innigsten Empfindung (Allegretto Ma Non Troppo)",
+   "duration": 220802,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135452",
+   "index": 11,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 28 in A-Dur, Op. 101: Lebhaft. Marschmäßig (Vivace Alla Marcia)",
+   "duration": 385918,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135453",
+   "index": 12,
+   "parentIndex": 8,
+   "title": "Klaviersonate Nr. 28 in A-Dur, Op. 101: Langsam Und Sehnsuchtsvoll (Adagio Ma Non Troppo, Con Affetto - Presto)",
+   "duration": 593730,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135454",
+   "index": 1,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 21 in C-Dur, Op. 53 „Waldstein“: Allegro Con Brio",
+   "duration": 564657,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135455",
+   "index": 2,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 21 in C-Dur, Op. 53 „Waldstein“: Introduzione Adagio Molto",
+   "duration": 164923,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135456",
+   "index": 3,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 21 in C-Dur, Op. 53 „Waldstein“: Rondo Allegro Moderato - Prestissimo",
+   "duration": 503113,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135457",
+   "index": 4,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 26 in Es-Dur, Op. 81a „Les Adieux“: Das Lebewohl (Les Adieux) - Adagio - Allegro",
+   "duration": 357442,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135458",
+   "index": 5,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 26 in Es-Dur, Op. 81a „Les Adieux“: Die Abwesenheit (L'Absence) - Andante Espressivo",
+   "duration": 198268,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135459",
+   "index": 6,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 26 in Es-Dur, Op. 81a „Les Adieux“: Wiedersehen (Le Retour) - Vivacissimente - Poco Andante",
+   "duration": 306503,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135460",
+   "index": 7,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 13 in Es-Dur, Op. 27,1 („Sonata quasi una fantasia“): Andante - Allegro",
+   "duration": 303441,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135461",
+   "index": 8,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 13 in Es-Dur, Op. 27,1 („Sonata quasi una fantasia“): Allegro Molto E Vivace",
+   "duration": 109223,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135462",
+   "index": 9,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 13 in Es-Dur, Op. 27,1 („Sonata quasi una fantasia“): Adagio Con Espressione",
+   "duration": 150015,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135463",
+   "index": 10,
+   "parentIndex": 9,
+   "title": "Klaviersonate Nr. 13 in Es-Dur, Op. 27,1 („Sonata quasi una fantasia“): Allegro Vivace",
+   "duration": 302887,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135464",
+   "index": 1,
+   "parentIndex": 10,
+   "title": "Klaviersonate Nr. 29 in B-Dur, Op. 106, Große Sonate für das Hammerklavier: Allegro Vivace",
+   "duration": 567558,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135465",
+   "index": 2,
+   "parentIndex": 10,
+   "title": "Klaviersonate Nr. 29 in B-Dur, Op. 106, Große Sonate für das Hammerklavier: Scherzo- Assai Vivace - Presto",
+   "duration": 138984,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135466",
+   "index": 3,
+   "parentIndex": 10,
+   "title": "Klaviersonate Nr. 29 in B-Dur, Op. 106, Große Sonate für das Hammerklavier: Adagio Sostenuto",
+   "duration": 822992,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135467",
+   "index": 4,
+   "parentIndex": 10,
+   "title": "Klaviersonate Nr. 29 in B-Dur, Op. 106, Große Sonate für das Hammerklavier: Largo - Allegro Risoluto",
+   "duration": 691962,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135468",
+   "index": 5,
+   "parentIndex": 10,
+   "title": "Klaviersonate Nr. 30 in E-Dur, Op. 109: Vivace Ma Non Troppo - Adagio Espressivo - Prestissimo",
+   "duration": 347844,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135469",
+   "index": 6,
+   "parentIndex": 10,
+   "title": "Klaviersonate Nr. 30 in E-Dur, Op. 109: Gesangvoll, Mit Innigster Empfindung (Andante, Molto Cantabile Ed Espressivo)",
+   "duration": 664379,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135470",
+   "index": 1,
+   "parentIndex": 11,
+   "title": "Klaviersonate Nr. 31 in As-Dur, Op. 110: Moderato Cantabile, Molto Espressivo",
+   "duration": 366095,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135471",
+   "index": 2,
+   "parentIndex": 11,
+   "title": "Klaviersonate Nr. 31 in As-Dur, Op. 110: Allegro Molto",
+   "duration": 111515,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135472",
+   "index": 3,
+   "parentIndex": 11,
+   "title": "Klaviersonate Nr. 31 in As-Dur, Op. 110: Adagio Ma Non Troppo - Fuga- Allegro Ma Non Troppo",
+   "duration": 548400,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135473",
+   "index": 4,
+   "parentIndex": 11,
+   "title": "Klaviersonate Nr. 32 in c-Moll, Op. 111: Maestoso - Allegro Con Brio Ed Appassionato",
+   "duration": 515035,
+   "originalTitle": null,
+   "guids": []
+  },
+  {
+   "ratingKey": "135474",
+   "index": 5,
+   "parentIndex": 11,
+   "title": "Klaviersonate Nr. 32 in c-Moll, Op. 111: Arietta - Adagio Molto, Semplice E Cantabile",
+   "duration": 934163,
+   "originalTitle": null,
+   "guids": []
+  }
+ ]
+}
