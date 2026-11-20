@@ -1,0 +1,23 @@
+import { afterEach, expect, it, vi } from 'vitest'
+vi.mock('./store.js', () => ({ getActiveAccountId: () => 'a', getAccountInfo: () => ({ username: 'owner' }), getTaggerApiKey: () => 'test', getTaggerUrl: () => 'https://tagger.test' }))
+vi.mock('./library-snapshot.js', () => ({ librarySnapshot: { allAlbums: async () => [] } }))
+afterEach(() => { vi.unstubAllGlobals(); vi.resetModules() })
+it('public builds make no private history network requests for any endpoint', async () => {
+  vi.stubGlobal('__PUBLIC_BUILD__', true)
+  const fetch = vi.fn(); vi.stubGlobal('fetch', fetch)
+  const api = await import('./listening-history')
+  expect(await api.historySummary()).toBeNull()
+  expect(await api.historyTop({ dimension: 'artists', start: null, end: null, limit: 500 })).toBeNull()
+  expect(await api.historyReview({ start: 1, end: 2 })).toBeNull()
+  expect(await api.historyArtist({ artist: 'One', start: null, end: null })).toBeNull()
+  expect(await api.historyItem({ artist: 'One' })).toBeNull()
+  expect(fetch).not.toHaveBeenCalled()
+})
+it('passes artist/window filters and allows 500 personal results', async () => {
+  vi.stubGlobal('__PUBLIC_BUILD__', false)
+  const fetch = vi.fn(async (_url: URL) => ({ ok: true, json: async () => ({ entries: [] }) })); vi.stubGlobal('fetch', fetch)
+  const { historyTop } = await import('./listening-history')
+  await historyTop({ dimension: 'albums', artist: 'Björk', start: 100, end: 200, limit: 900 })
+  const url = new URL(fetch.mock.calls[0][0])
+  expect(Object.fromEntries(url.searchParams)).toEqual({ dim: 'albums', artist: 'Björk', start: '100', end: '200', limit: '500' })
+})

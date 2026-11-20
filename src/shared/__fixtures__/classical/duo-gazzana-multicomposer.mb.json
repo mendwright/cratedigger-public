@@ -1,0 +1,3562 @@
+{
+ "disambiguation": "",
+ "date": "2026-04-17",
+ "barcode": "00028948794652",
+ "packaging": "None",
+ "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+ "release-events": [
+  {
+   "area": {
+    "sort-name": "[Worldwide]",
+    "iso-3166-1-codes": [
+     "XW"
+    ],
+    "name": "[Worldwide]",
+    "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
+    "disambiguation": "",
+    "type": null,
+    "type-id": null
+   },
+   "date": "2026-04-17"
+  }
+ ],
+ "status": "Official",
+ "quality": "normal",
+ "relations": [
+  {
+   "artist": {
+    "type": "Person",
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+    "disambiguation": "",
+    "name": "Sascha Kleis",
+    "country": "DE",
+    "id": "d58b04aa-0d43-40b2-bc3b-373d612938d8",
+    "sort-name": "Kleis, Sascha"
+   },
+   "attributes": [],
+   "direction": "backward",
+   "end": null,
+   "ended": false,
+   "source-credit": "",
+   "target-type": "artist",
+   "begin": null,
+   "attribute-values": {},
+   "type": "design",
+   "target-credit": "",
+   "type-id": "9c02ea37-7680-4fb5-8555-e330c7aa885b",
+   "attribute-ids": {}
+  },
+  {
+   "artist": {
+    "type-id": null,
+    "type": null,
+    "disambiguation": "",
+    "name": "Stefano Catucci",
+    "id": "1e11e9f1-8e78-4267-8c9c-d0e27b5f7aac",
+    "country": null,
+    "sort-name": "Catucci, Stefano"
+   },
+   "direction": "backward",
+   "attributes": [],
+   "source-credit": "",
+   "end": null,
+   "ended": false,
+   "target-type": "artist",
+   "begin": null,
+   "attribute-ids": {},
+   "type-id": "01323b4f-7aba-410c-8c91-cb224b963a40",
+   "target-credit": "",
+   "type": "liner notes",
+   "attribute-values": {}
+  },
+  {
+   "artist": {
+    "name": "Burkhart Kroeber",
+    "id": "c6731635-2d05-467a-85c4-2ba58f16066b",
+    "country": null,
+    "sort-name": "Kroeber, Burkhart",
+    "type": "Person",
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+    "disambiguation": ""
+   },
+   "direction": "backward",
+   "attributes": [
+    "translator"
+   ],
+   "source-credit": "",
+   "end": null,
+   "ended": false,
+   "target-type": "artist",
+   "begin": null,
+   "attribute-ids": {
+    "translator": "25dfb08e-9b99-44db-b30c-1d6ec6747af8"
+   },
+   "type-id": "01323b4f-7aba-410c-8c91-cb224b963a40",
+   "target-credit": "",
+   "attribute-values": {},
+   "type": "liner notes"
+  },
+  {
+   "target-type": "artist",
+   "begin": null,
+   "type-id": "01323b4f-7aba-410c-8c91-cb224b963a40",
+   "target-credit": "",
+   "attribute-ids": {
+    "translator": "25dfb08e-9b99-44db-b30c-1d6ec6747af8"
+   },
+   "attribute-values": {},
+   "type": "liner notes",
+   "artist": {
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+    "type": "Person",
+    "disambiguation": "",
+    "country": null,
+    "id": "ae25fbed-a8d9-4cba-988b-432728ac3d7c",
+    "name": "Alastair McEwen",
+    "sort-name": "McEwen, Alastair"
+   },
+   "direction": "backward",
+   "attributes": [
+    "translator"
+   ],
+   "source-credit": "",
+   "end": null,
+   "ended": false
+  },
+  {
+   "target-type": "artist",
+   "begin": null,
+   "attribute-ids": {},
+   "type-id": "0b58dc9b-9c49-4b19-bb58-9c06d41c8fbf",
+   "target-credit": "",
+   "attribute-values": {},
+   "type": "photography",
+   "artist": {
+    "disambiguation": "photographer",
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+    "type": "Person",
+    "sort-name": "Di Perri, Caterina",
+    "country": "IT",
+    "id": "136efd33-02a9-42da-9823-3572f908c883",
+    "name": "Caterina Di Perri"
+   },
+   "direction": "backward",
+   "attributes": [],
+   "ended": false,
+   "end": null,
+   "source-credit": ""
+  },
+  {
+   "artist": {
+    "sort-name": "Kenna, Michael",
+    "name": "Michael Kenna",
+    "country": "GB",
+    "id": "f4995b44-ed68-4a3a-a7c2-308a21b1abdf",
+    "disambiguation": "",
+    "type": "Person",
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+   },
+   "direction": "backward",
+   "attributes": [
+    "task"
+   ],
+   "source-credit": "",
+   "ended": false,
+   "end": null,
+   "target-type": "artist",
+   "begin": null,
+   "attribute-ids": {
+    "task": "39867b3b-0f1e-40d5-b602-4f3936b7f486"
+   },
+   "type-id": "0b58dc9b-9c49-4b19-bb58-9c06d41c8fbf",
+   "target-credit": "",
+   "attribute-values": {
+    "task": "cover"
+   },
+   "type": "photography"
+  },
+  {
+   "artist": {
+    "disambiguation": "",
+    "type": "Person",
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+    "sort-name": "Klotzeck, Hubert",
+    "name": "Hubert Klotzeck",
+    "id": "2df50733-488d-4f76-b588-5f0c1ec819d7",
+    "country": null
+   },
+   "attributes": [
+    "task"
+   ],
+   "direction": "backward",
+   "source-credit": "",
+   "ended": false,
+   "end": null,
+   "target-type": "artist",
+   "begin": null,
+   "attribute-values": {
+    "task": "p. 23"
+   },
+   "type": "photography",
+   "type-id": "0b58dc9b-9c49-4b19-bb58-9c06d41c8fbf",
+   "attribute-ids": {
+    "task": "39867b3b-0f1e-40d5-b602-4f3936b7f486"
+   },
+   "target-credit": ""
+  },
+  {
+   "target-credit": "",
+   "type-id": "0b58dc9b-9c49-4b19-bb58-9c06d41c8fbf",
+   "attribute-ids": {
+    "task": "39867b3b-0f1e-40d5-b602-4f3936b7f486"
+   },
+   "attribute-values": {
+    "task": "p. 5"
+   },
+   "type": "photography",
+   "target-type": "artist",
+   "begin": null,
+   "direction": "backward",
+   "attributes": [
+    "task"
+   ],
+   "source-credit": "",
+   "ended": false,
+   "end": null,
+   "artist": {
+    "sort-name": "Valencia, Mario",
+    "country": null,
+    "id": "505c0121-af86-4e34-b813-7869a5298847",
+    "name": "Mario Valencia",
+    "disambiguation": "",
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+    "type": "Person"
+   }
+  }
+ ],
+ "title": "Prokofiev / Pärt / Schnittke",
+ "media": [
+  {
+   "position": 1,
+   "tracks": [
+    {
+     "recording": {
+      "id": "f69c25eb-90e8-4fab-bba5-8687f02a0440",
+      "first-release-date": "2026-04-17",
+      "length": 389000,
+      "artist-credit": [
+       {
+        "joinphrase": "",
+        "artist": {
+         "sort-name": "Duo Gazzana",
+         "name": "Duo Gazzana",
+         "country": "IT",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "disambiguation": "",
+         "type": "Group",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+        },
+        "name": "Duo Gazzana"
+       }
+      ],
+      "relations": [
+       {
+        "target-type": "artist",
+        "begin": null,
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "attribute-ids": {},
+        "target-credit": "",
+        "attribute-values": {},
+        "type": "balance",
+        "artist": {
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": "",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235",
+         "country": "DE",
+         "name": "Markus Heiland",
+         "sort-name": "Heiland, Markus"
+        },
+        "direction": "backward",
+        "attributes": [],
+        "ended": false,
+        "end": null,
+        "source-credit": ""
+       },
+       {
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-values": {},
+        "type": "instrument",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "target-type": "artist",
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "direction": "backward",
+        "attributes": [
+         "violin"
+        ],
+        "artist": {
+         "sort-name": "Gazzana, Natascia",
+         "name": "Natascia Gazzana",
+         "country": "IT",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person"
+        }
+       },
+       {
+        "artist": {
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "sort-name": "Gazzana, Raffaella",
+         "country": "IT",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "name": "Raffaella Gazzana"
+        },
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "attributes": [
+         "piano"
+        ],
+        "direction": "backward",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "target-type": "artist",
+        "attribute-values": {},
+        "type": "instrument",
+        "target-credit": "",
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461"
+       },
+       {
+        "begin": null,
+        "target-type": "artist",
+        "attribute-values": {},
+        "type": "mix",
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "target-credit": "",
+        "artist": {
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "sort-name": "Eicher, Manfred",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "name": "Manfred Eicher"
+        },
+        "end": null,
+        "ended": false,
+        "source-credit": "",
+        "attributes": [],
+        "direction": "backward"
+       },
+       {
+        "artist": {
+         "sort-name": "Hinreiner, Michael",
+         "name": "Michael Hinreiner",
+         "country": null,
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "disambiguation": "German sound engineer",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "direction": "backward",
+        "attributes": [],
+        "begin": null,
+        "target-type": "artist",
+        "target-credit": "",
+        "attribute-ids": {},
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "type": "mix",
+        "attribute-values": {}
+       },
+       {
+        "target-type": "artist",
+        "begin": null,
+        "type": "producer",
+        "attribute-values": {},
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "attribute-ids": {},
+        "target-credit": "",
+        "artist": {
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": "",
+         "name": "Manfred Eicher",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "sort-name": "Eicher, Manfred"
+        },
+        "attributes": [],
+        "direction": "backward",
+        "source-credit": "",
+        "ended": false,
+        "end": null
+       },
+       {
+        "work": {
+         "attributes": [],
+         "type": null,
+         "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: I. Andante assai",
+         "relations": [
+          {
+           "begin": "1938",
+           "target-type": "artist",
+           "target-credit": "",
+           "attribute-ids": {},
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "type": "composer",
+           "attribute-values": {},
+           "artist": {
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "type": "Person",
+            "disambiguation": "Russian composer",
+            "country": "RU",
+            "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+            "name": "Сергей Сергеевич Прокофьев",
+            "sort-name": "Prokofiev, Sergei Sergeyevich"
+           },
+           "source-credit": "",
+           "ended": true,
+           "end": "1946",
+           "direction": "backward",
+           "attributes": []
+          },
+          {
+           "work": {
+            "languages": [],
+            "iswcs": [],
+            "id": "ed14e354-3d33-47b0-8a40-63f560940447",
+            "disambiguation": "catch-all for arrangements",
+            "attributes": [],
+            "type": null,
+            "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: I. Andante assai",
+            "language": null,
+            "type-id": null
+           },
+           "attributes": [],
+           "direction": "forward",
+           "ended": false,
+           "end": null,
+           "source-credit": "",
+           "target-type": "work",
+           "begin": null,
+           "type": "arrangement",
+           "attribute-values": {},
+           "attribute-ids": {},
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "target-credit": ""
+          },
+          {
+           "ordering-key": 1,
+           "target-type": "work",
+           "begin": null,
+           "attribute-ids": {
+            "movement": "1d05bc4b-9884-4c9f-9f69-616f119047f3"
+           },
+           "target-credit": "",
+           "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+           "type": "parts",
+           "attribute-values": {},
+           "work": {
+            "iswcs": [],
+            "id": "8ebb47bc-da48-427a-8d54-a3940d28ede7",
+            "languages": [],
+            "type": "Sonata",
+            "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80",
+            "attributes": [],
+            "language": null,
+            "type-id": "294ff9f2-3d64-3483-96fb-f362b5fce2a0",
+            "disambiguation": ""
+           },
+           "direction": "backward",
+           "attributes": [
+            "movement"
+           ],
+           "end": null,
+           "ended": false,
+           "source-credit": ""
+          }
+         ],
+         "language": "zxx",
+         "type-id": null,
+         "disambiguation": "",
+         "iswcs": [],
+         "id": "4483b9be-d14f-3c13-ba91-e468c3eae8a3",
+         "languages": [
+          "zxx"
+         ]
+        },
+        "direction": "forward",
+        "attributes": [],
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02",
+        "target-type": "work",
+        "begin": "2025-02",
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "attribute-ids": {},
+        "target-credit": "",
+        "type": "performance",
+        "attribute-values": {}
+       }
+      ],
+      "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: I. Andante assai",
+      "video": false,
+      "disambiguation": ""
+     },
+     "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: I. Andante assai",
+     "number": "1",
+     "id": "6988bf71-394d-4672-966a-5868d5ba3d2d",
+     "length": 389000,
+     "artist-credit": [
+      {
+       "name": "Sergei Prokofiev",
+       "artist": {
+        "disambiguation": "Russian composer",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "type": "Person",
+        "sort-name": "Prokofiev, Sergei Sergeyevich",
+        "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+        "country": "RU",
+        "name": "Сергей Сергеевич Прокофьев"
+       },
+       "joinphrase": ""
+      }
+     ],
+     "position": 1
+    },
+    {
+     "position": 2,
+     "artist-credit": [
+      {
+       "name": "Sergei Prokofiev",
+       "artist": {
+        "sort-name": "Prokofiev, Sergei Sergeyevich",
+        "name": "Сергей Сергеевич Прокофьев",
+        "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+        "country": "RU",
+        "disambiguation": "Russian composer",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "type": "Person"
+       },
+       "joinphrase": ""
+      }
+     ],
+     "length": 422000,
+     "id": "af1f0fa3-1f97-42cb-a58e-1b93be87a637",
+     "number": "2",
+     "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: II. Allegro brusco",
+     "recording": {
+      "disambiguation": "",
+      "relations": [
+       {
+        "target-type": "artist",
+        "begin": null,
+        "attribute-values": {},
+        "type": "balance",
+        "target-credit": "",
+        "attribute-ids": {},
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "artist": {
+         "name": "Markus Heiland",
+         "country": "DE",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235",
+         "sort-name": "Heiland, Markus",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": ""
+        },
+        "attributes": [],
+        "direction": "backward",
+        "source-credit": "",
+        "ended": false,
+        "end": null
+       },
+       {
+        "artist": {
+         "sort-name": "Gazzana, Natascia",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "country": "IT",
+         "name": "Natascia Gazzana",
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person"
+        },
+        "direction": "backward",
+        "attributes": [
+         "violin"
+        ],
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02",
+        "target-type": "artist",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-values": {},
+        "type": "instrument"
+       },
+       {
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "",
+         "name": "Raffaella Gazzana",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "country": "IT",
+         "sort-name": "Gazzana, Raffaella"
+        },
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02",
+        "attributes": [
+         "piano"
+        ],
+        "direction": "backward",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "target-type": "artist",
+        "attribute-values": {},
+        "type": "instrument",
+        "target-credit": "",
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461"
+       },
+       {
+        "attributes": [],
+        "direction": "backward",
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "artist": {
+         "sort-name": "Eicher, Manfred",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "name": "Manfred Eicher",
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "attribute-values": {},
+        "type": "mix",
+        "target-credit": "",
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "target-type": "artist",
+        "begin": null
+       },
+       {
+        "artist": {
+         "sort-name": "Hinreiner, Michael",
+         "name": "Michael Hinreiner",
+         "country": null,
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "disambiguation": "German sound engineer",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person"
+        },
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "attributes": [],
+        "direction": "backward",
+        "begin": null,
+        "target-type": "artist",
+        "attribute-values": {},
+        "type": "mix",
+        "attribute-ids": {},
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "target-credit": ""
+       },
+       {
+        "begin": null,
+        "target-type": "artist",
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "target-credit": "",
+        "attribute-ids": {},
+        "type": "producer",
+        "attribute-values": {},
+        "artist": {
+         "name": "Manfred Eicher",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "sort-name": "Eicher, Manfred",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": ""
+        },
+        "end": null,
+        "ended": false,
+        "source-credit": "",
+        "direction": "backward",
+        "attributes": []
+       },
+       {
+        "attributes": [],
+        "direction": "forward",
+        "ended": true,
+        "end": "2025-02",
+        "source-credit": "",
+        "work": {
+         "languages": [
+          "zxx"
+         ],
+         "iswcs": [],
+         "id": "318da2a5-b76f-3bd0-a046-fb4c846e173b",
+         "disambiguation": "",
+         "language": "zxx",
+         "type-id": null,
+         "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: II. Allegro brusco",
+         "type": null,
+         "attributes": [],
+         "relations": [
+          {
+           "type": "composer",
+           "attribute-values": {},
+           "attribute-ids": {},
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "target-credit": "",
+           "target-type": "artist",
+           "begin": "1938",
+           "attributes": [],
+           "direction": "backward",
+           "source-credit": "",
+           "end": "1946",
+           "ended": true,
+           "artist": {
+            "name": "Сергей Сергеевич Прокофьев",
+            "country": "RU",
+            "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+            "sort-name": "Prokofiev, Sergei Sergeyevich",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "type": "Person",
+            "disambiguation": "Russian composer"
+           }
+          },
+          {
+           "type": "arrangement",
+           "attribute-values": {},
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "target-credit": "",
+           "attribute-ids": {},
+           "target-type": "work",
+           "begin": null,
+           "attributes": [],
+           "direction": "forward",
+           "ended": false,
+           "end": null,
+           "source-credit": "",
+           "work": {
+            "disambiguation": "catch-all for arrangements",
+            "language": null,
+            "type-id": null,
+            "type": null,
+            "attributes": [],
+            "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: II. Allegro brusco",
+            "languages": [],
+            "id": "72bcfca6-99c8-46e8-bb6a-bf4874c09c2f",
+            "iswcs": []
+           }
+          },
+          {
+           "target-type": "work",
+           "ordering-key": 2,
+           "begin": null,
+           "type": "parts",
+           "attribute-values": {},
+           "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+           "target-credit": "",
+           "attribute-ids": {
+            "movement": "1d05bc4b-9884-4c9f-9f69-616f119047f3"
+           },
+           "work": {
+            "languages": [],
+            "iswcs": [],
+            "id": "8ebb47bc-da48-427a-8d54-a3940d28ede7",
+            "disambiguation": "",
+            "type-id": "294ff9f2-3d64-3483-96fb-f362b5fce2a0",
+            "language": null,
+            "type": "Sonata",
+            "attributes": [],
+            "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80"
+           },
+           "attributes": [
+            "movement"
+           ],
+           "direction": "backward",
+           "ended": false,
+           "end": null,
+           "source-credit": ""
+          }
+         ]
+        },
+        "attribute-values": {},
+        "type": "performance",
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "attribute-ids": {},
+        "target-credit": "",
+        "target-type": "work",
+        "begin": "2025-02"
+       }
+      ],
+      "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: II. Allegro brusco",
+      "video": false,
+      "artist-credit": [
+       {
+        "name": "Duo Gazzana",
+        "artist": {
+         "sort-name": "Duo Gazzana",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "country": "IT",
+         "name": "Duo Gazzana",
+         "disambiguation": "",
+         "type": "Group",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+        },
+        "joinphrase": ""
+       }
+      ],
+      "id": "0b4aec52-cf1c-4d19-9090-9377f8ac9f8d",
+      "length": 421000,
+      "first-release-date": "2026-04-17"
+     }
+    },
+    {
+     "id": "11f9e535-ec76-48e1-8b09-dc70c1a41323",
+     "length": 429000,
+     "position": 3,
+     "artist-credit": [
+      {
+       "joinphrase": "",
+       "artist": {
+        "sort-name": "Prokofiev, Sergei Sergeyevich",
+        "name": "Сергей Сергеевич Прокофьев",
+        "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+        "country": "RU",
+        "disambiguation": "Russian composer",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "type": "Person"
+       },
+       "name": "Sergei Prokofiev"
+      }
+     ],
+     "recording": {
+      "disambiguation": "",
+      "relations": [
+       {
+        "target-type": "artist",
+        "begin": null,
+        "target-credit": "",
+        "attribute-ids": {},
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "type": "balance",
+        "attribute-values": {},
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "",
+         "name": "Markus Heiland",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235",
+         "country": "DE",
+         "sort-name": "Heiland, Markus"
+        },
+        "direction": "backward",
+        "attributes": [],
+        "ended": false,
+        "end": null,
+        "source-credit": ""
+       },
+       {
+        "end": "2025-02",
+        "ended": true,
+        "source-credit": "",
+        "direction": "backward",
+        "attributes": [
+         "violin"
+        ],
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "",
+         "name": "Natascia Gazzana",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "country": "IT",
+         "sort-name": "Gazzana, Natascia"
+        },
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "target-credit": "",
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "attribute-values": {},
+        "type": "instrument",
+        "attribute-credits": {},
+        "begin": "2025-02",
+        "target-type": "artist"
+       },
+       {
+        "type": "instrument",
+        "attribute-values": {},
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "target-credit": "",
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "target-type": "artist",
+        "attribute-credits": {},
+        "begin": "2025-02",
+        "attributes": [
+         "piano"
+        ],
+        "direction": "backward",
+        "ended": true,
+        "end": "2025-02",
+        "source-credit": "",
+        "artist": {
+         "name": "Raffaella Gazzana",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "country": "IT",
+         "sort-name": "Gazzana, Raffaella",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": ""
+        }
+       },
+       {
+        "target-type": "artist",
+        "begin": null,
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "target-credit": "",
+        "attribute-values": {},
+        "type": "mix",
+        "artist": {
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": "",
+         "name": "Manfred Eicher",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "sort-name": "Eicher, Manfred"
+        },
+        "direction": "backward",
+        "attributes": [],
+        "source-credit": "",
+        "end": null,
+        "ended": false
+       },
+       {
+        "attribute-values": {},
+        "type": "mix",
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "target-credit": "",
+        "target-type": "artist",
+        "begin": null,
+        "attributes": [],
+        "direction": "backward",
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "artist": {
+         "sort-name": "Hinreiner, Michael",
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "country": null,
+         "name": "Michael Hinreiner",
+         "disambiguation": "German sound engineer",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        }
+       },
+       {
+        "artist": {
+         "sort-name": "Eicher, Manfred",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "name": "Manfred Eicher",
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "attributes": [],
+        "direction": "backward",
+        "begin": null,
+        "target-type": "artist",
+        "attribute-values": {},
+        "type": "producer",
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "attribute-ids": {},
+        "target-credit": ""
+       },
+       {
+        "ended": true,
+        "end": "2025-02",
+        "source-credit": "",
+        "attributes": [],
+        "direction": "forward",
+        "work": {
+         "relations": [
+          {
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "attribute-ids": {},
+           "target-credit": "",
+           "type": "composer",
+           "attribute-values": {},
+           "target-type": "artist",
+           "begin": "1938",
+           "direction": "backward",
+           "attributes": [],
+           "ended": true,
+           "end": "1946",
+           "source-credit": "",
+           "artist": {
+            "disambiguation": "Russian composer",
+            "type": "Person",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "sort-name": "Prokofiev, Sergei Sergeyevich",
+            "name": "Сергей Сергеевич Прокофьев",
+            "country": "RU",
+            "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1"
+           }
+          },
+          {
+           "begin": null,
+           "target-type": "work",
+           "type": "arrangement",
+           "attribute-values": {},
+           "target-credit": "",
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "attribute-ids": {},
+           "work": {
+            "disambiguation": "catch-all for arrangements",
+            "type": null,
+            "attributes": [],
+            "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: III. Andante",
+            "language": null,
+            "type-id": null,
+            "languages": [],
+            "id": "b85c7a23-d324-4dd5-8831-cbd849232b2a",
+            "iswcs": []
+           },
+           "source-credit": "",
+           "ended": false,
+           "end": null,
+           "attributes": [],
+           "direction": "forward"
+          },
+          {
+           "work": {
+            "language": null,
+            "type-id": "294ff9f2-3d64-3483-96fb-f362b5fce2a0",
+            "type": "Sonata",
+            "attributes": [],
+            "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80",
+            "disambiguation": "",
+            "id": "8ebb47bc-da48-427a-8d54-a3940d28ede7",
+            "iswcs": [],
+            "languages": []
+           },
+           "end": null,
+           "ended": false,
+           "source-credit": "",
+           "direction": "backward",
+           "attributes": [
+            "movement"
+           ],
+           "begin": null,
+           "target-type": "work",
+           "ordering-key": 3,
+           "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+           "target-credit": "",
+           "attribute-ids": {
+            "movement": "1d05bc4b-9884-4c9f-9f69-616f119047f3"
+           },
+           "type": "parts",
+           "attribute-values": {}
+          }
+         ],
+         "attributes": [],
+         "type": null,
+         "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: III. Andante",
+         "language": "zxx",
+         "type-id": null,
+         "disambiguation": "",
+         "id": "4a118853-fe01-3302-9b87-85b90106ab6f",
+         "iswcs": [],
+         "languages": [
+          "zxx"
+         ]
+        },
+        "attribute-values": {},
+        "type": "performance",
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "attribute-ids": {},
+        "target-credit": "",
+        "begin": "2025-02",
+        "target-type": "work"
+       }
+      ],
+      "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: III. Andante",
+      "video": false,
+      "artist-credit": [
+       {
+        "name": "Duo Gazzana",
+        "joinphrase": "",
+        "artist": {
+         "name": "Duo Gazzana",
+         "country": "IT",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "sort-name": "Duo Gazzana",
+         "type": "Group",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+         "disambiguation": ""
+        }
+       }
+      ],
+      "id": "89c4dbd9-b61b-48a9-a8d1-0baf9793d8e1",
+      "first-release-date": "2026-04-17",
+      "length": 426000
+     },
+     "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: III. Andante",
+     "number": "3"
+    },
+    {
+     "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: IV. Allegrissimo",
+     "recording": {
+      "disambiguation": "",
+      "video": false,
+      "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: IV. Allegrissimo",
+      "relations": [
+       {
+        "attribute-values": {},
+        "type": "balance",
+        "attribute-ids": {},
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "target-credit": "",
+        "target-type": "artist",
+        "begin": null,
+        "attributes": [],
+        "direction": "backward",
+        "source-credit": "",
+        "ended": false,
+        "end": null,
+        "artist": {
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "sort-name": "Heiland, Markus",
+         "name": "Markus Heiland",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235",
+         "country": "DE"
+        }
+       },
+       {
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "type": "instrument",
+        "attribute-values": {},
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "target-type": "artist",
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02",
+        "direction": "backward",
+        "attributes": [
+         "violin"
+        ],
+        "artist": {
+         "sort-name": "Gazzana, Natascia",
+         "country": "IT",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "name": "Natascia Gazzana",
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        }
+       },
+       {
+        "target-type": "artist",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-values": {},
+        "type": "instrument",
+        "artist": {
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "sort-name": "Gazzana, Raffaella",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "country": "IT",
+         "name": "Raffaella Gazzana"
+        },
+        "direction": "backward",
+        "attributes": [
+         "piano"
+        ],
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02"
+       },
+       {
+        "target-type": "artist",
+        "begin": null,
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "target-credit": "",
+        "attribute-values": {},
+        "type": "mix",
+        "artist": {
+         "name": "Manfred Eicher",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "country": "DE",
+         "sort-name": "Eicher, Manfred",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": ""
+        },
+        "direction": "backward",
+        "attributes": [],
+        "end": null,
+        "ended": false,
+        "source-credit": ""
+       },
+       {
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "direction": "backward",
+        "attributes": [],
+        "artist": {
+         "disambiguation": "German sound engineer",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "sort-name": "Hinreiner, Michael",
+         "name": "Michael Hinreiner",
+         "country": null,
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37"
+        },
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "target-credit": "",
+        "attribute-ids": {},
+        "type": "mix",
+        "attribute-values": {},
+        "begin": null,
+        "target-type": "artist"
+       },
+       {
+        "begin": null,
+        "target-type": "artist",
+        "attribute-ids": {},
+        "target-credit": "",
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "type": "producer",
+        "attribute-values": {},
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "",
+         "name": "Manfred Eicher",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "sort-name": "Eicher, Manfred"
+        },
+        "source-credit": "",
+        "ended": false,
+        "end": null,
+        "direction": "backward",
+        "attributes": []
+       },
+       {
+        "work": {
+         "id": "81128a48-82ac-36d7-9c5a-951ddcdeafa5",
+         "iswcs": [],
+         "languages": [
+          "zxx"
+         ],
+         "language": "zxx",
+         "type-id": null,
+         "relations": [
+          {
+           "direction": "backward",
+           "attributes": [],
+           "source-credit": "",
+           "end": "1946",
+           "ended": true,
+           "artist": {
+            "sort-name": "Prokofiev, Sergei Sergeyevich",
+            "name": "Сергей Сергеевич Прокофьев",
+            "country": "RU",
+            "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+            "disambiguation": "Russian composer",
+            "type": "Person",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+           },
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "attribute-ids": {},
+           "target-credit": "",
+           "type": "composer",
+           "attribute-values": {},
+           "target-type": "artist",
+           "begin": "1938"
+          },
+          {
+           "attribute-values": {},
+           "type": "arrangement",
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "attribute-ids": {},
+           "target-credit": "",
+           "target-type": "work",
+           "begin": null,
+           "attributes": [],
+           "direction": "forward",
+           "end": null,
+           "ended": false,
+           "source-credit": "",
+           "work": {
+            "type-id": null,
+            "language": null,
+            "type": null,
+            "attributes": [],
+            "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: IV. Allegrissimo",
+            "disambiguation": "catch-all for arrangements",
+            "id": "6288c17c-9c06-4bb6-9243-1858bb873dbf",
+            "iswcs": [],
+            "languages": []
+           }
+          },
+          {
+           "target-type": "work",
+           "ordering-key": 4,
+           "begin": null,
+           "attribute-values": {},
+           "type": "parts",
+           "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+           "target-credit": "",
+           "attribute-ids": {
+            "movement": "1d05bc4b-9884-4c9f-9f69-616f119047f3"
+           },
+           "work": {
+            "languages": [],
+            "id": "8ebb47bc-da48-427a-8d54-a3940d28ede7",
+            "iswcs": [],
+            "disambiguation": "",
+            "language": null,
+            "type-id": "294ff9f2-3d64-3483-96fb-f362b5fce2a0",
+            "type": "Sonata",
+            "attributes": [],
+            "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80"
+           },
+           "attributes": [
+            "movement"
+           ],
+           "direction": "backward",
+           "end": null,
+           "ended": false,
+           "source-credit": ""
+          }
+         ],
+         "attributes": [],
+         "type": null,
+         "title": "Sonata for Violin and Piano no. 1 in F minor, op. 80: IV. Allegrissimo",
+         "disambiguation": ""
+        },
+        "attributes": [],
+        "direction": "forward",
+        "ended": true,
+        "end": "2025-02",
+        "source-credit": "",
+        "target-type": "work",
+        "begin": "2025-02",
+        "type": "performance",
+        "attribute-values": {},
+        "attribute-ids": {},
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "target-credit": ""
+       }
+      ],
+      "artist-credit": [
+       {
+        "name": "Duo Gazzana",
+        "joinphrase": "",
+        "artist": {
+         "disambiguation": "",
+         "type": "Group",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+         "sort-name": "Duo Gazzana",
+         "country": "IT",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "name": "Duo Gazzana"
+        }
+       }
+      ],
+      "first-release-date": "2026-04-17",
+      "length": 459000,
+      "id": "e0b9b9fc-312b-4837-8005-af5f3f16253b"
+     },
+     "number": "4",
+     "id": "3a1ebd04-ed77-427d-88aa-c454f4a558ee",
+     "length": 460000,
+     "artist-credit": [
+      {
+       "artist": {
+        "sort-name": "Prokofiev, Sergei Sergeyevich",
+        "name": "Сергей Сергеевич Прокофьев",
+        "country": "RU",
+        "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+        "disambiguation": "Russian composer",
+        "type": "Person",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+       },
+       "joinphrase": "",
+       "name": "Sergei Prokofiev"
+      }
+     ],
+     "position": 4
+    },
+    {
+     "recording": {
+      "video": false,
+      "title": "Spiegel im Spiegel",
+      "relations": [
+       {
+        "begin": null,
+        "target-type": "artist",
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "target-credit": "",
+        "attribute-ids": {},
+        "attribute-values": {},
+        "type": "balance",
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "",
+         "name": "Markus Heiland",
+         "country": "DE",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235",
+         "sort-name": "Heiland, Markus"
+        },
+        "end": null,
+        "ended": false,
+        "source-credit": "",
+        "direction": "backward",
+        "attributes": []
+       },
+       {
+        "artist": {
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "sort-name": "Gazzana, Natascia",
+         "country": "IT",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "name": "Natascia Gazzana"
+        },
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "attributes": [
+         "violin"
+        ],
+        "direction": "backward",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "target-type": "artist",
+        "attribute-values": {},
+        "type": "instrument",
+        "target-credit": "",
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461"
+       },
+       {
+        "direction": "backward",
+        "attributes": [
+         "piano"
+        ],
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "artist": {
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "sort-name": "Gazzana, Raffaella",
+         "name": "Raffaella Gazzana",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "country": "IT"
+        },
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "type": "instrument",
+        "attribute-values": {},
+        "target-type": "artist",
+        "begin": "2025-02",
+        "attribute-credits": {}
+       },
+       {
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "target-credit": "",
+        "attribute-ids": {},
+        "attribute-values": {},
+        "type": "mix",
+        "begin": null,
+        "target-type": "artist",
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "direction": "backward",
+        "attributes": [],
+        "artist": {
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": "",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "country": "DE",
+         "name": "Manfred Eicher",
+         "sort-name": "Eicher, Manfred"
+        }
+       },
+       {
+        "end": null,
+        "ended": false,
+        "source-credit": "",
+        "attributes": [],
+        "direction": "backward",
+        "artist": {
+         "disambiguation": "German sound engineer",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "sort-name": "Hinreiner, Michael",
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "country": null,
+         "name": "Michael Hinreiner"
+        },
+        "attribute-values": {},
+        "type": "mix",
+        "attribute-ids": {},
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "target-credit": "",
+        "begin": null,
+        "target-type": "artist"
+       },
+       {
+        "target-type": "artist",
+        "begin": null,
+        "attribute-values": {},
+        "type": "producer",
+        "attribute-ids": {},
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "target-credit": "",
+        "artist": {
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "sort-name": "Eicher, Manfred",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "name": "Manfred Eicher"
+        },
+        "attributes": [],
+        "direction": "backward",
+        "source-credit": "",
+        "ended": false,
+        "end": null
+       },
+       {
+        "begin": "2025-02",
+        "target-type": "work",
+        "attribute-ids": {},
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "target-credit": "",
+        "attribute-values": {},
+        "type": "performance",
+        "work": {
+         "languages": [
+          "zxx"
+         ],
+         "id": "83e63350-646c-4e0a-a07b-bf40df54913f",
+         "iswcs": [],
+         "disambiguation": "for violin and piano",
+         "relations": [
+          {
+           "begin": "1978",
+           "target-type": "artist",
+           "type": "composer",
+           "attribute-values": {},
+           "target-credit": "",
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "attribute-ids": {},
+           "artist": {
+            "id": "ae0b2424-d4c5-4c54-82ac-fe3be5453270",
+            "country": "EE",
+            "name": "Arvo Pärt",
+            "sort-name": "Pärt, Arvo",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "type": "Person",
+            "disambiguation": "Estonian composer"
+           },
+           "end": "1978",
+           "ended": true,
+           "source-credit": "",
+           "attributes": [],
+           "direction": "backward"
+          },
+          {
+           "work": {
+            "id": "c82ae80f-b7cf-47b1-ad6c-f500fd9e61ab",
+            "iswcs": [],
+            "languages": [],
+            "type-id": null,
+            "language": null,
+            "type": null,
+            "attributes": [],
+            "title": "Spiegel im Spiegel",
+            "disambiguation": "for clarinet and piano"
+           },
+           "end": null,
+           "ended": false,
+           "source-credit": "",
+           "direction": "forward",
+           "attributes": [],
+           "begin": null,
+           "target-type": "work",
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "attribute-ids": {},
+           "target-credit": "",
+           "attribute-values": {},
+           "type": "arrangement"
+          },
+          {
+           "work": {
+            "disambiguation": "for viola and piano",
+            "type": null,
+            "title": "Spiegel im Spiegel",
+            "attributes": [],
+            "type-id": null,
+            "language": null,
+            "languages": [],
+            "id": "3b1697df-4fef-4f07-9cf4-2c0134bd4e6d",
+            "iswcs": []
+           },
+           "ended": false,
+           "end": null,
+           "source-credit": "",
+           "direction": "forward",
+           "attributes": [],
+           "begin": null,
+           "target-type": "work",
+           "attribute-ids": {},
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "target-credit": "",
+           "attribute-values": {},
+           "type": "arrangement"
+          },
+          {
+           "type": "arrangement",
+           "attribute-values": {},
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "target-credit": "",
+           "attribute-ids": {},
+           "target-type": "work",
+           "begin": null,
+           "attributes": [],
+           "direction": "forward",
+           "ended": false,
+           "end": null,
+           "source-credit": "",
+           "work": {
+            "language": null,
+            "type-id": null,
+            "attributes": [],
+            "type": null,
+            "title": "Spiegel im Spiegel",
+            "disambiguation": "for cello and piano",
+            "id": "8af195f4-38ea-4192-a5a3-defa4f2c60c4",
+            "iswcs": [],
+            "languages": []
+           }
+          },
+          {
+           "begin": null,
+           "target-type": "work",
+           "type": "arrangement",
+           "attribute-values": {},
+           "attribute-ids": {},
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "target-credit": "",
+           "work": {
+            "language": null,
+            "type-id": null,
+            "type": null,
+            "attributes": [],
+            "title": "Spiegel im Spiegel",
+            "disambiguation": "catch-all for arrangements",
+            "iswcs": [],
+            "id": "74cac45d-e516-4eb2-98d1-2cbc6a700c18",
+            "languages": []
+           },
+           "end": null,
+           "ended": false,
+           "source-credit": "",
+           "attributes": [],
+           "direction": "forward"
+          },
+          {
+           "work": {
+            "disambiguation": "for bassoon and piano",
+            "language": null,
+            "type-id": null,
+            "type": null,
+            "attributes": [],
+            "title": "Spiegel im Spiegel",
+            "languages": [],
+            "id": "d2b7459d-f821-4851-b6e1-32da8369f209",
+            "iswcs": []
+           },
+           "direction": "forward",
+           "attributes": [],
+           "source-credit": "",
+           "ended": false,
+           "end": null,
+           "target-type": "work",
+           "begin": null,
+           "attribute-ids": {},
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "target-credit": "",
+           "attribute-values": {},
+           "type": "arrangement"
+          },
+          {
+           "end": null,
+           "ended": false,
+           "source-credit": "",
+           "direction": "forward",
+           "attributes": [],
+           "work": {
+            "languages": [],
+            "id": "264c4a2b-e021-43b8-b4f0-bbcf70168531",
+            "iswcs": [],
+            "disambiguation": "for marimba and bells, Kuniko",
+            "type": null,
+            "attributes": [],
+            "title": "Spiegel im Spiegel",
+            "type-id": null,
+            "language": null
+           },
+           "attribute-ids": {},
+           "target-credit": "",
+           "type-id": "51975ed8-bbfa-486b-9f28-5947f4370299",
+           "type": "arrangement",
+           "attribute-values": {},
+           "begin": null,
+           "target-type": "work"
+          },
+          {
+           "direction": "forward",
+           "attributes": [],
+           "ended": false,
+           "end": null,
+           "source-credit": "",
+           "work": {
+            "disambiguation": "",
+            "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+            "language": null,
+            "type": "Song",
+            "attributes": [],
+            "title": "Limber Zeal",
+            "languages": [],
+            "id": "1beccb81-61bd-490e-81ed-97cc1591b599",
+            "iswcs": []
+           },
+           "type-id": "6bb1df6b-57f3-434d-8a39-5dc363d2eb78",
+           "target-credit": "",
+           "attribute-ids": {},
+           "attribute-values": {},
+           "type": "based on",
+           "target-type": "work",
+           "begin": null
+          }
+         ],
+         "attributes": [],
+         "type": null,
+         "title": "Spiegel im Spiegel",
+         "language": "zxx",
+         "type-id": null
+        },
+        "ended": true,
+        "end": "2025-02",
+        "source-credit": "",
+        "direction": "forward",
+        "attributes": []
+       }
+      ],
+      "disambiguation": "",
+      "length": 625000,
+      "first-release-date": "2026-04-17",
+      "id": "f0c73a7f-5270-455e-9280-8ba8f86ce1eb",
+      "artist-credit": [
+       {
+        "artist": {
+         "type": "Group",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+         "disambiguation": "",
+         "name": "Duo Gazzana",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "country": "IT",
+         "sort-name": "Duo Gazzana"
+        },
+        "joinphrase": "",
+        "name": "Duo Gazzana"
+       }
+      ]
+     },
+     "title": "Spiegel im Spiegel",
+     "number": "5",
+     "id": "f1cb2bab-13dd-4cf1-a472-4c808513c9b0",
+     "length": 626000,
+     "artist-credit": [
+      {
+       "name": "Arvo Pärt",
+       "joinphrase": "",
+       "artist": {
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "type": "Person",
+        "disambiguation": "Estonian composer",
+        "country": "EE",
+        "id": "ae0b2424-d4c5-4c54-82ac-fe3be5453270",
+        "name": "Arvo Pärt",
+        "sort-name": "Pärt, Arvo"
+       }
+      }
+     ],
+     "position": 5
+    },
+    {
+     "length": 109000,
+     "id": "d537789a-86fe-4f22-8af5-e8ac76551138",
+     "artist-credit": [
+      {
+       "artist": {
+        "sort-name": "Prokofiev, Sergei Sergeyevich",
+        "name": "Сергей Сергеевич Прокофьев",
+        "country": "RU",
+        "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+        "disambiguation": "Russian composer",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "type": "Person"
+       },
+       "joinphrase": "",
+       "name": "Sergei Prokofiev"
+      }
+     ],
+     "position": 6,
+     "title": "5 Mélodies for Violin and Piano, op. 35a: No. 1. Andante",
+     "recording": {
+      "disambiguation": "",
+      "title": "5 Mélodies for Violin and Piano, op. 35a: No. 1. Andante",
+      "relations": [
+       {
+        "target-type": "artist",
+        "begin": null,
+        "type": "balance",
+        "attribute-values": {},
+        "target-credit": "",
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "attribute-ids": {},
+        "artist": {
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235",
+         "country": "DE",
+         "name": "Markus Heiland",
+         "sort-name": "Heiland, Markus",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": ""
+        },
+        "attributes": [],
+        "direction": "backward",
+        "source-credit": "",
+        "end": null,
+        "ended": false
+       },
+       {
+        "direction": "backward",
+        "attributes": [
+         "violin"
+        ],
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "artist": {
+         "sort-name": "Gazzana, Natascia",
+         "name": "Natascia Gazzana",
+         "country": "IT",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "type": "instrument",
+        "attribute-values": {},
+        "target-type": "artist",
+        "begin": "2025-02",
+        "attribute-credits": {}
+       },
+       {
+        "target-type": "artist",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "attribute-values": {},
+        "type": "instrument",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "target-credit": "",
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "artist": {
+         "country": "IT",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "name": "Raffaella Gazzana",
+         "sort-name": "Gazzana, Raffaella",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": ""
+        },
+        "attributes": [
+         "piano"
+        ],
+        "direction": "backward",
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02"
+       },
+       {
+        "artist": {
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": "",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "name": "Manfred Eicher",
+         "sort-name": "Eicher, Manfred"
+        },
+        "source-credit": "",
+        "ended": false,
+        "end": null,
+        "direction": "backward",
+        "attributes": [],
+        "begin": null,
+        "target-type": "artist",
+        "attribute-ids": {},
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "target-credit": "",
+        "type": "mix",
+        "attribute-values": {}
+       },
+       {
+        "artist": {
+         "disambiguation": "German sound engineer",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "sort-name": "Hinreiner, Michael",
+         "country": null,
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "name": "Michael Hinreiner"
+        },
+        "attributes": [],
+        "direction": "backward",
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "target-type": "artist",
+        "begin": null,
+        "type": "mix",
+        "attribute-values": {},
+        "attribute-ids": {},
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "target-credit": ""
+       },
+       {
+        "attributes": [],
+        "direction": "backward",
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "artist": {
+         "sort-name": "Eicher, Manfred",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "name": "Manfred Eicher",
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "attribute-values": {},
+        "type": "producer",
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "target-credit": "",
+        "attribute-ids": {},
+        "target-type": "artist",
+        "begin": null
+       },
+       {
+        "target-credit": "",
+        "attribute-ids": {},
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "attribute-values": {},
+        "type": "performance",
+        "target-type": "work",
+        "begin": "2025-02",
+        "direction": "forward",
+        "attributes": [],
+        "ended": true,
+        "end": "2025-02",
+        "source-credit": "",
+        "work": {
+         "relations": [
+          {
+           "attribute-values": {},
+           "type": "composer",
+           "attribute-ids": {},
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "target-credit": "",
+           "begin": "1925",
+           "target-type": "artist",
+           "source-credit": "",
+           "end": "1925",
+           "ended": true,
+           "attributes": [],
+           "direction": "backward",
+           "artist": {
+            "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+            "country": "RU",
+            "name": "Сергей Сергеевич Прокофьев",
+            "sort-name": "Prokofiev, Sergei Sergeyevich",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "type": "Person",
+            "disambiguation": "Russian composer"
+           }
+          },
+          {
+           "begin": null,
+           "target-type": "work",
+           "ordering-key": 1,
+           "type": "parts",
+           "attribute-values": {},
+           "target-credit": "",
+           "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+           "attribute-ids": {},
+           "work": {
+            "disambiguation": "",
+            "type-id": null,
+            "language": null,
+            "title": "Five Melodies for Violin and Piano, op. 35bis",
+            "type": null,
+            "attributes": [],
+            "languages": [],
+            "iswcs": [],
+            "id": "d57aa142-b098-4abd-97f5-a83a9a16297f"
+           },
+           "source-credit": "",
+           "end": null,
+           "ended": false,
+           "attributes": [],
+           "direction": "backward"
+          }
+         ],
+         "attributes": [],
+         "type": null,
+         "title": "Five Melodies for Violin and Piano, op. 35 bis: I. Andante",
+         "type-id": null,
+         "language": "zxx",
+         "disambiguation": "",
+         "id": "0044b29e-087c-3911-9715-0c4d4901193c",
+         "iswcs": [],
+         "languages": [
+          "zxx"
+         ]
+        }
+       }
+      ],
+      "video": false,
+      "artist-credit": [
+       {
+        "name": "Duo Gazzana",
+        "artist": {
+         "sort-name": "Duo Gazzana",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "country": "IT",
+         "name": "Duo Gazzana",
+         "disambiguation": "",
+         "type": "Group",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+        },
+        "joinphrase": ""
+       }
+      ],
+      "id": "c1432158-b81a-4116-9de1-c6d9c5fa22a1",
+      "length": 109000,
+      "first-release-date": "2026-04-17"
+     },
+     "number": "6"
+    },
+    {
+     "title": "5 Mélodies for Violin and Piano, op. 35a: No. 2. Lento, ma non troppo",
+     "recording": {
+      "relations": [
+       {
+        "artist": {
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "sort-name": "Heiland, Markus",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235",
+         "country": "DE",
+         "name": "Markus Heiland"
+        },
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "direction": "backward",
+        "attributes": [],
+        "begin": null,
+        "target-type": "artist",
+        "target-credit": "",
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "attribute-ids": {},
+        "attribute-values": {},
+        "type": "balance"
+       },
+       {
+        "target-credit": "",
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-values": {},
+        "type": "instrument",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "target-type": "artist",
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "direction": "backward",
+        "attributes": [
+         "violin"
+        ],
+        "artist": {
+         "country": "IT",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "name": "Natascia Gazzana",
+         "sort-name": "Gazzana, Natascia",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": ""
+        }
+       },
+       {
+        "artist": {
+         "sort-name": "Gazzana, Raffaella",
+         "name": "Raffaella Gazzana",
+         "country": "IT",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person"
+        },
+        "ended": true,
+        "end": "2025-02",
+        "source-credit": "",
+        "attributes": [
+         "piano"
+        ],
+        "direction": "backward",
+        "attribute-credits": {},
+        "begin": "2025-02",
+        "target-type": "artist",
+        "type": "instrument",
+        "attribute-values": {},
+        "target-credit": "",
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461"
+       },
+       {
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "attributes": [],
+        "direction": "backward",
+        "artist": {
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "sort-name": "Eicher, Manfred",
+         "name": "Manfred Eicher",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1"
+        },
+        "type": "mix",
+        "attribute-values": {},
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "target-credit": "",
+        "attribute-ids": {},
+        "begin": null,
+        "target-type": "artist"
+       },
+       {
+        "artist": {
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": "German sound engineer",
+         "name": "Michael Hinreiner",
+         "country": null,
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "sort-name": "Hinreiner, Michael"
+        },
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "direction": "backward",
+        "attributes": [],
+        "begin": null,
+        "target-type": "artist",
+        "target-credit": "",
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "attribute-values": {},
+        "type": "mix"
+       },
+       {
+        "begin": null,
+        "target-type": "artist",
+        "target-credit": "",
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "attribute-ids": {},
+        "attribute-values": {},
+        "type": "producer",
+        "artist": {
+         "sort-name": "Eicher, Manfred",
+         "name": "Manfred Eicher",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "direction": "backward",
+        "attributes": []
+       },
+       {
+        "work": {
+         "disambiguation": "",
+         "language": "zxx",
+         "type-id": null,
+         "relations": [
+          {
+           "direction": "backward",
+           "attributes": [],
+           "ended": true,
+           "end": "1925",
+           "source-credit": "",
+           "artist": {
+            "disambiguation": "Russian composer",
+            "type": "Person",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "sort-name": "Prokofiev, Sergei Sergeyevich",
+            "country": "RU",
+            "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+            "name": "Сергей Сергеевич Прокофьев"
+           },
+           "attribute-ids": {},
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "target-credit": "",
+           "type": "composer",
+           "attribute-values": {},
+           "target-type": "artist",
+           "begin": "1925"
+          },
+          {
+           "work": {
+            "disambiguation": "",
+            "type-id": null,
+            "language": null,
+            "attributes": [],
+            "type": null,
+            "title": "Five Melodies for Violin and Piano, op. 35bis",
+            "languages": [],
+            "iswcs": [],
+            "id": "d57aa142-b098-4abd-97f5-a83a9a16297f"
+           },
+           "end": null,
+           "ended": false,
+           "source-credit": "",
+           "direction": "backward",
+           "attributes": [],
+           "begin": null,
+           "ordering-key": 2,
+           "target-type": "work",
+           "target-credit": "",
+           "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+           "attribute-ids": {},
+           "attribute-values": {},
+           "type": "parts"
+          }
+         ],
+         "attributes": [],
+         "type": null,
+         "title": "Five Melodies for Violin and Piano, op. 35 bis: II. Lento, ma non troppo",
+         "languages": [
+          "zxx"
+         ],
+         "id": "728cec30-e9ac-3fab-ae3c-448c56ed63a4",
+         "iswcs": []
+        },
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02",
+        "direction": "forward",
+        "attributes": [],
+        "begin": "2025-02",
+        "target-type": "work",
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "target-credit": "",
+        "attribute-ids": {},
+        "attribute-values": {},
+        "type": "performance"
+       }
+      ],
+      "title": "5 Mélodies for Violin and Piano, op. 35a: No. 2. Lento, ma non troppo",
+      "video": false,
+      "disambiguation": "",
+      "id": "ee97017a-f663-4f36-a193-d28335b8f33f",
+      "length": 147000,
+      "first-release-date": "2026-04-17",
+      "artist-credit": [
+       {
+        "joinphrase": "",
+        "artist": {
+         "name": "Duo Gazzana",
+         "country": "IT",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "sort-name": "Duo Gazzana",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+         "type": "Group",
+         "disambiguation": ""
+        },
+        "name": "Duo Gazzana"
+       }
+      ]
+     },
+     "number": "7",
+     "length": 147000,
+     "id": "b53f3bcf-8e1f-4337-b2b2-526a9bc13943",
+     "artist-credit": [
+      {
+       "artist": {
+        "type": "Person",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "disambiguation": "Russian composer",
+        "name": "Сергей Сергеевич Прокофьев",
+        "country": "RU",
+        "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+        "sort-name": "Prokofiev, Sergei Sergeyevich"
+       },
+       "joinphrase": "",
+       "name": "Sergei Prokofiev"
+      }
+     ],
+     "position": 7
+    },
+    {
+     "number": "8",
+     "title": "5 Mélodies for Violin and Piano, op. 35a: No. 3. Animato, ma non allegro",
+     "recording": {
+      "artist-credit": [
+       {
+        "artist": {
+         "disambiguation": "",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+         "type": "Group",
+         "sort-name": "Duo Gazzana",
+         "name": "Duo Gazzana",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "country": "IT"
+        },
+        "joinphrase": "",
+        "name": "Duo Gazzana"
+       }
+      ],
+      "first-release-date": "2026-04-17",
+      "length": 185000,
+      "id": "9457edcb-6cf4-4862-99e3-4704218e3f0b",
+      "disambiguation": "",
+      "video": false,
+      "title": "5 Mélodies for Violin and Piano, op. 35a: No. 3. Animato, ma non allegro",
+      "relations": [
+       {
+        "direction": "backward",
+        "attributes": [],
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "artist": {
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "sort-name": "Heiland, Markus",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235",
+         "country": "DE",
+         "name": "Markus Heiland"
+        },
+        "attribute-ids": {},
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "target-credit": "",
+        "attribute-values": {},
+        "type": "balance",
+        "target-type": "artist",
+        "begin": null
+       },
+       {
+        "artist": {
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": "",
+         "country": "IT",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "name": "Natascia Gazzana",
+         "sort-name": "Gazzana, Natascia"
+        },
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "direction": "backward",
+        "attributes": [
+         "violin"
+        ],
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "target-type": "artist",
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "attribute-values": {},
+        "type": "instrument"
+       },
+       {
+        "attribute-credits": {},
+        "begin": "2025-02",
+        "target-type": "artist",
+        "type": "instrument",
+        "attribute-values": {},
+        "target-credit": "",
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "artist": {
+         "sort-name": "Gazzana, Raffaella",
+         "name": "Raffaella Gazzana",
+         "country": "IT",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person"
+        },
+        "ended": true,
+        "end": "2025-02",
+        "source-credit": "",
+        "attributes": [
+         "piano"
+        ],
+        "direction": "backward"
+       },
+       {
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "country": "DE",
+         "name": "Manfred Eicher",
+         "sort-name": "Eicher, Manfred"
+        },
+        "attributes": [],
+        "direction": "backward",
+        "end": null,
+        "ended": false,
+        "source-credit": "",
+        "target-type": "artist",
+        "begin": null,
+        "type": "mix",
+        "attribute-values": {},
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "target-credit": ""
+       },
+       {
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "German sound engineer",
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "country": null,
+         "name": "Michael Hinreiner",
+         "sort-name": "Hinreiner, Michael"
+        },
+        "end": null,
+        "ended": false,
+        "source-credit": "",
+        "attributes": [],
+        "direction": "backward",
+        "begin": null,
+        "target-type": "artist",
+        "attribute-values": {},
+        "type": "mix",
+        "target-credit": "",
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {}
+       },
+       {
+        "begin": null,
+        "target-type": "artist",
+        "type": "producer",
+        "attribute-values": {},
+        "attribute-ids": {},
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "target-credit": "",
+        "artist": {
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "name": "Manfred Eicher",
+         "sort-name": "Eicher, Manfred",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": ""
+        },
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "attributes": [],
+        "direction": "backward"
+       },
+       {
+        "begin": "2025-02",
+        "target-type": "work",
+        "attribute-ids": {},
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "target-credit": "",
+        "attribute-values": {},
+        "type": "performance",
+        "work": {
+         "disambiguation": "",
+         "type-id": null,
+         "language": "zxx",
+         "relations": [
+          {
+           "attributes": [],
+           "direction": "backward",
+           "source-credit": "",
+           "ended": true,
+           "end": "1925",
+           "artist": {
+            "country": "RU",
+            "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+            "name": "Сергей Сергеевич Прокофьев",
+            "sort-name": "Prokofiev, Sergei Sergeyevich",
+            "type": "Person",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "disambiguation": "Russian composer"
+           },
+           "attribute-values": {},
+           "type": "composer",
+           "target-credit": "",
+           "attribute-ids": {},
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "target-type": "artist",
+           "begin": "1925"
+          },
+          {
+           "ordering-key": 3,
+           "target-type": "work",
+           "begin": null,
+           "target-credit": "",
+           "attribute-ids": {},
+           "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+           "type": "parts",
+           "attribute-values": {},
+           "work": {
+            "iswcs": [],
+            "id": "d57aa142-b098-4abd-97f5-a83a9a16297f",
+            "languages": [],
+            "type-id": null,
+            "language": null,
+            "type": null,
+            "attributes": [],
+            "title": "Five Melodies for Violin and Piano, op. 35bis",
+            "disambiguation": ""
+           },
+           "direction": "backward",
+           "attributes": [],
+           "ended": false,
+           "end": null,
+           "source-credit": ""
+          }
+         ],
+         "type": null,
+         "title": "Five Melodies for Violin and Piano, op. 35 bis: III. Animato, ma non allegro",
+         "attributes": [],
+         "languages": [
+          "zxx"
+         ],
+         "id": "e0785ef0-3577-3470-9988-15faa99f9f3c",
+         "iswcs": []
+        },
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02",
+        "direction": "forward",
+        "attributes": []
+       }
+      ]
+     },
+     "artist-credit": [
+      {
+       "name": "Sergei Prokofiev",
+       "joinphrase": "",
+       "artist": {
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "type": "Person",
+        "disambiguation": "Russian composer",
+        "name": "Сергей Сергеевич Прокофьев",
+        "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+        "country": "RU",
+        "sort-name": "Prokofiev, Sergei Sergeyevich"
+       }
+      }
+     ],
+     "position": 8,
+     "length": 185000,
+     "id": "4322e50f-b3e7-44f2-a11b-a9b974b7b369"
+    },
+    {
+     "position": 9,
+     "artist-credit": [
+      {
+       "name": "Sergei Prokofiev",
+       "artist": {
+        "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+        "country": "RU",
+        "name": "Сергей Сергеевич Прокофьев",
+        "sort-name": "Prokofiev, Sergei Sergeyevich",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "type": "Person",
+        "disambiguation": "Russian composer"
+       },
+       "joinphrase": ""
+      }
+     ],
+     "length": 85000,
+     "id": "892312f9-65ec-4209-b50c-5907746cfcef",
+     "number": "9",
+     "title": "5 Mélodies for Violin and Piano, op. 35a: No. 4. Allegretto leggero e scherzando",
+     "recording": {
+      "artist-credit": [
+       {
+        "name": "Duo Gazzana",
+        "joinphrase": "",
+        "artist": {
+         "name": "Duo Gazzana",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "country": "IT",
+         "sort-name": "Duo Gazzana",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+         "type": "Group",
+         "disambiguation": ""
+        }
+       }
+      ],
+      "id": "f2e43b06-8654-4cc6-8053-ba131279637c",
+      "first-release-date": "2026-04-17",
+      "length": 84000,
+      "disambiguation": "",
+      "relations": [
+       {
+        "attribute-values": {},
+        "type": "balance",
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "attribute-ids": {},
+        "target-credit": "",
+        "target-type": "artist",
+        "begin": null,
+        "attributes": [],
+        "direction": "backward",
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "artist": {
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "sort-name": "Heiland, Markus",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235",
+         "country": "DE",
+         "name": "Markus Heiland"
+        }
+       },
+       {
+        "artist": {
+         "sort-name": "Gazzana, Natascia",
+         "name": "Natascia Gazzana",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "country": "IT",
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "attributes": [
+         "violin"
+        ],
+        "direction": "backward",
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "target-type": "artist",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "attribute-values": {},
+        "type": "instrument",
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        }
+       },
+       {
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-values": {},
+        "type": "instrument",
+        "attribute-credits": {},
+        "begin": "2025-02",
+        "target-type": "artist",
+        "end": "2025-02",
+        "ended": true,
+        "source-credit": "",
+        "direction": "backward",
+        "attributes": [
+         "piano"
+        ],
+        "artist": {
+         "name": "Raffaella Gazzana",
+         "country": "IT",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "sort-name": "Gazzana, Raffaella",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": ""
+        }
+       },
+       {
+        "artist": {
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "sort-name": "Eicher, Manfred",
+         "name": "Manfred Eicher",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1"
+        },
+        "direction": "backward",
+        "attributes": [],
+        "end": null,
+        "ended": false,
+        "source-credit": "",
+        "target-type": "artist",
+        "begin": null,
+        "attribute-ids": {},
+        "target-credit": "",
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-values": {},
+        "type": "mix"
+       },
+       {
+        "target-credit": "",
+        "attribute-ids": {},
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "type": "mix",
+        "attribute-values": {},
+        "begin": null,
+        "target-type": "artist",
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "direction": "backward",
+        "attributes": [],
+        "artist": {
+         "name": "Michael Hinreiner",
+         "country": null,
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "sort-name": "Hinreiner, Michael",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": "German sound engineer"
+        }
+       },
+       {
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "",
+         "name": "Manfred Eicher",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "country": "DE",
+         "sort-name": "Eicher, Manfred"
+        },
+        "attributes": [],
+        "direction": "backward",
+        "end": null,
+        "ended": false,
+        "source-credit": "",
+        "target-type": "artist",
+        "begin": null,
+        "type": "producer",
+        "attribute-values": {},
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "attribute-ids": {},
+        "target-credit": ""
+       },
+       {
+        "work": {
+         "id": "21f6c9d8-bbb1-3a5f-b77d-7ec54c044e2e",
+         "iswcs": [],
+         "languages": [
+          "zxx"
+         ],
+         "relations": [
+          {
+           "attributes": [],
+           "direction": "backward",
+           "ended": true,
+           "end": "1925",
+           "source-credit": "",
+           "artist": {
+            "disambiguation": "Russian composer",
+            "type": "Person",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "sort-name": "Prokofiev, Sergei Sergeyevich",
+            "name": "Сергей Сергеевич Прокофьев",
+            "country": "RU",
+            "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1"
+           },
+           "type": "composer",
+           "attribute-values": {},
+           "attribute-ids": {},
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "target-credit": "",
+           "target-type": "artist",
+           "begin": "1925"
+          },
+          {
+           "work": {
+            "languages": [],
+            "iswcs": [],
+            "id": "d57aa142-b098-4abd-97f5-a83a9a16297f",
+            "disambiguation": "",
+            "type-id": null,
+            "language": null,
+            "title": "Five Melodies for Violin and Piano, op. 35bis",
+            "type": null,
+            "attributes": []
+           },
+           "source-credit": "",
+           "end": null,
+           "ended": false,
+           "direction": "backward",
+           "attributes": [],
+           "begin": null,
+           "ordering-key": 4,
+           "target-type": "work",
+           "attribute-ids": {},
+           "target-credit": "",
+           "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+           "type": "parts",
+           "attribute-values": {}
+          }
+         ],
+         "attributes": [],
+         "type": null,
+         "title": "Five Melodies for Violin and Piano, op. 35 bis: IV. Allegretto leggero e scherzando",
+         "type-id": null,
+         "language": "zxx",
+         "disambiguation": ""
+        },
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02",
+        "attributes": [],
+        "direction": "forward",
+        "begin": "2025-02",
+        "target-type": "work",
+        "type": "performance",
+        "attribute-values": {},
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "target-credit": "",
+        "attribute-ids": {}
+       }
+      ],
+      "title": "5 Mélodies for Violin and Piano, op. 35a: No. 4. Allegretto leggero e scherzando",
+      "video": false
+     }
+    },
+    {
+     "number": "10",
+     "title": "5 Mélodies for Violin and Piano, op. 35a: No. 5. Andante non troppo",
+     "recording": {
+      "title": "5 Mélodies for Violin and Piano, op. 35a: No. 5. Andante non troppo",
+      "relations": [
+       {
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "attributes": [],
+        "direction": "backward",
+        "artist": {
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "sort-name": "Heiland, Markus",
+         "name": "Markus Heiland",
+         "country": "DE",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235"
+        },
+        "attribute-values": {},
+        "type": "balance",
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "attribute-ids": {},
+        "target-credit": "",
+        "begin": null,
+        "target-type": "artist"
+       },
+       {
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "attributes": [
+         "violin"
+        ],
+        "direction": "backward",
+        "artist": {
+         "country": "IT",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "name": "Natascia Gazzana",
+         "sort-name": "Gazzana, Natascia",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": ""
+        },
+        "attribute-values": {},
+        "type": "instrument",
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "target-type": "artist"
+       },
+       {
+        "artist": {
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "sort-name": "Gazzana, Raffaella",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "country": "IT",
+         "name": "Raffaella Gazzana"
+        },
+        "attributes": [
+         "piano"
+        ],
+        "direction": "backward",
+        "ended": true,
+        "end": "2025-02",
+        "source-credit": "",
+        "target-type": "artist",
+        "attribute-credits": {},
+        "begin": "2025-02",
+        "attribute-values": {},
+        "type": "instrument",
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        }
+       },
+       {
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "country": "DE",
+         "name": "Manfred Eicher",
+         "sort-name": "Eicher, Manfred"
+        },
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "attributes": [],
+        "direction": "backward",
+        "begin": null,
+        "target-type": "artist",
+        "type": "mix",
+        "attribute-values": {},
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "target-credit": ""
+       },
+       {
+        "begin": null,
+        "target-type": "artist",
+        "type": "mix",
+        "attribute-values": {},
+        "target-credit": "",
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "German sound engineer",
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "country": null,
+         "name": "Michael Hinreiner",
+         "sort-name": "Hinreiner, Michael"
+        },
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "attributes": [],
+        "direction": "backward"
+       },
+       {
+        "target-credit": "",
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "attribute-ids": {},
+        "type": "producer",
+        "attribute-values": {},
+        "target-type": "artist",
+        "begin": null,
+        "direction": "backward",
+        "attributes": [],
+        "source-credit": "",
+        "end": null,
+        "ended": false,
+        "artist": {
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "disambiguation": "",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "name": "Manfred Eicher",
+         "sort-name": "Eicher, Manfred"
+        }
+       },
+       {
+        "target-credit": "",
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "attribute-ids": {},
+        "type": "performance",
+        "attribute-values": {},
+        "begin": "2025-02",
+        "target-type": "work",
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02",
+        "direction": "forward",
+        "attributes": [],
+        "work": {
+         "iswcs": [],
+         "id": "aa5d8036-9d5e-302d-bce4-20aa5caa7daf",
+         "languages": [
+          "zxx"
+         ],
+         "language": "zxx",
+         "type-id": null,
+         "type": null,
+         "title": "Five Melodies for Violin and Piano, op. 35 bis: V. Andante non troppo",
+         "attributes": [],
+         "relations": [
+          {
+           "artist": {
+            "disambiguation": "Russian composer",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "type": "Person",
+            "sort-name": "Prokofiev, Sergei Sergeyevich",
+            "country": "RU",
+            "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+            "name": "Сергей Сергеевич Прокофьев"
+           },
+           "direction": "backward",
+           "attributes": [],
+           "ended": true,
+           "end": "1925",
+           "source-credit": "",
+           "target-type": "artist",
+           "begin": "1925",
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "target-credit": "",
+           "attribute-ids": {},
+           "attribute-values": {},
+           "type": "composer"
+          },
+          {
+           "end": null,
+           "ended": false,
+           "source-credit": "",
+           "direction": "backward",
+           "attributes": [],
+           "work": {
+            "iswcs": [],
+            "id": "d57aa142-b098-4abd-97f5-a83a9a16297f",
+            "languages": [],
+            "type-id": null,
+            "language": null,
+            "type": null,
+            "attributes": [],
+            "title": "Five Melodies for Violin and Piano, op. 35bis",
+            "disambiguation": ""
+           },
+           "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+           "target-credit": "",
+           "attribute-ids": {},
+           "type": "parts",
+           "attribute-values": {},
+           "begin": null,
+           "target-type": "work",
+           "ordering-key": 5
+          }
+         ],
+         "disambiguation": ""
+        }
+       }
+      ],
+      "video": false,
+      "disambiguation": "",
+      "id": "319d40a4-2ceb-4325-82f3-8a83237a6bff",
+      "first-release-date": "2026-04-17",
+      "length": 172000,
+      "artist-credit": [
+       {
+        "name": "Duo Gazzana",
+        "joinphrase": "",
+        "artist": {
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "country": "IT",
+         "name": "Duo Gazzana",
+         "sort-name": "Duo Gazzana",
+         "type": "Group",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+         "disambiguation": ""
+        }
+       }
+      ]
+     },
+     "position": 10,
+     "artist-credit": [
+      {
+       "name": "Sergei Prokofiev",
+       "joinphrase": "",
+       "artist": {
+        "name": "Сергей Сергеевич Прокофьев",
+        "country": "RU",
+        "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+        "sort-name": "Prokofiev, Sergei Sergeyevich",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+        "type": "Person",
+        "disambiguation": "Russian composer"
+       }
+      }
+     ],
+     "id": "efc758ce-feb4-403f-8e04-1106d1832851",
+     "length": 172000
+    },
+    {
+     "position": 11,
+     "artist-credit": [
+      {
+       "artist": {
+        "sort-name": "Schnittke, Alfred Garyevich",
+        "name": "Альфред Гарриевич Шнитке",
+        "id": "2382cbc9-dd4e-4fc8-a92e-5391f70bd3b2",
+        "country": "SU",
+        "disambiguation": "Russian composer and pianist",
+        "type": "Person",
+        "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+       },
+       "joinphrase": "",
+       "name": "Alfred Schnittke"
+      }
+     ],
+     "length": 456000,
+     "id": "0c89aa0e-ea41-46f4-8d9a-6221ef2df7e7",
+     "number": "11",
+     "recording": {
+      "disambiguation": "",
+      "relations": [
+       {
+        "target-type": "artist",
+        "begin": null,
+        "target-credit": "",
+        "type-id": "0748fa55-56b5-4ad5-8ce8-15b97f82a0c2",
+        "attribute-ids": {},
+        "attribute-values": {},
+        "type": "balance",
+        "artist": {
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person",
+         "sort-name": "Heiland, Markus",
+         "name": "Markus Heiland",
+         "country": "DE",
+         "id": "e7c53160-7a3f-4e4e-8cf3-a5f83fec8235"
+        },
+        "direction": "backward",
+        "attributes": [],
+        "source-credit": "",
+        "ended": false,
+        "end": null
+       },
+       {
+        "type": "instrument",
+        "attribute-values": {},
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "target-credit": "",
+        "attribute-ids": {
+         "violin": "089f123c-0f7d-4105-a64e-49de81ca8fa4"
+        },
+        "target-type": "artist",
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "attributes": [
+         "violin"
+        ],
+        "direction": "backward",
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "artist": {
+         "sort-name": "Gazzana, Natascia",
+         "name": "Natascia Gazzana",
+         "country": "IT",
+         "id": "9fa6bdb3-97f6-486d-af52-2ebf2ed071d4",
+         "disambiguation": "",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "type": "Person"
+        }
+       },
+       {
+        "begin": "2025-02",
+        "attribute-credits": {},
+        "target-type": "artist",
+        "attribute-ids": {
+         "piano": "b3eac5f9-7859-4416-ac39-7154e2e8d348"
+        },
+        "target-credit": "",
+        "type-id": "59054b12-01ac-43ee-a618-285fd397e461",
+        "attribute-values": {},
+        "type": "instrument",
+        "artist": {
+         "sort-name": "Gazzana, Raffaella",
+         "country": "IT",
+         "id": "bf2d6919-70b7-4ca8-a2e5-d64087263235",
+         "name": "Raffaella Gazzana",
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "source-credit": "",
+        "end": "2025-02",
+        "ended": true,
+        "direction": "backward",
+        "attributes": [
+         "piano"
+        ]
+       },
+       {
+        "end": null,
+        "ended": false,
+        "source-credit": "",
+        "direction": "backward",
+        "attributes": [],
+        "artist": {
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+         "disambiguation": "",
+         "country": "DE",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "name": "Manfred Eicher",
+         "sort-name": "Eicher, Manfred"
+        },
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "target-credit": "",
+        "attribute-ids": {},
+        "type": "mix",
+        "attribute-values": {},
+        "begin": null,
+        "target-type": "artist"
+       },
+       {
+        "artist": {
+         "sort-name": "Hinreiner, Michael",
+         "name": "Michael Hinreiner",
+         "id": "1f7476b4-ffb9-4d28-884a-15c483d14c37",
+         "country": null,
+         "disambiguation": "German sound engineer",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "direction": "backward",
+        "attributes": [],
+        "ended": false,
+        "end": null,
+        "source-credit": "",
+        "target-type": "artist",
+        "begin": null,
+        "target-credit": "",
+        "type-id": "3e3102e1-1896-4f50-b5b2-dd9824e46efe",
+        "attribute-ids": {},
+        "attribute-values": {},
+        "type": "mix"
+       },
+       {
+        "direction": "backward",
+        "attributes": [],
+        "source-credit": "",
+        "ended": false,
+        "end": null,
+        "artist": {
+         "sort-name": "Eicher, Manfred",
+         "name": "Manfred Eicher",
+         "id": "5990bfa9-aba4-4b4e-87aa-2d752218d8f1",
+         "country": "DE",
+         "disambiguation": "",
+         "type": "Person",
+         "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+        },
+        "target-credit": "",
+        "attribute-ids": {},
+        "type-id": "5c0ceac3-feb4-41f0-868d-dc06f6e27fc0",
+        "attribute-values": {},
+        "type": "producer",
+        "target-type": "artist",
+        "begin": null
+       },
+       {
+        "attribute-values": {},
+        "type": "performance",
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "target-credit": "",
+        "attribute-ids": {},
+        "begin": "2025-02",
+        "target-type": "work",
+        "source-credit": "",
+        "ended": true,
+        "end": "2025-02",
+        "attributes": [],
+        "direction": "forward",
+        "work": {
+         "iswcs": [],
+         "id": "0e78dc0a-1dbf-4834-ada2-f79777bc5890",
+         "languages": [
+          "zxx"
+         ],
+         "type": null,
+         "attributes": [],
+         "title": "Gratulationsrondo",
+         "relations": [
+          {
+           "attribute-values": {},
+           "type": "composer",
+           "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+           "attribute-ids": {},
+           "target-credit": "",
+           "target-type": "artist",
+           "begin": "1974",
+           "attributes": [],
+           "direction": "backward",
+           "source-credit": "",
+           "ended": true,
+           "end": "1974",
+           "artist": {
+            "disambiguation": "Russian composer and pianist",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "type": "Person",
+            "sort-name": "Schnittke, Alfred Garyevich",
+            "country": "SU",
+            "id": "2382cbc9-dd4e-4fc8-a92e-5391f70bd3b2",
+            "name": "Альфред Гарриевич Шнитке"
+           }
+          }
+         ],
+         "type-id": null,
+         "language": "zxx",
+         "disambiguation": "vln,pf"
+        }
+       }
+      ],
+      "title": "Gratulationsrondo",
+      "video": false,
+      "artist-credit": [
+       {
+        "joinphrase": "",
+        "artist": {
+         "country": "IT",
+         "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+         "name": "Duo Gazzana",
+         "sort-name": "Duo Gazzana",
+         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+         "type": "Group",
+         "disambiguation": ""
+        },
+        "name": "Duo Gazzana"
+       }
+      ],
+      "id": "fb31b1e0-aa9b-4d00-a648-fe99cf186150",
+      "first-release-date": "2026-04-17",
+      "length": 450000
+     },
+     "title": "Gratulationsrondo"
+    }
+   ],
+   "id": "94bca7ec-3af6-4665-9316-a5682075fd0c",
+   "track-count": 11,
+   "title": "",
+   "format": "Digital Media",
+   "format-id": "907a28d9-b3b2-3ef6-89a8-7b18d91d4794",
+   "track-offset": 0
+  }
+ ],
+ "text-representation": {
+  "script": "Latn",
+  "language": "eng"
+ },
+ "artist-credit": [
+  {
+   "name": "Prokofiev",
+   "joinphrase": ", ",
+   "artist": {
+    "type": "Person",
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+    "disambiguation": "Russian composer",
+    "country": "RU",
+    "id": "0e43fe9d-c472-4b62-be9e-55f971a023e1",
+    "name": "Сергей Сергеевич Прокофьев",
+    "sort-name": "Prokofiev, Sergei Sergeyevich"
+   }
+  },
+  {
+   "joinphrase": ", ",
+   "artist": {
+    "sort-name": "Pärt, Arvo",
+    "id": "ae0b2424-d4c5-4c54-82ac-fe3be5453270",
+    "country": "EE",
+    "name": "Arvo Pärt",
+    "disambiguation": "Estonian composer",
+    "type": "Person",
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
+   },
+   "name": "Pärt"
+  },
+  {
+   "joinphrase": "; ",
+   "artist": {
+    "sort-name": "Schnittke, Alfred Garyevich",
+    "country": "SU",
+    "id": "2382cbc9-dd4e-4fc8-a92e-5391f70bd3b2",
+    "name": "Альфред Гарриевич Шнитке",
+    "disambiguation": "Russian composer and pianist",
+    "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+    "type": "Person"
+   },
+   "name": "Schnittke"
+  },
+  {
+   "name": "Duo Gazzana",
+   "artist": {
+    "disambiguation": "",
+    "type": "Group",
+    "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+    "sort-name": "Duo Gazzana",
+    "country": "IT",
+    "id": "12f13c4c-b0cb-4da7-9dee-2cbb22cc088b",
+    "name": "Duo Gazzana"
+   },
+   "joinphrase": ""
+  }
+ ],
+ "asin": null,
+ "cover-art-archive": {
+  "artwork": true,
+  "darkened": false,
+  "front": true,
+  "back": false,
+  "count": 2
+ },
+ "country": "XW",
+ "id": "0f87768b-bc0f-43e6-9f1b-36dc9a6cac46",
+ "packaging-id": "119eba76-b343-3e02-a292-f0f00644bb9b"
+}
