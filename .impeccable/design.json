@@ -1,0 +1,533 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T17:33:20.020901+00:00",
+  "title": "Design System: Cratedigger",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Navy Tile",
+        "canonical": "oklch(28.1% 0.035 254)",
+        "tonalRamp": [
+          "oklch(15% 0.016 254)",
+          "oklch(25% 0.020 254)",
+          "oklch(36% 0.026 254)",
+          "oklch(48% 0.031 254)",
+          "oklch(60% 0.032 254)",
+          "oklch(72% 0.027 254)",
+          "oklch(84% 0.021 254)",
+          "oklch(95% 0.016 254)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Raised Tile",
+        "canonical": "oklch(32.0% 0.040 253)",
+        "tonalRamp": [
+          "oklch(15% 0.018 253)",
+          "oklch(25% 0.024 253)",
+          "oklch(36% 0.030 253)",
+          "oklch(48% 0.036 253)",
+          "oklch(60% 0.037 253)",
+          "oklch(72% 0.031 253)",
+          "oklch(84% 0.024 253)",
+          "oklch(95% 0.018 253)"
+        ]
+      },
+      "surface-deep": {
+        "role": "neutral",
+        "displayName": "Deep Tile",
+        "canonical": "oklch(24.4% 0.030 253)",
+        "tonalRamp": [
+          "oklch(15% 0.013 253)",
+          "oklch(25% 0.017 253)",
+          "oklch(36% 0.022 253)",
+          "oklch(48% 0.027 253)",
+          "oklch(60% 0.027 253)",
+          "oklch(72% 0.023 253)",
+          "oklch(84% 0.018 253)",
+          "oklch(95% 0.013 253)"
+        ]
+      },
+      "cream-ink": {
+        "role": "neutral",
+        "displayName": "Cream Sleeve",
+        "canonical": "oklch(94.0% 0.029 85)",
+        "tonalRamp": [
+          "oklch(15% 0.013 85)",
+          "oklch(25% 0.017 85)",
+          "oklch(36% 0.021 85)",
+          "oklch(48% 0.026 85)",
+          "oklch(60% 0.027 85)",
+          "oklch(72% 0.022 85)",
+          "oklch(84% 0.017 85)",
+          "oklch(95% 0.013 85)"
+        ]
+      },
+      "walnut": {
+        "role": "neutral",
+        "displayName": "Walnut",
+        "canonical": "oklch(84.9% 0.035 85)",
+        "tonalRamp": [
+          "oklch(15% 0.016 85)",
+          "oklch(25% 0.021 85)",
+          "oklch(36% 0.026 85)",
+          "oklch(48% 0.032 85)",
+          "oklch(60% 0.033 85)",
+          "oklch(72% 0.027 85)",
+          "oklch(84% 0.021 85)",
+          "oklch(95% 0.016 85)"
+        ]
+      },
+      "faded": {
+        "role": "neutral",
+        "displayName": "Faded",
+        "canonical": "oklch(73.0% 0.020 251)",
+        "tonalRamp": [
+          "oklch(15% 0.009 251)",
+          "oklch(25% 0.012 251)",
+          "oklch(36% 0.014 251)",
+          "oklch(48% 0.018 251)",
+          "oklch(60% 0.018 251)",
+          "oklch(72% 0.015 251)",
+          "oklch(84% 0.012 251)",
+          "oklch(95% 0.009 251)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(37.0% 0.045 254)",
+        "tonalRamp": [
+          "oklch(15% 0.020 254)",
+          "oklch(25% 0.026 254)",
+          "oklch(36% 0.033 254)",
+          "oklch(48% 0.040 254)",
+          "oklch(60% 0.042 254)",
+          "oklch(72% 0.034 254)",
+          "oklch(84% 0.027 254)",
+          "oklch(95% 0.020 254)"
+        ]
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "oklch(47.8% 0.050 247)",
+        "tonalRamp": [
+          "oklch(15% 0.023 247)",
+          "oklch(25% 0.029 247)",
+          "oklch(36% 0.037 247)",
+          "oklch(48% 0.045 247)",
+          "oklch(60% 0.046 247)",
+          "oklch(72% 0.038 247)",
+          "oklch(84% 0.030 247)",
+          "oklch(95% 0.023 247)"
+        ]
+      },
+      "brick": {
+        "role": "primary",
+        "displayName": "Label Orange",
+        "canonical": "oklch(69.0% 0.170 41)",
+        "tonalRamp": [
+          "oklch(15% 0.077 41)",
+          "oklch(25% 0.101 41)",
+          "oklch(36% 0.126 41)",
+          "oklch(48% 0.154 41)",
+          "oklch(60% 0.159 41)",
+          "oklch(72% 0.131 41)",
+          "oklch(84% 0.103 41)",
+          "oklch(95% 0.077 41)"
+        ]
+      },
+      "brick-deep": {
+        "role": "primary",
+        "displayName": "Burnt Label",
+        "canonical": "oklch(59.7% 0.162 40)",
+        "tonalRamp": [
+          "oklch(15% 0.074 40)",
+          "oklch(25% 0.096 40)",
+          "oklch(36% 0.120 40)",
+          "oklch(48% 0.147 40)",
+          "oklch(60% 0.151 40)",
+          "oklch(72% 0.124 40)",
+          "oklch(84% 0.098 40)",
+          "oklch(95% 0.074 40)"
+        ]
+      },
+      "brick-wash": {
+        "role": "primary",
+        "displayName": "Label Wash",
+        "canonical": "oklch(32.9% 0.016 338)",
+        "tonalRamp": [
+          "oklch(15% 0.007 338)",
+          "oklch(25% 0.010 338)",
+          "oklch(36% 0.012 338)",
+          "oklch(48% 0.015 338)",
+          "oklch(60% 0.015 338)",
+          "oklch(72% 0.013 338)",
+          "oklch(84% 0.010 338)",
+          "oklch(95% 0.007 338)"
+        ]
+      },
+      "brick-ink": {
+        "role": "primary",
+        "displayName": "Label Ink",
+        "canonical": "oklch(77.4% 0.125 44)",
+        "tonalRamp": [
+          "oklch(15% 0.057 44)",
+          "oklch(25% 0.074 44)",
+          "oklch(36% 0.093 44)",
+          "oklch(48% 0.113 44)",
+          "oklch(60% 0.117 44)",
+          "oklch(72% 0.096 44)",
+          "oklch(84% 0.076 44)",
+          "oklch(95% 0.057 44)"
+        ]
+      },
+      "brick-lift": {
+        "role": "primary",
+        "displayName": "Label Lift",
+        "canonical": "oklch(73.1% 0.148 42)",
+        "tonalRamp": [
+          "oklch(15% 0.067 42)",
+          "oklch(25% 0.088 42)",
+          "oklch(36% 0.110 42)",
+          "oklch(48% 0.134 42)",
+          "oklch(60% 0.138 42)",
+          "oklch(72% 0.114 42)",
+          "oklch(84% 0.090 42)",
+          "oklch(95% 0.067 42)"
+        ]
+      },
+      "crate-mustard": {
+        "role": "secondary",
+        "displayName": "Sleeve Mustard",
+        "canonical": "oklch(83.6% 0.132 86)",
+        "tonalRamp": [
+          "oklch(15% 0.060 86)",
+          "oklch(25% 0.078 86)",
+          "oklch(36% 0.098 86)",
+          "oklch(48% 0.119 86)",
+          "oklch(60% 0.123 86)",
+          "oklch(72% 0.101 86)",
+          "oklch(84% 0.080 86)",
+          "oklch(95% 0.060 86)"
+        ]
+      },
+      "crate-teal": {
+        "role": "tertiary",
+        "displayName": "Sleeve Teal",
+        "canonical": "oklch(70.8% 0.089 187)",
+        "tonalRamp": [
+          "oklch(15% 0.040 187)",
+          "oklch(25% 0.053 187)",
+          "oklch(36% 0.066 187)",
+          "oklch(48% 0.080 187)",
+          "oklch(60% 0.083 187)",
+          "oklch(72% 0.068 187)",
+          "oklch(84% 0.054 187)",
+          "oklch(95% 0.040 187)"
+        ]
+      },
+      "ok": {
+        "role": "semantic",
+        "displayName": "Include Teal",
+        "canonical": "oklch(75.9% 0.086 185)",
+        "tonalRamp": [
+          "oklch(15% 0.039 185)",
+          "oklch(25% 0.051 185)",
+          "oklch(36% 0.064 185)",
+          "oklch(48% 0.078 185)",
+          "oklch(60% 0.080 185)",
+          "oklch(72% 0.066 185)",
+          "oklch(84% 0.052 185)",
+          "oklch(95% 0.039 185)"
+        ]
+      },
+      "err": {
+        "role": "semantic",
+        "displayName": "Error Rose",
+        "canonical": "oklch(72.2% 0.119 17)",
+        "tonalRamp": [
+          "oklch(15% 0.054 17)",
+          "oklch(25% 0.070 17)",
+          "oklch(36% 0.088 17)",
+          "oklch(48% 0.108 17)",
+          "oklch(60% 0.111 17)",
+          "oklch(72% 0.091 17)",
+          "oklch(84% 0.072 17)",
+          "oklch(95% 0.054 17)"
+        ]
+      },
+      "on-brick": {
+        "role": "neutral",
+        "displayName": "Navy On Fill",
+        "canonical": "oklch(28.1% 0.035 254)",
+        "tonalRamp": [
+          "oklch(15% 0.016 254)",
+          "oklch(25% 0.020 254)",
+          "oklch(36% 0.026 254)",
+          "oklch(48% 0.031 254)",
+          "oklch(60% 0.032 254)",
+          "oklch(72% 0.027 254)",
+          "oklch(84% 0.021 254)",
+          "oklch(95% 0.016 254)"
+        ]
+      },
+      "warn": {
+        "role": "semantic",
+        "displayName": "Exclude Mustard",
+        "canonical": "oklch(83.6% 0.132 86)",
+        "tonalRamp": [
+          "oklch(15% 0.060 86)",
+          "oklch(25% 0.078 86)",
+          "oklch(36% 0.098 86)",
+          "oklch(48% 0.119 86)",
+          "oklch(60% 0.123 86)",
+          "oklch(72% 0.101 86)",
+          "oklch(84% 0.080 86)",
+          "oklch(95% 0.060 86)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Person and entity page names."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Album titles on Album Detail and Now Playing; flat cream, never gradient."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sticky screen-header titles and album-card titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Summaries and bios, max 58ch."
+      },
+      "body-small": {
+        "displayName": "Body small",
+        "purpose": "Working size for chrome, metadata and controls."
+      },
+      "label": {
+        "displayName": "Kicker",
+        "purpose": "Uppercase kickers above screen titles."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Codes and technical strings."
+      },
+      "name": {
+        "displayName": "Name",
+        "purpose": "People in the credits list; the credit graph's doors."
+      }
+    },
+    "shadows": [
+      {
+        "name": "cover-rest",
+        "value": "0 6px 14px rgba(8, 14, 22, 0.18)",
+        "purpose": "Every album cover at rest."
+      },
+      {
+        "name": "cover-lift",
+        "value": "0 16px 32px rgba(8, 14, 22, 0.32), 0 0 0 1px #2f4157",
+        "purpose": "Hovered cover, lifted out of its sleeve."
+      },
+      {
+        "name": "playing-ring",
+        "value": "0 0 0 2px #f0703f, 0 16px 32px color-mix(in srgb, #f0703f 22%, transparent)",
+        "purpose": "The cover that is playing now."
+      },
+      {
+        "name": "play-glow",
+        "value": "0 8px 22px color-mix(in srgb, #f0703f 28%, transparent)",
+        "purpose": "Primary Play button; 40% on hover."
+      },
+      {
+        "name": "modal",
+        "value": "0 30px 80px rgba(8, 14, 22, 0.3)",
+        "purpose": "Dialogs over a 25% navy, 4px-blur backdrop."
+      }
+    ],
+    "motion": [
+      {
+        "name": "dur-instant",
+        "value": "120ms",
+        "purpose": "Hover and colour state changes."
+      },
+      {
+        "name": "dur-base",
+        "value": "220ms",
+        "purpose": "Panels appearing, covers lifting."
+      },
+      {
+        "name": "dur-slow",
+        "value": "380ms",
+        "purpose": "Screen morphs, cover-art crossfades."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Entrances."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Reversible open/close."
+      },
+      {
+        "name": "ease-spring",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "purpose": "Crate-flip and sleeve-peek only."
+      }
+    ],
+    "breakpoints": []
+  },
+  "components": [
+    {
+      "name": "Play Button",
+      "kind": "button",
+      "refersTo": "button-play",
+      "description": "The one loud control: casts or plays the album.",
+      "html": "<button class=\"ds-play\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7 4v16l13-8z\"/></svg>Play Album</button>",
+      "css": ".ds-play{display:inline-flex;align-items:center;gap:.55rem;background:linear-gradient(180deg,var(--brick-lift,#f48558) 0%,var(--brick,#f0703f) 100%);color:var(--on-brick,#1d2a3a);border:0;padding:.75rem 1.5rem;border-radius:999px;font:700 .95rem -apple-system,BlinkMacSystemFont,system-ui,sans-serif;cursor:pointer;box-shadow:0 8px 22px color-mix(in srgb,#f0703f 28%,transparent);transition:transform 120ms ease,box-shadow 140ms ease}.ds-play:hover{transform:translateY(-1px);box-shadow:0 12px 28px color-mix(in srgb,#f0703f 40%,transparent)}.ds-play:active{transform:scale(.98)}.ds-play:focus-visible{outline:2px solid #f0703f;outline-offset:3px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Quiet pill for every non-primary action.",
+      "html": "<button class=\"ds-secondary\">Add to crate</button>",
+      "css": ".ds-secondary{background:transparent;color:#d8ccb4;border:1px solid #2f4157;padding:.36rem .85rem;border-radius:999px;font:.76rem -apple-system,BlinkMacSystemFont,system-ui,sans-serif;cursor:pointer;transition:color 140ms ease,border-color 140ms ease,background 140ms ease,transform 80ms ease}.ds-secondary:hover{color:#f4ead6;border-color:#466078;background:#243447}.ds-secondary:active{transform:scale(.97)}.ds-secondary:focus-visible{outline:2px solid #f0703f;outline-offset:2px}"
+    },
+    {
+      "name": "Places",
+      "kind": "nav",
+      "refersTo": "place-tab-selected",
+      "description": "Toolbar segmented places; mustard marks where you are.",
+      "html": "<nav class=\"ds-places\"><button class=\"ds-place ds-sel\">Library</button><button class=\"ds-place\">Charts</button><button class=\"ds-place\">Crates</button></nav>",
+      "css": ".ds-places{display:inline-flex;gap:2px;padding:3px;background:color-mix(in srgb,#f4ead6 6%,transparent);border-radius:999px}.ds-place{background:transparent;border:0;color:#d8ccb4;font:.78rem -apple-system,BlinkMacSystemFont,system-ui,sans-serif;padding:.32rem .8rem;border-radius:999px;cursor:pointer;transition:color 140ms ease,background 140ms ease}.ds-place:hover{color:#f4ead6}.ds-place.ds-sel{background:#efc35a;color:#1d2a3a;font-weight:600}.ds-place:focus-visible{outline:2px solid #f0703f;outline-offset:2px}"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Library search pill with orange focus halo.",
+      "html": "<label class=\"ds-search\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-3.5-3.5\"/></svg><input placeholder=\"Search the crate\"></label>",
+      "css": ".ds-search{display:flex;align-items:center;gap:.5rem;max-width:440px;background:#243447;border:1px solid #2f4157;border-radius:999px;padding:.45rem .95rem;color:#9fa9b4;transition:border-color 140ms ease,box-shadow 140ms ease}.ds-search:focus-within{border-color:#f0703f;box-shadow:0 0 0 4px #3b3238}.ds-search input{background:transparent;border:0;outline:none;color:#f4ead6;font:.9rem -apple-system,BlinkMacSystemFont,system-ui,sans-serif;flex:1;min-width:0}.ds-search input::placeholder{color:#9fa9b4}"
+    },
+    {
+      "name": "Filter Chips",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Include / exclude focus chips.",
+      "html": "<div class=\"ds-chips\"><span class=\"ds-chip ds-inc\">Jazz \u00d7</span><span class=\"ds-chip ds-exc\">Live \u00d7</span><span class=\"ds-chip\">1970s \u00d7</span></div>",
+      "css": ".ds-chips{display:flex;gap:.4rem}.ds-chip{display:inline-flex;border-radius:999px;border:1px solid #2f4157;background:#243447;color:#f4ead6;font:.74rem -apple-system,BlinkMacSystemFont,system-ui,sans-serif;padding:.22rem .55rem .22rem .65rem;cursor:pointer}.ds-chip.ds-inc{border-color:rgba(108,195,184,.32);background:rgba(108,195,184,.1);color:#6cc3b8}.ds-chip.ds-exc{border-color:rgba(239,195,90,.32);background:rgba(239,195,90,.1);color:#efc35a}.ds-chip:hover{border-color:#466078}"
+    },
+    {
+      "name": "Album Card",
+      "kind": "card",
+      "refersTo": "format-badge",
+      "description": "Cover in an implied sleeve; lifts on hover; cycling format sticker.",
+      "html": "<button class=\"ds-card\"><div class=\"ds-cover\"><div class=\"ds-art\"></div><span class=\"ds-badge\">FLAC</span></div><div class=\"ds-title\">Kind of Blue</div><div class=\"ds-meta\">Miles Davis \u00b7 1959</div></button>",
+      "css": ".ds-card{display:flex;flex-direction:column;gap:.4rem;width:180px;background:transparent;border:0;color:#f4ead6;text-align:left;cursor:pointer;padding:0}.ds-cover{position:relative;aspect-ratio:1;isolation:isolate}.ds-cover::before{content:'';position:absolute;inset:-3% -2% -1%;border-radius:1px;background:linear-gradient(180deg,color-mix(in srgb,#f4ead6 55%,transparent) 0%,color-mix(in srgb,#f4ead6 22%,transparent) 14%,#16212e 26%,#16212e 100%);z-index:0}.ds-art{position:relative;z-index:1;width:100%;aspect-ratio:1;border-radius:3px;background:linear-gradient(135deg,#57b3aa,#1d2a3a 70%);box-shadow:0 6px 14px rgba(8,14,22,.18);transition:transform 220ms cubic-bezier(.34,1.56,.64,1),box-shadow 220ms cubic-bezier(.22,1,.36,1)}.ds-card:hover .ds-art,.ds-card:focus-visible .ds-art{transform:translateY(-9%);box-shadow:0 16px 32px rgba(8,14,22,.32),0 0 0 1px #2f4157}.ds-badge{position:absolute;top:.45rem;right:.45rem;z-index:2;padding:.15rem .4rem;font:700 .62rem -apple-system,system-ui,sans-serif;background:#f0703f;color:#1d2a3a;border-radius:999px;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)}.ds-card:hover .ds-badge{transform:translateY(-9%)}.ds-title{font:600 .88rem Futura,'Avenir Next',sans-serif}.ds-meta{font:.78rem -apple-system,system-ui,sans-serif;color:#9fa9b4}.ds-card:focus-visible{outline:2px solid #f0703f;outline-offset:4px;border-radius:6px}"
+    },
+    {
+      "name": "Screen Header",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "Sticky frosted bar: orange kicker over Futura title.",
+      "html": "<header class=\"ds-head\"><span class=\"ds-kicker\">Library</span><span class=\"ds-htitle\">All albums</span></header>",
+      "css": ".ds-head{display:flex;flex-direction:column;gap:.15rem;padding:.7rem 2rem;background:color-mix(in srgb,#1d2a3a 88%,transparent);backdrop-filter:blur(20px) saturate(1.1);border-bottom:1px solid #2f4157}.ds-kicker{font:700 .7rem -apple-system,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:#f0703f}.ds-htitle{font:600 1.3rem Futura,'Avenir Next',sans-serif;letter-spacing:-.01em;color:#f4ead6}"
+    },
+    {
+      "name": "Sleeve Tape Toolbar",
+      "kind": "nav",
+      "refersTo": "place-tab",
+      "description": "Toolbar bottom edge as a three-sleeve tape stripe.",
+      "html": "<div class=\"ds-toolbar\"><span class=\"ds-home\">\u25c9</span></div>",
+      "css": ".ds-toolbar{display:flex;align-items:center;padding:.55rem 1.25rem;background:color-mix(in srgb,#1d2a3a 92%,transparent) linear-gradient(90deg,#f0703f 0 33.33%,#efc35a 33.33% 66.66%,#57b3aa 66.66% 100%) bottom/100% 3px no-repeat;min-height:2rem}.ds-home{display:inline-flex;width:1.6rem;height:1.6rem;align-items:center;justify-content:center;border-radius:999px;background:#f0703f;color:#1d2a3a;transition:transform 140ms ease,background 140ms ease}.ds-home:hover{background:#efc35a;transform:rotate(30deg)}"
+    },
+    {
+      "name": "Credits (by person)",
+      "kind": "custom",
+      "refersTo": "name",
+      "description": "One row per person: Futura name, teal library count, walnut roles, faded track scope.",
+      "html": "<ul class=\"ds-credits\"><li><button class=\"ds-cname\">Joey Burns</button><span class=\"ds-ccount\">on 19 of yours</span><span class=\"ds-croles\">acoustic guitar, cello, double bass<span class=\"ds-cwhere\"> \u00b7 7 tracks</span></span></li><li><button class=\"ds-cname\">Garth Hudson</button><span class=\"ds-ccount\">on 6 of yours</span><span class=\"ds-croles\">organ, piano<span class=\"ds-cwhere\"> \u00b7 4 tracks</span></span></li></ul>",
+      "css": ".ds-credits{list-style:none;padding:0;margin:0;max-width:640px}.ds-credits li{display:grid;grid-template-columns:auto auto 1fr;gap:.55rem 1rem;align-items:baseline;padding:.55rem 0;border-bottom:1px solid color-mix(in srgb,#f4ead6 4%,transparent)}.ds-cname{background:transparent;border:0;padding:0;color:#f4ead6;font:600 1rem Futura,'Avenir Next',sans-serif;cursor:pointer;border-bottom:1px solid transparent;text-align:left}.ds-cname:hover,.ds-cname:focus-visible{color:#f89a72;border-bottom-color:#f89a72;outline:none}.ds-ccount{font:.7rem -apple-system,system-ui,sans-serif;color:#57b3aa;white-space:nowrap}.ds-croles{font:.85rem -apple-system,system-ui,sans-serif;color:#d8ccb4}.ds-cwhere{color:#9fa9b4;white-space:nowrap}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Record Crate",
+    "overview": "**Creative North Star: \"The Record Crate\"**\n\nCratedigger looks like a crate of records in a dim room. The album covers are the objects: they sit in implied cardboard sleeves, lift out when you hover, and carry most of the colour on any screen. Everything around them stays out of the way: navy paper, cream ink, thin hairlines, and a faint paper grain over the whole window (`body::before`, about 2.5% fractal noise). The three sleeve colours from the app icon (brick orange, mustard and teal) are the only loud colours, and each one has a job.\n\nDensity is moderate and made for browsing: a grid of covers you can resize, sticky frosted headers, and pill-shaped controls in small type. Futura headlines give it a printed, record-label voice, and system UI type handles everything else. Motion is physical but brief. Covers spring up out of their sleeves, and state changes take 120\u2013380ms on one shared set of durations and curves.\n\nIt is dark only and has one theme. It is not a streaming app: no stacked carousels, no algorithmic tile shelves, nothing that pushes speed-to-play over digging.",
+    "keyCharacteristics": [
+      "Covers are physical objects. Chrome recedes.",
+      "Navy paper (`paper`), cream ink (`cream-ink`) and paper grain everywhere.",
+      "Three sleeve accents, each with one job: orange acts, mustard marks where you are, teal is secondary.",
+      "Futura for names and titles, system UI for everything else, tabular figures throughout.",
+      "Pills for controls, near-square corners for covers.",
+      "One motion grammar: three durations \u00d7 three easings."
+    ],
+    "rules": [
+      {
+        "name": "The Three Sleeves Rule",
+        "body": "Orange, mustard and teal are the only saturated colours in the chrome, and each keeps its job: orange acts, mustard locates, teal supports. A fourth accent colour is not allowed.",
+        "section": "colors"
+      },
+      {
+        "name": "The Navy-On-Fill Rule",
+        "body": "Text on any accent fill is navy (`on-brick`), never cream.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lighter-On-Hover Rule",
+        "body": "On this dark ground, orange controls get lighter when you hover (`brick` to `brick-lift`), never darker. Orange text on a tinted fill (surface, wash, brick tints) is always `brick-ink`. Plain `brick` text is allowed only directly on paper at 0.9rem or larger, like the album page's artist link (4.9:1).",
+        "section": "colors"
+      },
+      {
+        "name": "The Covers Carry Colour Rule",
+        "body": "Album art is the loudest thing on screen. Chrome never competes with it through big colour fields or gradients behind the grid.",
+        "section": "colors"
+      },
+      {
+        "name": "The Futura For Names Rule",
+        "body": "Futura is for the names of things: albums, artists, people, screens and section heads. Controls, metadata and running text stay in system UI.",
+        "section": "typography"
+      },
+      {
+        "name": "The 0.7rem Floor Rule",
+        "body": "Functional text never goes below 0.7rem (11.2px). That covers years, counts, labels and badges in rails. The only exceptions are graphic stickers drawn on artwork (format stickers, critics' seals), which carry a `title` tooltip.",
+        "section": "typography"
+      },
+      {
+        "name": "The Distance Rule",
+        "body": "Theater mode, Now Playing and the shop display are read from across the room. Those surfaces use the display/headline sizes and never drop primary info to body-small.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Objects Cast Shadows Rule",
+        "body": "Covers, the Play button and modals cast shadows. Toolbars, headers, chips and inputs are flat and separate themselves with tone and hairlines.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use tokens from `app.css` for every colour, radius, duration and easing. It's the only copy, and `lib/themes.ts` reads it back for the window background and the kiosk.",
+      "**Do** use the motion grammar: `--dur-instant` 120ms for hover, `--dur-base` 220ms for panels, `--dur-slow` 380ms for screen morphs and cover crossfades; `--ease-out` for entrances, `--ease-in-out` for reversible changes, `--ease-spring` only for crate-flip and sleeve-peek motions. Reduced motion collapses them to 1ms.",
+      "**Do** keep text on accent fills navy (`on-brick`).",
+      "**Do** keep primary info at headline/display size on theater mode, Now Playing and the shop display.",
+      "**Do** keep tabular figures for anything numeric."
+    ],
+    "donts": [
+      "**Don't** make it look like a streaming app: no stacked carousels, algorithmic tile shelves or speed-to-play hero banners.",
+      "**Don't** add a light mode or a second theme. Crate is the only theme (the other ten were retired in 2026-09).",
+      "**Don't** add a fourth accent colour, or use mustard or teal for primary actions.",
+      "**Don't** put gradients on headline text. The album title is flat cream.",
+      "**Don't** make a sticky header or any resizing element a window-drag region.",
+      "**Don't** set functional text below 0.7rem.",
+      "**Don't** use `brick-deep` as text, or darken an orange control on hover. Orange text is `brick-ink` and hover fills are `brick-lift`.",
+      "**Don't** tint shadows cream. Depth is navy shadow ink (`--shadow-color`)."
+    ]
+  }
+}

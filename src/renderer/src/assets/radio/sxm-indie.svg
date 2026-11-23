@@ -1,0 +1,13 @@
+<svg width="720" height="720" viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg">
+  <!-- Indie 1.0 (SiriusXM Xtra ch. 1227) tile — typeset like the SXMU tile but
+       on its own hue so the two channels read differently at bar-thumb size. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a2fd0"/>
+      <stop offset="1" stop-color="#3a1170"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="720" fill="url(#bg)"/>
+  <text x="360" y="382" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="700" font-size="110" letter-spacing="-2" fill="#ffffff">indie 1.0</text>
+  <text x="360" y="452" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="28" letter-spacing="8" fill="rgba(255,255,255,0.55)">SIRIUSXM · CH 1227</text>
+</svg>

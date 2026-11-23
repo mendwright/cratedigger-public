@@ -1,0 +1,14 @@
+<svg width="720" height="720" viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg">
+  <!-- SiriusXMU tile for ad breaks (the sxm-proxy now-playing feed flags is_ad
+       and we drop the song). Typeset in the channel's lowercase-wordmark style
+       on SiriusXM blue — no clean vector of the current channel logo exists. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a4bd6"/>
+      <stop offset="1" stop-color="#032a80"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="720" fill="url(#bg)"/>
+  <text x="360" y="382" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="700" font-size="104" letter-spacing="-2" fill="#ffffff">siriusxm<tspan fill="#9db9ff">u</tspan></text>
+  <text x="360" y="452" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="28" letter-spacing="8" fill="rgba(255,255,255,0.55)">CHANNEL 35</text>
+</svg>

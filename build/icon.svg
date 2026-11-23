@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<!-- Cratedigger: fanned sleeves in a wooden crate, a grooved record up front.
+     Drawn on Apple's 824px icon grid inside the 1024 canvas. -->
+<defs><filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000" flood-opacity=".3"/></filter><clipPath id="t"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath></defs><rect x="100" y="100" width="824" height="824" rx="185" fill="#1d2a3a" filter="url(#sh)"/><g clip-path="url(#t)"><rect x="215" y="215" width="400" height="400" fill="#e9b949" transform="rotate(-7 415 640)"/>
+<rect x="400" y="225" width="400" height="400" fill="#3d8f8a" transform="rotate(6 600 640)"/><rect x="300" y="270" width="400" height="400" fill="#f1e6d0" transform="rotate(-18 500 690)"/>
+<circle cx="470" cy="440" r="235" fill="#141414"/>
+<g fill="none" stroke="#2e2e2e" stroke-width="5"><circle cx="470" cy="440" r="216"/>
+<circle cx="470" cy="440" r="197"/>
+<circle cx="470" cy="440" r="178"/>
+<circle cx="470" cy="440" r="159"/>
+<circle cx="470" cy="440" r="141"/></g>
+<path d="M 282 440 A 188 188 0 0 1 470 252" fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="39" stroke-linecap="round"/>
+<circle cx="470" cy="440" r="89" fill="#e2582b"/>
+<circle cx="470" cy="440" r="14" fill="#1d2a3a"/>
+<rect x="170" y="640" width="684" height="200" rx="10" fill="#b8733b"/>
+<rect x="170" y="706" width="684" height="8" fill="#8a5227"/><rect x="170" y="772" width="684" height="8" fill="#8a5227"/>
+<rect x="447" y="664" width="130" height="28" rx="14" fill="#6e3f1c"/></g></svg>
